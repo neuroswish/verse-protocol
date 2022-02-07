@@ -4,20 +4,43 @@ pragma solidity >=0.8.10;
 import "solmate/tokens/ERC20.sol";
 import "solmate/utils/ReentrancyGuard.sol";
 
-contract Exchange{
+contract Exchange is ReentrancyGuard{
 
-    /*///////////////////////////////////////////////////////////////
-                             METADATA STORAGE
-    //////////////////////////////////////////////////////////////*/
-
+    // ======== Storage ========
     address public creator;
-    address public immutable factory;
-    address public immutable bondingCurve;
+    address public immutable factory; // exchange factory address
+    address public immutable bondingCurve; // bonding curve interface address
+    uint32 public reserveRatio; // reserve ratio of token market cap to ETH pool
+    uint32 public ppm; // token units
+    uint256 public poolBalance; // ETH balance in contract pool
 
-    /*///////////////////////////////////////////////////////////////
-                               CONSTRUCTOR
-    //////////////////////////////////////////////////////////////*/
+    // ======== Exchange Events ========
+    event Buy(
+        address indexed buyer,
+        uint256 poolBalance,
+        uint256 totalSupply,
+        uint256 tokens,
+        uint256 price
+    );
 
+    event Sell(
+        address indexed seller,
+        uint256 poolBalance,
+        uint256 totalSupply,
+        uint256 tokens,
+        uint256 eth
+    );
+
+    // ======== Modifiers ========
+    /**
+     * @notice Check to see if address holds tokens
+     */
+    modifier onlyHolder() {
+        require(balanceOf[msg.sender] > 0, "ZERO_BALANCE");
+        _;
+    }
+
+    // ======== Constructor ========
      constructor(address _factory, address _bondingCurve) {
          factory = _factory;
          bondingCurve = _bondingCurve;
@@ -26,39 +49,110 @@ contract Exchange{
          INITIAL_DOMAIN_SEPARATOR = computeDomainSeparator();
      }
 
-    /*///////////////////////////////////////////////////////////////
-                               INITIALIZER
-    //////////////////////////////////////////////////////////////*/
-    /// @notice Initialize a new market
+    // ======== Initializer ========
+    /// @notice Initialize a new exchange
     /// @dev Sets reserveRatio, ppm, fee, name, and bondingCurve address; called by factory at time of deployment
-
      function initialize(
-         address _creator,
-         string calldata _name,
-         string calldata _symbol
+        address _creator,
+        string calldata _name,
+        string calldata _symbol,
+        uint32 _reserveRatio,
+        uint32 _ppm
      ) external {
-         creator = _creator;
-         name = _name;
-         symbol = _symbol;
-         totalSupply = 0;
+        creator = _creator;
+        name = _name;
+        symbol = _symbol;
+        reserveRatio = _reserveRatio;
+        ppm = _ppm;
      }
 
+    // ======== Exchange Functions ========
+    /// @notice Buy tokens with ETH
+    /// @dev Emits a Buy event upon success: callable by anyone
+    function buy(uint256 _price, uint256 _minTokensReturned) external payable {
+        require(msg.value == _price && msg.value > 0, "Invalid price");
+        require(_minTokensReturned > 0, "Invalid slippage");
+        // calculate tokens returned
+        uint256 tokensReturned;
+        if (totalSupply == 0 || poolBalance == 0) {
+            tokensReturned = IBondingCurve(bondingCurve)
+                .calculateInitializationReturn(_price, reserveRatio);
+        } else {
+            tokensReturned = IBondingCurve(bondingCurve)
+                .calculatePurchaseReturn(
+                    totalSupply,
+                    poolBalance,
+                    reserveRatio,
+                    _price
+                );
+        }
+        require(tokensReturned >= _minTokensReturned, "Slippage");
+        // mint tokens for buyer
+        _mint(msg.sender, tokensReturned);
+        poolBalance += _price;
+        emit Buy(msg.sender, poolBalance, totalSupply, tokensReturned, _price);
+    }
+
+    /**
+     * @notice Sell market tokens for ETH
+     * @dev Emits a Sell event upon success; callable by token holders
+     */
+    function sell(uint256 _tokens, uint256 _minETHReturned)
+        external
+        holder
+        nonReentrant
+    {
+        require(
+            _tokens > 0 && _tokens <= balanceOf[msg.sender],
+            "Invalid token amount"
+        );
+        require(poolBalance > 0, "Insufficient pool balance");
+        require(_minETHReturned > 0, "Invalid slippage");
+
+        // calculate ETH returned
+        uint256 ethReturned = IBondingCurve(bondingCurve).calculateSaleReturn(
+            totalSupply,
+            poolBalance,
+            reserveRatio,
+            _tokens
+        );
+        require(ethReturned >= _minETHReturned, "Slippage");
+        // burn tokens
+        _burn(msg.sender, _tokens);
+        poolBalance -= ethReturned;
+        sendValue(payable(msg.sender), ethReturned);
+        emit Sell(msg.sender, poolBalance, totalSupply, _tokens, ethReturned);
+    }
+
+    // ============ Utility ============
+
+    /**
+     * @notice Send ETH in a safe manner
+     * @dev Prevents reentrancy, emits a Transfer event upon success
+     */
+    function sendValue(address recipient, uint256 amount) internal {
+        require(address(this).balance >= amount, "Invalid amount");
+
+        // solhint-disable-next-line avoid-low-level-calls, avoid-call-value
+        (bool success, ) = payable(recipient).call{value: amount}("Reverted");
+        require(
+            success,
+            "Address: unable to send value, recipient may have reverted"
+        );
+    }
+
     /*///////////////////////////////////////////////////////////////
-                                  ERC-20
+                            ERC-20
     //////////////////////////////////////////////////////////////*/
     /// ERC20 + EIP-2612 implementation sourced from Rari Capital Solmate (https://github.com/Rari-Capital/solmate/blob/main/src/tokens/ERC20.sol) + Mirror
 
-    /*///////////////////////////////////////////////////////////////
-                                  EVENTS
-    //////////////////////////////////////////////////////////////*/
+    // ======== Events ========
 
     event Transfer(address indexed from, address indexed to, uint256 amount);
 
     event Approval(address indexed owner, address indexed spender, uint256 amount);
 
-    /*///////////////////////////////////////////////////////////////
-                             METADATA STORAGE
-    //////////////////////////////////////////////////////////////*/
+    // ======== Metadata Storage ========
 
     string public name;
 
@@ -66,9 +160,7 @@ contract Exchange{
 
     uint8 public immutable decimals;
 
-    /*///////////////////////////////////////////////////////////////
-                              ERC20 STORAGE
-    //////////////////////////////////////////////////////////////*/
+    // ======== ERC20 Storage ========
 
     uint256 public totalSupply;
 
@@ -76,9 +168,7 @@ contract Exchange{
 
     mapping(address => mapping(address => uint256)) public allowance;
 
-    /*///////////////////////////////////////////////////////////////
-                             EIP-2612 STORAGE
-    //////////////////////////////////////////////////////////////*/
+    // ======== EIP-2612 Storage ========
 
     uint256 internal immutable INITIAL_CHAIN_ID;
 
@@ -86,9 +176,7 @@ contract Exchange{
 
     mapping(address => uint256) public nonces;
 
-    /*///////////////////////////////////////////////////////////////
-                              ERC20 LOGIC
-    //////////////////////////////////////////////////////////////*/
+    // ======== ERC20 Logic ========
 
     function approve(address spender, uint256 amount) public virtual returns (bool) {
         allowance[msg.sender][spender] = amount;
@@ -134,9 +222,7 @@ contract Exchange{
         return true;
     }
 
-    /*///////////////////////////////////////////////////////////////
-                              EIP-2612 LOGIC
-    //////////////////////////////////////////////////////////////*/
+    // ======== EIP-2612 Logic ========
 
     function permit(
         address owner,
@@ -198,9 +284,7 @@ contract Exchange{
             );
     }
 
-    /*///////////////////////////////////////////////////////////////
-                       INTERNAL MINT/BURN LOGIC
-    //////////////////////////////////////////////////////////////*/
+    // ======== Mint & Burn Logic ========
 
     function _mint(address to, uint256 amount) internal virtual {
         totalSupply += amount;
