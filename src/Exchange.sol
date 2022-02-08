@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.8.10;
 
-import "solmate/tokens/ERC20.sol";
+//import "solmate/tokens/ERC20.sol";
 import "solmate/utils/ReentrancyGuard.sol";
 
 contract Exchange is ReentrancyGuard{
@@ -70,8 +70,8 @@ contract Exchange is ReentrancyGuard{
     /// @notice Buy tokens with ETH
     /// @dev Emits a Buy event upon success: callable by anyone
     function buy(uint256 _price, uint256 _minTokensReturned) external payable {
-        require(msg.value == _price && msg.value > 0, "Invalid price");
-        require(_minTokensReturned > 0, "Invalid slippage");
+        require(msg.value == _price && msg.value > 0, "INVALID_PRICE");
+        require(_minTokensReturned > 0, "INVALID_SLIPPAGE");
         // calculate tokens returned
         uint256 tokensReturned;
         if (totalSupply == 0 || poolBalance == 0) {
@@ -86,7 +86,7 @@ contract Exchange is ReentrancyGuard{
                     _price
                 );
         }
-        require(tokensReturned >= _minTokensReturned, "Slippage");
+        require(tokensReturned >= _minTokensReturned, "SLIPPAGE");
         // mint tokens for buyer
         _mint(msg.sender, tokensReturned);
         poolBalance += _price;
@@ -99,15 +99,15 @@ contract Exchange is ReentrancyGuard{
      */
     function sell(uint256 _tokens, uint256 _minETHReturned)
         external
-        holder
+        onlyHolder
         nonReentrant
     {
         require(
             _tokens > 0 && _tokens <= balanceOf[msg.sender],
-            "Invalid token amount"
+            "INVALID_SELL_AMOUNT"
         );
-        require(poolBalance > 0, "Insufficient pool balance");
-        require(_minETHReturned > 0, "Invalid slippage");
+        require(poolBalance > 0, "INSUFFICIENT_POOL_BALANCE");
+        require(_minETHReturned > 0, "INVALID_SLIPPAGE");
 
         // calculate ETH returned
         uint256 ethReturned = IBondingCurve(bondingCurve).calculateSaleReturn(
@@ -116,7 +116,7 @@ contract Exchange is ReentrancyGuard{
             reserveRatio,
             _tokens
         );
-        require(ethReturned >= _minETHReturned, "Slippage");
+        require(ethReturned >= _minETHReturned, "SLIPPAGE");
         // burn tokens
         _burn(msg.sender, _tokens);
         poolBalance -= ethReturned;
@@ -131,20 +131,20 @@ contract Exchange is ReentrancyGuard{
      * @dev Prevents reentrancy, emits a Transfer event upon success
      */
     function sendValue(address recipient, uint256 amount) internal {
-        require(address(this).balance >= amount, "Invalid amount");
+        require(address(this).balance >= amount, "INVALID_AMOUNT");
 
         // solhint-disable-next-line avoid-low-level-calls, avoid-call-value
-        (bool success, ) = payable(recipient).call{value: amount}("Reverted");
+        (bool success, ) = payable(recipient).call{value: amount}("REVERTED");
         require(
             success,
-            "Address: unable to send value, recipient may have reverted"
+            "UNABLE_TO_SEND_VALUE_POSSIBLE_REVERT"
         );
     }
 
     /*///////////////////////////////////////////////////////////////
                             ERC-20
     //////////////////////////////////////////////////////////////*/
-    /// ERC20 + EIP-2612 implementation sourced from Rari Capital Solmate (https://github.com/Rari-Capital/solmate/blob/main/src/tokens/ERC20.sol) + Mirror
+    /// ERC20 + EIP-2612 implementation sourced from Rari Capital Solmate (https://github.com/Rari-Capital/solmate/blob/main/src/tokens/ERC20.sol) + Mirror (https://dev.mirror.xyz)
 
     // ======== Events ========
 
