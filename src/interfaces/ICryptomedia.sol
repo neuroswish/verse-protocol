@@ -2,5 +2,5 @@
 pragma solidity >=0.8.10;
 
 interface ICryptomedia {
-    
+    function mint(address _recipient) external;
 }

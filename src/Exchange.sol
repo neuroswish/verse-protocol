@@ -2,6 +2,7 @@
 pragma solidity >=0.8.10;
 
 import "./interfaces/IBondingCurve.sol";
+import "./interfaces/ICryptomedia.sol";
 import "solmate/tokens/ERC20.sol";
 import "solmate/utils/ReentrancyGuard.sol";
 import "solmate/utils/SafeTransferLib.sol";
@@ -10,8 +11,8 @@ import "solmate/utils/SafeTransferLib.sol";
 contract Exchange is ERC20, ReentrancyGuard{
     // ======== Storage ========
     address public factory; // exchange factory address
-    address public bondingCurve; // bonding curve interface address
-    address public cryptomedia;
+    address public bondingCurve; // bonding curve address
+    address public cryptomedia; // cryptomedia addres
     uint256 public reserveRatio; // reserve ratio of token market cap to ETH pool
     uint256 public poolBalance; // ETH balance in contract pool
 
@@ -125,9 +126,10 @@ contract Exchange is ERC20, ReentrancyGuard{
     * @notice Sell market tokens for ETH
     * @dev Emits a Sell event upon success; callable by token holders
     */
-    function mintCryptomedia() public view {
+    function mintCryptomedia() public {
         require(balanceOf[msg.sender] >= (10**18), "INSUFFICIENT_BALANCE");
-        
+        transferFrom(msg.sender, cryptomedia, 10**18);
+        ICryptomedia(cryptomedia).mint(msg.sender);
     }
 
 

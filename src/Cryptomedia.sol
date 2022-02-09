@@ -52,8 +52,9 @@ contract Cryptomedia is ERC721 {
     }
 
     // ======== Functions ========
-    function mint() external onlyExchange {
-        
+    function mint(address _recipient) external onlyExchange {
+        _mint(_recipient, currentTokenId.current());
+        currentTokenId.increment();
     }
 
 }
