@@ -2,7 +2,9 @@
 pragma solidity >=0.8.10;
 
 //import "solmate/tokens/ERC20.sol";
+import "./interfaces/IBondingCurve.sol";
 import "solmate/utils/ReentrancyGuard.sol";
+
 
 contract Exchange is ReentrancyGuard{
 
