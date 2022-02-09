@@ -9,6 +9,7 @@ import "solmate/utils/SafeTransferLib.sol";
 
 
 contract Exchange is ERC20, ReentrancyGuard{
+    
     // ======== Storage ========
     address public factory; // exchange factory address
     address public bondingCurve; // bonding curve address
@@ -31,6 +32,10 @@ contract Exchange is ERC20, ReentrancyGuard{
         uint256 totalSupply,
         uint256 tokens,
         uint256 eth
+    );
+
+    event Redeem(
+        address indexed redeemer
     );
 
     // ======== Modifiers ========
@@ -123,16 +128,13 @@ contract Exchange is ERC20, ReentrancyGuard{
     }
 
     /**
-    * @notice Sell market tokens for ETH
+    * @notice Redeem ERC20 token for Cryptomedia NFT
     * @dev Emits a Sell event upon success; callable by token holders
     */
-    function mintCryptomedia() public {
+    function redeem() public {
         require(balanceOf[msg.sender] >= (10**18), "INSUFFICIENT_BALANCE");
         transferFrom(msg.sender, cryptomedia, 10**18);
         ICryptomedia(cryptomedia).mint(msg.sender);
     }
-
-
-
 }
 

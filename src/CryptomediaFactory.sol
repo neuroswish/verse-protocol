@@ -12,6 +12,17 @@ contract CryptomediaFactory {
     address public exchangeLogic;
     address public bondingCurve;
 
+    // ======== Events ========
+    event CryptomediaCreated(
+        address exchangeAddress,
+        address cryptomediaAddress,
+        string exchangeName,
+        string exchangeSymbol,
+        uint256 reserveRatio,
+        string cryptomediaName,
+        string cryptomediaSymbol
+    );
+
     // ======== Constructor ========
     constructor(address _bondingCurve) {
         bondingCurve = _bondingCurve;
@@ -41,6 +52,8 @@ contract CryptomediaFactory {
 
         Exchange(exchange).initialize(_exchangeName, _exchangeSymbol, _reserveRatio, cryptomedia);
         Cryptomedia(cryptomedia).initialize(_cryptomediaName, _cryptomediaSymbol, _baseURI, exchange);
+
+        emit CryptomediaCreated(exchange, cryptomedia, _exchangeName, _exchangeSymbol, _reserveRatio, _cryptomediaName, _cryptomediaSymbol);
 
         // bytes32 salt = keccak256(abi.encodePacked(exchange,msg.sender));
         // address predictCryptomedia = Clones.predictDeterministicAddress(cryptomediaLogic, salt);
