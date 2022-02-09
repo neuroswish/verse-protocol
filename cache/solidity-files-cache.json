@@ -35,6 +35,40 @@
         "DSTest"
       ]
     },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/openzeppelin-contracts/contracts/utils/Counters.sol": {
+      "lastModificationDate": 1644442962820,
+      "contentHash": "74654e3ae5d7f39555055dfe244dab7a",
+      "sourceName": "lib/openzeppelin-contracts/contracts/utils/Counters.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Counters"
+      ]
+    },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/solmate/src/tokens/ERC1155.sol": {
       "lastModificationDate": 1644268672575,
       "contentHash": "c2eba959a95675f7cd374b6539232153",
@@ -316,8 +350,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Cryptomedia.sol": {
-      "lastModificationDate": 1644430511434,
-      "contentHash": "e3868b2d91704915e6ea4784f5e7a1a5",
+      "lastModificationDate": 1644443041535,
+      "contentHash": "72bb4f808fff9ac131939c2ebe27f7b3",
       "sourceName": "src/Cryptomedia.sol",
       "solcConfig": {
         "settings": {
@@ -342,8 +376,9 @@
         }
       },
       "imports": [
+        "./Exchange.sol",
         "solmate/tokens/ERC721.sol",
-        "./Exchange.sol"
+        "@openzeppelin/contracts/utils/Counters.sol"
       ],
       "versionPragmas": [
         ">=0.8.10"
@@ -353,8 +388,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/CryptomediaFactory.sol": {
-      "lastModificationDate": 1644437406507,
-      "contentHash": "749b21c33ddaadc4ccc61e54a3d98357",
+      "lastModificationDate": 1644441946149,
+      "contentHash": "8b6b8af64a7f8d452dd77fae243ef24f",
       "sourceName": "src/CryptomediaFactory.sol",
       "solcConfig": {
         "settings": {
@@ -392,8 +427,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
-      "lastModificationDate": 1644437533040,
-      "contentHash": "4630a425bb8fc896eef04c1b583622f2",
+      "lastModificationDate": 1644441941792,
+      "contentHash": "9c3b58226555c7ea6daa39f9d9d8e630",
       "sourceName": "src/Exchange.sol",
       "solcConfig": {
         "settings": {
@@ -465,8 +500,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/interfaces/IBondingCurve.sol": {
-      "lastModificationDate": 1644380124068,
-      "contentHash": "ef40466f188cad352b0517b1ece8dbd2",
+      "lastModificationDate": 1644441887808,
+      "contentHash": "94956f7419ea6638663629d792f3adab",
       "sourceName": "src/interfaces/IBondingCurve.sol",
       "solcConfig": {
         "settings": {
@@ -497,6 +532,36 @@
       "artifacts": [
         "IBondingCurve"
       ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/interfaces/ICryptomedia.sol": {
+      "lastModificationDate": 1644442031201,
+      "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+      "sourceName": "src/interfaces/ICryptomedia.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionPragmas": [],
+      "artifacts": []
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Contract.t.sol": {
       "lastModificationDate": 1644268641304,

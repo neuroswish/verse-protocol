@@ -127,6 +127,7 @@ contract Exchange is ERC20, ReentrancyGuard{
     */
     function mintCryptomedia() public view {
         require(balanceOf[msg.sender] >= (10**18), "INSUFFICIENT_BALANCE");
+        
     }
 
 

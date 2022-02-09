@@ -1,20 +1,24 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.8.10;
 
-import "solmate/tokens/ERC721.sol";
 import "./Exchange.sol";
+import "solmate/tokens/ERC721.sol";
+import {Counters} from "@openzeppelin/contracts/utils/Counters.sol";
 
 error DoesNotExist(uint256 tokenId);
 
 contract Cryptomedia is ERC721 {
+    using Counters for Counters.Counter;
     // ======== Storage ========
     address public exchange; // exchange token pair address
     address public factory; // cryptomedia factory address
     string public baseURI; // NFT base URI
+    Counters.Counter currentTokenId; // Counter keeping track of last minted token id
 
     // ======== Constructor ========
     constructor(address _factory) ERC721("Verse", "VERSE") {
         factory = _factory;
+        currentTokenId.increment();
      }
 
     // ======== Initializer ========
