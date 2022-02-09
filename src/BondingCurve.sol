@@ -14,7 +14,7 @@ pragma solidity >=0.8.10;
 import "./Power.sol";
 
 contract BondingCurve is Power {
-    uint32 public constant maxRatio = 1000000;
+    uint256 public constant maxRatio = 10**18;
     uint256 public constant slopeInit = 2412000;
 
     /**
@@ -34,7 +34,7 @@ contract BondingCurve is Power {
     function calculatePurchaseReturn(
         uint256 _supply,
         uint256 _poolBalance,
-        uint32 _reserveRatio,
+        uint256 _reserveRatio,
         uint256 _price
     ) public view returns (uint256) {
         // validate input
@@ -68,7 +68,7 @@ contract BondingCurve is Power {
     function calculateSaleReturn(
         uint256 _supply,
         uint256 _poolBalance,
-        uint32 _reserveRatio,
+        uint256 _reserveRatio,
         uint256 _tokens
     ) public view returns (uint256) {
         // validate input
@@ -101,7 +101,7 @@ contract BondingCurve is Power {
      * @return initial token amount
      */
 
-    function calculateInitializationReturn(uint256 _price, uint32 _reserveRatio)
+    function calculateInitializationReturn(uint256 _price, uint256 _reserveRatio)
         public
         view
         returns (uint256)

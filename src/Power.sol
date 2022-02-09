@@ -157,8 +157,8 @@ contract Power {
     function power(
         uint256 _baseN,
         uint256 _baseD,
-        uint32 _expN,
-        uint32 _expD
+        uint256 _expN,
+        uint256 _expD
     ) internal view returns (uint256, uint8) {
         require(_baseN < MAX_NUM);
 
@@ -189,8 +189,8 @@ contract Power {
         uint256 _baseN,
         uint256 _baseDNumerator,
         uint256 _baseDDenominator,
-        uint32 _expN,
-        uint32 _expD
+        uint256 _expN,
+        uint256 _expD
     ) internal view returns (uint256, uint8) {
         require(_baseN < MAX_NUM);
 
