@@ -15,7 +15,9 @@ import "./Power.sol";
 
 contract BondingCurve is Power {
     uint32 public constant maxRatio = 1000000;
-    uint256 public constant slopeFactor = 100000;
+    uint256 public constant slopeInit = 2412000;
+    // going to set initialSlopeNumerator = 2412000000000
+    // going to set initialSlopeDenominator = 10 * 18
 
     /**
      * @dev given total supply, pool balance, reserve ratio and a price, calculates the number of tokens returned
@@ -38,8 +40,8 @@ contract BondingCurve is Power {
         uint256 _price
     ) public view returns (uint256) {
         // validate input
-        require(_supply > 0, "INVALID SUPPLY");
-        require(_poolBalance > 0, "INVALID POOL BALANCE");
+        require(_supply > 0, "INVALID_SUPPLY");
+        require(_poolBalance > 0, "INVALID_POOL_BALANCE");
         // calculate result
         (uint256 result, uint8 precision) = power(
             (_price + _poolBalance),
@@ -49,36 +51,6 @@ contract BondingCurve is Power {
         );
         uint256 temp = (_supply * result) >> precision;
         return (temp - _supply);
-    }
-
-    /**
-     * @dev given total supply, pool balance, reserve ratio and desired number of tokens, calculates the price required
-     *
-     * Formula:
-     * return = _poolBalance * ((1 + _tokens / _supply) ^ (maxRatio / reserveRatio) - 1)
-     *
-     * @param _supply          liquid token supply
-     * @param _poolBalance     reserve balance
-     * @param _reserveRatio    reserve weight, represented in ppm (1-1000000)
-     * @param _tokens          amount of reserve tokens to get the target amount for
-     *
-     * @return ETH
-     */
-
-    function calculatePrice(
-        uint256 _supply,
-        uint256 _poolBalance,
-        uint32 _reserveRatio,
-        uint256 _tokens
-    ) public view returns (uint256) {
-        (uint256 result, uint8 precision) = power(
-            (_tokens + _supply),
-            _supply,
-            maxRatio,
-            _reserveRatio
-        );
-        uint256 temp = (_poolBalance * result) >> precision;
-        return (temp - _poolBalance);
     }
 
     /**
@@ -102,8 +74,8 @@ contract BondingCurve is Power {
         uint256 _tokens
     ) public view returns (uint256) {
         // validate input
-        require(_supply > 0, "INVALID SUPPLY");
-        require(_poolBalance > 0, "INVALID SUPPLY");
+        require(_supply > 0, "INVALID_SUPPLY");
+        require(_poolBalance > 0, "INVALID_POOL_BALANCE");
 
         // edge case for selling entire supply
         if (_tokens == _supply) {
@@ -137,10 +109,10 @@ contract BondingCurve is Power {
         returns (uint256)
     {
         if (_reserveRatio == maxRatio) {
-            return (_price * slopeFactor);
+            return (_price * slopeInit);
         }
         (uint256 temp, uint256 precision) = powerInitial(
-            (_price * slopeFactor),
+            (_price * slopeInit),
             _reserveRatio,
             maxRatio,
             _reserveRatio,
@@ -149,25 +121,4 @@ contract BondingCurve is Power {
         return (temp >> precision);
     }
 
-    /**
-     * @dev given a reserve ratio and slope factor, calculates the number of price required to purchase the first token when initializing the bonding curve supply
-     *
-     * Formula:
-     * price = (_reserveRatio * slopeFactor) / maxRatio
-     *
-     * @param _reserveRatio   reserve weight, represented in ppm (1-1000000)
-     *
-     * @return initial token price
-     */
-
-    function calculateInitializationPrice(uint32 _reserveRatio)
-        public
-        pure
-        returns (uint256)
-    {
-        if (_reserveRatio == maxRatio) {
-            return (slopeFactor);
-        }
-        return ((_reserveRatio * slopeFactor) / maxRatio);
-    }
 }
