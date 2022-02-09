@@ -16,11 +16,11 @@ contract CryptomediaFactory {
     constructor(address _bondingCurve) {
         bondingCurve = _bondingCurve;
 
-        Cryptomedia cryptomediaLogic_ = new Cryptomedia(address(this));
         Exchange exchangeLogic_ = new Exchange(address(this), _bondingCurve);
+        Cryptomedia cryptomediaLogic_ = new Cryptomedia(address(this));
 
-        cryptomediaLogic = address(cryptomediaLogic_);
         exchangeLogic = address(exchangeLogic_);
+        cryptomediaLogic = address(cryptomediaLogic_);
 
         exchangeLogic_.initialize("Verse", "VERSE", 242424, cryptomediaLogic);
         cryptomediaLogic_.initialize("Verse", "VERSE", "verse.xyz", exchangeLogic);
@@ -37,10 +37,16 @@ contract CryptomediaFactory {
         string calldata _baseURI
     ) external returns (address exchange, address cryptomedia) {
         exchange = Clones.clone(exchangeLogic);
-        bytes32 salt = keccak256(abi.encodePacked(exchange,msg.sender));
-        address predictCryptomedia = Clones.predictDeterministicAddress(cryptomediaLogic, salt);
-        Exchange(exchange).initialize(_exchangeName, _exchangeSymbol, _reserveRatio, predictCryptomedia);
-        cryptomedia = Clones.cloneDeterministic(cryptomediaLogic, salt);
+        cryptomedia = Clones.clone(cryptomediaLogic);
+
+        Exchange(exchange).initialize(_exchangeName, _exchangeSymbol, _reserveRatio, cryptomedia);
         Cryptomedia(cryptomedia).initialize(_cryptomediaName, _cryptomediaSymbol, _baseURI, exchange);
+
+        // bytes32 salt = keccak256(abi.encodePacked(exchange,msg.sender));
+        // address predictCryptomedia = Clones.predictDeterministicAddress(cryptomediaLogic, salt);
+
+        // Exchange(exchange).initialize(_exchangeName, _exchangeSymbol, _reserveRatio, predictCryptomedia);
+        // cryptomedia = Clones.cloneDeterministic(cryptomediaLogic, salt);
+        // Cryptomedia(cryptomedia).initialize(_cryptomediaName, _cryptomediaSymbol, _baseURI, exchange);
     }
 }
