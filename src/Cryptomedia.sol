@@ -3,8 +3,39 @@ pragma solidity >=0.8.10;
 
 import "solmate/tokens/ERC721.sol";
 
+error DoesNotExist(uint256 tokenId);
+
 contract Cryptomedia is ERC721 {
-    
+    // ======== Storage ========
+    address public immutable exchange; // exchange token pair address
+    address public immutable factory; // cryptomedia factory address
+    string public baseURI;
+
+    // ======== Constructor ========
+    constructor(address _factory, address _exchange) ERC721("Verse", "VERSE") {
+        factory = _factory;
+        exchange = _exchange;
+     }
+
+
+    // ======== Initializer ========
+    function initialize(
+        string calldata _name,
+        string calldata _symbol,
+        string calldata _baseURI
+    ) external {
+        require(msg.sender == factory, "UNAUTHORIZED");
+        name = _name;
+        symbol = _symbol;
+        baseURI = _baseURI;
+    }
+
+    function tokenURI(uint256 id) public view override returns (string memory) {
+        if (ownerOf[id] == address(0)) revert DoesNotExist(id);
+
+        return string(abi.encodePacked(baseURI, id));
+    }
+
 }
 
 // /// @notice A generic interface for a contract which properly accepts ERC721 tokens.
