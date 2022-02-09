@@ -316,8 +316,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Cryptomedia.sol": {
-      "lastModificationDate": 1644426449901,
-      "contentHash": "8b08a1aa660c2439d416d917bd219236",
+      "lastModificationDate": 1644430511434,
+      "contentHash": "e3868b2d91704915e6ea4784f5e7a1a5",
       "sourceName": "src/Cryptomedia.sol",
       "solcConfig": {
         "settings": {
@@ -342,7 +342,8 @@
         }
       },
       "imports": [
-        "solmate/tokens/ERC721.sol"
+        "solmate/tokens/ERC721.sol",
+        "./Exchange.sol"
       ],
       "versionPragmas": [
         ">=0.8.10"
@@ -352,8 +353,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/CryptomediaFactory.sol": {
-      "lastModificationDate": 1644426499324,
-      "contentHash": "24d5ae4b7ba1078626c65d829e7a1504",
+      "lastModificationDate": 1644437406507,
+      "contentHash": "749b21c33ddaadc4ccc61e54a3d98357",
       "sourceName": "src/CryptomediaFactory.sol",
       "solcConfig": {
         "settings": {
@@ -391,8 +392,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
-      "lastModificationDate": 1644426303375,
-      "contentHash": "544b8c534e7ad35a9b88236e2cb266a1",
+      "lastModificationDate": 1644436746703,
+      "contentHash": "3c869998196bf4efcb2ccc0bfb5262de",
       "sourceName": "src/Exchange.sol",
       "solcConfig": {
         "settings": {

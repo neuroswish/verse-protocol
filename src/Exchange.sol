@@ -127,8 +127,7 @@ contract Exchange is ERC20, ReentrancyGuard{
     * @dev Emits a Sell event upon success; callable by token holders
     */
     function mintCryptomedia() public view {
-        require(balanceOf[msg.sender] >= 1000000, "INSUFFICIENT_BALANCE");
-
+        require(balanceOf[msg.sender] >= (10**18), "INSUFFICIENT_BALANCE");
     }
 
 
