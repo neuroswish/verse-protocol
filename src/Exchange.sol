@@ -43,26 +43,26 @@ contract Exchange is ERC20, ReentrancyGuard{
     }
 
     // ======== Constructor ========
-     constructor(address _factory, address _bondingCurve) ERC20("Verse", "VERSE", 18) {
-         factory = _factory;
-         bondingCurve = _bondingCurve;
-     }
+    constructor(address _factory, address _bondingCurve) ERC20("Verse", "VERSE", 18) {
+        factory = _factory;
+        bondingCurve = _bondingCurve;
+    }
 
     // ======== Initializer ========
     /// @notice Initialize a new exchange
     /// @dev Sets reserveRatio, ppm, fee, name, and bondingCurve address; called by factory at time of deployment
-     function initialize(
+    function initialize(
         string calldata _name,
         string calldata _symbol,
         uint32 _reserveRatio,
         address _cryptomedia
-     ) external {
+    ) external {
         require(msg.sender == factory, "UNAUTHORIZED");
         name = _name;
         symbol = _symbol;
         reserveRatio = _reserveRatio;
         cryptomedia = _cryptomedia;
-     }
+    }
 
     // ======== Exchange Functions ========
     /// @notice Buy tokens with ETH
@@ -126,7 +126,7 @@ contract Exchange is ERC20, ReentrancyGuard{
     * @notice Sell market tokens for ETH
     * @dev Emits a Sell event upon success; callable by token holders
     */
-    function mintCryptomedia() public {
+    function mintCryptomedia() public view {
         require(balanceOf[msg.sender] >= 1000000, "INSUFFICIENT_BALANCE");
 
     }

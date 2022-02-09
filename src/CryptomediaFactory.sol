@@ -15,12 +15,16 @@ contract CryptomediaFactory {
     // ======== Constructor ========
     constructor(address _bondingCurve) {
         bondingCurve = _bondingCurve;
-        Exchange exchangeLogic_ = new Exchange(address(this), _bondingCurve);
-        exchangeLogic_.initialize("Verse", "VERSE", 242424);
-        exchangeLogic = address(exchangeLogic_);
+
         Cryptomedia cryptomediaLogic_ = new Cryptomedia(address(this));
-        cryptomediaLogic_.initialize("Verse", "VERSE", "", exchangeLogic);
+        Exchange exchangeLogic_ = new Exchange(address(this), _bondingCurve);
+
         cryptomediaLogic = address(cryptomediaLogic_);
+        exchangeLogic = address(exchangeLogic_);
+
+        exchangeLogic_.initialize("Verse", "VERSE", 242424, cryptomediaLogic);
+        cryptomediaLogic_.initialize("Verse", "VERSE", "verse.xyz", exchangeLogic);
+        
     }
 
     // ======== Create Cryptomedia Clone ========
