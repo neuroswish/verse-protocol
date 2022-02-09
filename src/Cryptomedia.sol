@@ -7,14 +7,13 @@ error DoesNotExist(uint256 tokenId);
 
 contract Cryptomedia is ERC721 {
     // ======== Storage ========
-    address public immutable exchange; // exchange token pair address
-    address public immutable factory; // cryptomedia factory address
+    address public exchange; // exchange token pair address
+    address public factory; // cryptomedia factory address
     string public baseURI;
 
     // ======== Constructor ========
-    constructor(address _factory, address _exchange) ERC721("Verse", "VERSE") {
+    constructor(address _factory) ERC721("Verse", "VERSE") {
         factory = _factory;
-        exchange = _exchange;
      }
 
 
@@ -22,12 +21,14 @@ contract Cryptomedia is ERC721 {
     function initialize(
         string calldata _name,
         string calldata _symbol,
-        string calldata _baseURI
+        string calldata _baseURI,
+        address _exchange
     ) external {
         require(msg.sender == factory, "UNAUTHORIZED");
         name = _name;
         symbol = _symbol;
         baseURI = _baseURI;
+        exchange = _exchange;
     }
 
     function tokenURI(uint256 id) public view override returns (string memory) {

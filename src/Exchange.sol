@@ -11,10 +11,10 @@ contract Exchange is ERC20, ReentrancyGuard{
 
     // ======== Storage ========
     address public creator;
-    address public immutable factory; // exchange factory address
-    address public immutable bondingCurve; // bonding curve interface address
+    address public factory; // exchange factory address
+    address public bondingCurve; // bonding curve interface address
     uint32 public reserveRatio; // reserve ratio of token market cap to ETH pool
-    uint32 public ppm; // token units
+    uint32 public ppm = 1000000; // token units
     uint256 public poolBalance; // ETH balance in contract pool
 
     // ======== Exchange Events ========
@@ -53,18 +53,14 @@ contract Exchange is ERC20, ReentrancyGuard{
     /// @notice Initialize a new exchange
     /// @dev Sets reserveRatio, ppm, fee, name, and bondingCurve address; called by factory at time of deployment
      function initialize(
-        address _creator,
         string calldata _name,
         string calldata _symbol,
-        uint32 _reserveRatio,
-        uint32 _ppm
+        uint32 _reserveRatio
      ) external {
          require(msg.sender == factory, "UNAUTHORIZED");
-        creator = _creator;
         name = _name;
         symbol = _symbol;
         reserveRatio = _reserveRatio;
-        ppm = _ppm;
      }
 
     // ======== Exchange Functions ========
