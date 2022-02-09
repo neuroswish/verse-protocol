@@ -31,7 +31,7 @@ contract CryptomediaFactory {
     function create(
         string calldata _exchangeName,
         string calldata _exchangeSymbol,
-        uint32 _reserveRatio,
+        uint256 _reserveRatio,
         string calldata _cryptomediaName,
         string calldata _cryptomediaSymbol,
         string calldata _baseURI

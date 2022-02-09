@@ -12,8 +12,7 @@ contract Exchange is ERC20, ReentrancyGuard{
     address public factory; // exchange factory address
     address public bondingCurve; // bonding curve interface address
     address public cryptomedia;
-    uint32 public reserveRatio; // reserve ratio of token market cap to ETH pool
-    uint32 public ppm = 1000000; // token units
+    uint256 public reserveRatio; // reserve ratio of token market cap to ETH pool
     uint256 public poolBalance; // ETH balance in contract pool
 
     // ======== Exchange Events ========
@@ -54,7 +53,7 @@ contract Exchange is ERC20, ReentrancyGuard{
     function initialize(
         string calldata _name,
         string calldata _symbol,
-        uint32 _reserveRatio,
+        uint256 _reserveRatio,
         address _cryptomedia
     ) external {
         require(msg.sender == factory, "UNAUTHORIZED");
