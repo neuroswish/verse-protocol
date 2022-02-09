@@ -16,8 +16,6 @@ import "./Power.sol";
 contract BondingCurve is Power {
     uint32 public constant maxRatio = 1000000;
     uint256 public constant slopeInit = 2412000;
-    // going to set initialSlopeNumerator = 2412000000000
-    // going to set initialSlopeDenominator = 10 * 18
 
     /**
      * @dev given total supply, pool balance, reserve ratio and a price, calculates the number of tokens returned
@@ -92,10 +90,10 @@ contract BondingCurve is Power {
     }
 
     /**
-     * @dev given a price, reserve ratio, and slope factor, calculates the number of tokens returned when initializing the bonding curve supply
+     * @dev given a price, reserve ratio, and initialization slope factor, calculates the number of tokens returned when initializing the bonding curve supply
      *
      * Formula:
-     * return = (_price / (_reserveRatio * _slopeFactor)) ** _reserveRatio
+     * return = (_price / (_reserveRatio * _slopeInit)) ** _reserveRatio
      *
      * @param _price          liquid token supply
      * @param _reserveRatio   reserve weight, represented in ppm (1-1000000)
@@ -120,5 +118,4 @@ contract BondingCurve is Power {
         );
         return (temp >> precision);
     }
-
 }
