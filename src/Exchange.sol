@@ -61,6 +61,7 @@ contract Exchange is ReentrancyGuard{
         uint32 _reserveRatio,
         uint32 _ppm
      ) external {
+         require(msg.sender == factory, "UNAUTHORIZED");
         creator = _creator;
         name = _name;
         symbol = _symbol;
