@@ -2,6 +2,7 @@
 pragma solidity >=0.8.10;
 
 import "solmate/tokens/ERC721.sol";
+import "./Exchange.sol";
 
 error DoesNotExist(uint256 tokenId);
 
@@ -9,13 +10,12 @@ contract Cryptomedia is ERC721 {
     // ======== Storage ========
     address public exchange; // exchange token pair address
     address public factory; // cryptomedia factory address
-    string public baseURI;
+    string public baseURI; // NFT base URI
 
     // ======== Constructor ========
     constructor(address _factory) ERC721("Verse", "VERSE") {
         factory = _factory;
      }
-
 
     // ======== Initializer ========
     function initialize(
@@ -31,10 +31,25 @@ contract Cryptomedia is ERC721 {
         exchange = _exchange;
     }
 
+    // ======== Modifier ========
+    /**
+     * @notice Authorize exchange contract to call functions
+     */
+    modifier onlyExchange() {
+        require(msg.sender == exchange, "UNAUTHORIZED");
+        _;
+    }
+
     function tokenURI(uint256 id) public view override returns (string memory) {
-        if (ownerOf[id] == address(0)) revert DoesNotExist(id);
+        //if (ownerOf[id] == address(0)) revert DoesNotExist(id);
+        require(ownerOf[id] != address(0), "DOES_NOT_EXIST");
 
         return string(abi.encodePacked(baseURI, id));
+    }
+
+    // ======== Functions ========
+    function mint() external onlyExchange {
+        
     }
 
 }

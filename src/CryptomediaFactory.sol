@@ -23,7 +23,7 @@ contract CryptomediaFactory {
         cryptomediaLogic = address(cryptomediaLogic_);
     }
 
-    // ======== Deploy Cryptomedia Clone ========
+    // ======== Create Cryptomedia Clone ========
     function create(
         string calldata _exchangeName,
         string calldata _exchangeSymbol,
@@ -33,8 +33,10 @@ contract CryptomediaFactory {
         string calldata _baseURI
     ) external returns (address exchange, address cryptomedia) {
         exchange = Clones.clone(exchangeLogic);
-        Exchange(exchange).initialize(_exchangeName, _exchangeSymbol, _reserveRatio);
-        cryptomedia = Clones.clone(cryptomediaLogic);
+        bytes32 salt = keccak256(abi.encodePacked(exchange,msg.sender));
+        address predictCryptomedia = Clones.predictDeterministicAddress(cryptomediaLogic, salt);
+        Exchange(exchange).initialize(_exchangeName, _exchangeSymbol, _reserveRatio, predictCryptomedia);
+        cryptomedia = Clones.cloneDeterministic(cryptomediaLogic, salt);
         Cryptomedia(cryptomedia).initialize(_cryptomediaName, _cryptomediaSymbol, _baseURI, exchange);
     }
 }
