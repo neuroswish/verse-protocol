@@ -210,8 +210,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/BondingCurve.sol": {
-      "lastModificationDate": 1644380081123,
-      "contentHash": "048f323c8d7bd662f0c7ca47395361f2",
+      "lastModificationDate": 1644441775491,
+      "contentHash": "493bc4f361d956bcebb122e3e33330e7",
       "sourceName": "src/BondingCurve.sol",
       "solcConfig": {
         "settings": {
@@ -392,8 +392,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
-      "lastModificationDate": 1644436746703,
-      "contentHash": "3c869998196bf4efcb2ccc0bfb5262de",
+      "lastModificationDate": 1644437533040,
+      "contentHash": "4630a425bb8fc896eef04c1b583622f2",
       "sourceName": "src/Exchange.sol",
       "solcConfig": {
         "settings": {
@@ -431,8 +431,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Power.sol": {
-      "lastModificationDate": 1644297528581,
-      "contentHash": "42fe4ad7f33aaa586c3b0f9a0bef8e7e",
+      "lastModificationDate": 1644441735529,
+      "contentHash": "a605e30ee4036e5ba1a23200f48d681f",
       "sourceName": "src/Power.sol",
       "solcConfig": {
         "settings": {
