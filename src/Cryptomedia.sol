@@ -7,6 +7,7 @@ import {Counters} from "@openzeppelin/contracts/utils/Counters.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
 error TokenDoesNotExist(uint256 tokenId);
+error Unauthorized();
 
 contract Cryptomedia is ERC721 {
     using Counters for Counters.Counter;
@@ -31,24 +32,16 @@ contract Cryptomedia is ERC721 {
         string calldata _baseURI,
         address _exchange
     ) external {
-        require(msg.sender == factory, "UNAUTHORIZED");
+        if (msg.sender != factory) revert Unauthorized();
         name = _name;
         symbol = _symbol;
         baseURI = _baseURI;
         exchange = _exchange;
     }
 
-    // ======== Modifier ========
-    /**
-     * @notice Authorize exchange contract to call functions
-     */
-    modifier onlyExchange() {
-        require(msg.sender == exchange, "UNAUTHORIZED");
-        _;
-    }
-
     // ======== Functions ========
-    function mint(address _recipient) external onlyExchange {
+    function mint(address _recipient) external {
+        if (msg.sender != address(exchange)) revert Unauthorized();
         _mint(_recipient, currentTokenId.current());
         currentTokenId.increment();
     }
