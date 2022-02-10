@@ -144,6 +144,10 @@ contract Exchange is ERC20, ReentrancyGuard{
         ICryptomedia(cryptomedia).mint(msg.sender);
     }
 
+    /**
+    * @notice Calculate share of ETH that goes to creator for each transaction
+    * @dev Calculates share based on 10000 basis points; called internally
+    */
     function splitShare(uint256 _amount) internal view returns (uint256 _share) {
         //return Decimal.mul(_amount, _sharePercentage) / 100;
         _share = (_amount * transactionShare) / 10000;
