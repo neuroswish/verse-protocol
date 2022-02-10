@@ -74,7 +74,7 @@ contract Exchange is ERC20, ReentrancyGuard{
     // ======== Exchange Functions ========
     /// @notice Buy tokens with ETH
     /// @dev Emits a Buy event upon success: callable by anyone
-    function buy(uint256 _price, uint256 _minTokensReturned) external payable {
+    function buy(uint256 _price, uint256 _minTokensReturned) external payable nonReentrant {
         require(msg.value == _price && msg.value > 0, "INVALID_PRICE");
         require(_minTokensReturned > 0, "INVALID_SLIPPAGE");
         // calculate creator transaction share
@@ -141,7 +141,7 @@ contract Exchange is ERC20, ReentrancyGuard{
     * @notice Redeem ERC20 token for Cryptomedia NFT
     * @dev Mints NFT from Cryptomedia contract for caller upon success; callable by token holders with at least 1 atomic token
     */
-    function redeem() public {
+    function redeem() public nonReentrant {
         require(balanceOf[msg.sender] >= (10**18), "INSUFFICIENT_BALANCE");
         transferFrom(msg.sender, cryptomedia, 10**18);
         ICryptomedia(cryptomedia).mint(msg.sender);

@@ -39,19 +39,25 @@ contract Cryptomedia is ERC721 {
 
     // ======== Modifier ========
     /**
-     * @notice Authorize exchange contract to call functions
-     */
+    * @notice Authorize exchange contract to call functions
+    */
     modifier onlyExchange() {
         require(msg.sender == exchange, "UNAUTHORIZED");
         _;
     }
 
     // ======== Functions ========
+    /**
+    * @notice Mint NFT for recipient redeeming 1 exchange token
+    */
     function mint(address _recipient) external onlyExchange {
         _mint(_recipient, currentTokenId.current());
         currentTokenId.increment();
     }
 
+    /**
+    * @notice Return tokenURI for NFT
+    */
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
         require(ownerOf[tokenId] != address(0), "TOKEN_DOES_NOT_EXIST"); 
         return bytes(baseURI).length > 0 ? baseURI : "";
