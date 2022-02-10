@@ -3,7 +3,6 @@ pragma solidity >=0.8.10;
 
 import "./interfaces/IBondingCurve.sol";
 import "./interfaces/ICryptomedia.sol";
-import {Decimal} from "./Decimal.sol";
 import "solmate/tokens/ERC20.sol";
 import "solmate/utils/ReentrancyGuard.sol";
 import "solmate/utils/SafeTransferLib.sol";
@@ -59,12 +58,14 @@ contract Exchange is ERC20, ReentrancyGuard{
         string calldata _name,
         string calldata _symbol,
         uint256 _reserveRatio,
+        uint256 _transactionShare,
         address _cryptomedia
     ) external {
         require(msg.sender == factory, "UNAUTHORIZED");
         name = _name;
         symbol = _symbol;
         reserveRatio = _reserveRatio;
+        transactionShare = _transactionShare;
         cryptomedia = _cryptomedia;
     }
 

@@ -69,6 +69,40 @@
         "Counters"
       ]
     },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/openzeppelin-contracts/contracts/utils/Strings.sol": {
+      "lastModificationDate": 1644442962820,
+      "contentHash": "9c54c6c065d9e590fdcdd72c451425b9",
+      "sourceName": "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Strings"
+      ]
+    },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/solmate/src/tokens/ERC1155.sol": {
       "lastModificationDate": 1644268672575,
       "contentHash": "c2eba959a95675f7cd374b6539232153",
@@ -244,8 +278,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/BondingCurve.sol": {
-      "lastModificationDate": 1644441775491,
-      "contentHash": "493bc4f361d956bcebb122e3e33330e7",
+      "lastModificationDate": 1644529446223,
+      "contentHash": "05ba8d902466fecb5f68424363dacecc",
       "sourceName": "src/BondingCurve.sol",
       "solcConfig": {
         "settings": {
@@ -350,8 +384,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Cryptomedia.sol": {
-      "lastModificationDate": 1644443041535,
-      "contentHash": "72bb4f808fff9ac131939c2ebe27f7b3",
+      "lastModificationDate": 1644469780752,
+      "contentHash": "ef10a1c3822ec4d7c365796428176cf9",
       "sourceName": "src/Cryptomedia.sol",
       "solcConfig": {
         "settings": {
@@ -378,7 +412,8 @@
       "imports": [
         "./Exchange.sol",
         "solmate/tokens/ERC721.sol",
-        "@openzeppelin/contracts/utils/Counters.sol"
+        "@openzeppelin/contracts/utils/Counters.sol",
+        "@openzeppelin/contracts/utils/Strings.sol"
       ],
       "versionPragmas": [
         ">=0.8.10"
@@ -388,8 +423,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/CryptomediaFactory.sol": {
-      "lastModificationDate": 1644441946149,
-      "contentHash": "8b6b8af64a7f8d452dd77fae243ef24f",
+      "lastModificationDate": 1644446118009,
+      "contentHash": "4f6c58758e9c19f5bd8dce18051b6602",
       "sourceName": "src/CryptomediaFactory.sol",
       "solcConfig": {
         "settings": {
@@ -426,9 +461,45 @@
         "CryptomediaFactory"
       ]
     },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Decimal.sol": {
+      "lastModificationDate": 1644527830987,
+      "contentHash": "e1cc41df58252f523e20321c48acbe91",
+      "sourceName": "src/Decimal.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "./Math.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "Decimal"
+      ]
+    },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
-      "lastModificationDate": 1644441941792,
-      "contentHash": "9c3b58226555c7ea6daa39f9d9d8e630",
+      "lastModificationDate": 1644530284226,
+      "contentHash": "0ce7e873490bdc9088121a96bc12dfdb",
       "sourceName": "src/Exchange.sol",
       "solcConfig": {
         "settings": {
@@ -454,6 +525,7 @@
       },
       "imports": [
         "./interfaces/IBondingCurve.sol",
+        "./interfaces/ICryptomedia.sol",
         "solmate/tokens/ERC20.sol",
         "solmate/utils/ReentrancyGuard.sol",
         "solmate/utils/SafeTransferLib.sol"
@@ -465,9 +537,43 @@
         "Exchange"
       ]
     },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Math.sol": {
+      "lastModificationDate": 1644527555616,
+      "contentHash": "e2e0b9bfba142d3b7d4348a534572935",
+      "sourceName": "src/Math.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "Math"
+      ]
+    },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Power.sol": {
-      "lastModificationDate": 1644441735529,
-      "contentHash": "a605e30ee4036e5ba1a23200f48d681f",
+      "lastModificationDate": 1644468471454,
+      "contentHash": "4e286be68462708456b59feeb312594e",
       "sourceName": "src/Power.sol",
       "solcConfig": {
         "settings": {
@@ -534,8 +640,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/interfaces/ICryptomedia.sol": {
-      "lastModificationDate": 1644442031201,
-      "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+      "lastModificationDate": 1644445304438,
+      "contentHash": "5f4670ec464f08f04874ddfcf403c9b8",
       "sourceName": "src/interfaces/ICryptomedia.sol",
       "solcConfig": {
         "settings": {
@@ -560,8 +666,12 @@
         }
       },
       "imports": [],
-      "versionPragmas": [],
-      "artifacts": []
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "ICryptomedia"
+      ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Contract.t.sol": {
       "lastModificationDate": 1644268641304,
