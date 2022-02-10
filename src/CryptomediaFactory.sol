@@ -16,6 +16,7 @@ contract CryptomediaFactory {
     event CryptomediaCreated(
         address exchangeAddress,
         address cryptomediaAddress,
+        address creator,
         string exchangeName,
         string exchangeSymbol,
         uint256 reserveRatio,
@@ -31,7 +32,7 @@ contract CryptomediaFactory {
         Cryptomedia cryptomediaLogic_ = new Cryptomedia(address(this));
         exchangeLogic = address(exchangeLogic_);
         cryptomediaLogic = address(cryptomediaLogic_);
-        exchangeLogic_.initialize("Verse", "VERSE", 242424, 0, cryptomediaLogic);
+        exchangeLogic_.initialize("Verse", "VERSE", 242424, 0, cryptomediaLogic, address(this));
         cryptomediaLogic_.initialize("Verse", "VERSE", "verse.xyz", exchangeLogic);
     }
 
@@ -48,8 +49,8 @@ contract CryptomediaFactory {
         require(_transactionShare < 10000, "INVALID_PERCENTAGE");
         exchange = Clones.clone(exchangeLogic);
         cryptomedia = Clones.clone(cryptomediaLogic);
-        Exchange(exchange).initialize(_exchangeName, _exchangeSymbol, _reserveRatio, _transactionShare, cryptomedia);
+        Exchange(exchange).initialize(_exchangeName, _exchangeSymbol, _reserveRatio, _transactionShare, cryptomedia, msg.sender);
         Cryptomedia(cryptomedia).initialize(_cryptomediaName, _cryptomediaSymbol, _baseURI, exchange);
-        emit CryptomediaCreated(exchange, cryptomedia, _exchangeName, _exchangeSymbol, _reserveRatio, _transactionShare, _cryptomediaName, _cryptomediaSymbol);
+        emit CryptomediaCreated(exchange, cryptomedia, msg.sender, _exchangeName, _exchangeSymbol, _reserveRatio, _transactionShare, _cryptomediaName, _cryptomediaSymbol);
     }
 }

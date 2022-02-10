@@ -59,7 +59,8 @@ contract Exchange is ERC20, ReentrancyGuard{
         string calldata _symbol,
         uint256 _reserveRatio,
         uint256 _transactionShare,
-        address _cryptomedia
+        address _cryptomedia,
+        address _creator
     ) external {
         require(msg.sender == factory, "UNAUTHORIZED");
         name = _name;
@@ -67,6 +68,7 @@ contract Exchange is ERC20, ReentrancyGuard{
         reserveRatio = _reserveRatio;
         transactionShare = _transactionShare;
         cryptomedia = _cryptomedia;
+        creator = _creator;
     }
 
     // ======== Exchange Functions ========
