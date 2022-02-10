@@ -3,6 +3,7 @@ pragma solidity >=0.8.10;
 
 import "./interfaces/IBondingCurve.sol";
 import "./interfaces/ICryptomedia.sol";
+import {Decimal} from "./Decimal.sol";
 import "solmate/tokens/ERC20.sol";
 import "solmate/utils/ReentrancyGuard.sol";
 import "solmate/utils/SafeTransferLib.sol";
@@ -16,6 +17,7 @@ contract Exchange is ERC20, ReentrancyGuard{
     address public cryptomedia; // cryptomedia addres
     uint256 public reserveRatio; // reserve ratio of token market cap to ETH pool
     uint256 public poolBalance; // ETH balance in contract pool
+    uint256 public transactionShare; // percentage of each transaction that goes to the creator
 
     // ======== Exchange Events ========
     event Buy(
@@ -131,6 +133,10 @@ contract Exchange is ERC20, ReentrancyGuard{
         require(balanceOf[msg.sender] >= (10**18), "INSUFFICIENT_BALANCE");
         transferFrom(msg.sender, cryptomedia, 10**18);
         ICryptomedia(cryptomedia).mint(msg.sender);
+    }
+
+    function splitShare(Decimal.D256 memory _sharePercentage, uint256 _amount) public pure returns (uint256) {
+        return Decimal.mul(_amount, _sharePercentage) / 100;
     }
 }
 
