@@ -13,11 +13,12 @@ contract Exchange is ERC20, ReentrancyGuard{
 
     // ======== Storage ========
     address public factory; // exchange factory address
+    address public creator; // cryptomedia creator
     address public bondingCurve; // bonding curve address
     address public cryptomedia; // cryptomedia addres
     uint256 public reserveRatio; // reserve ratio of token market cap to ETH pool
     uint256 public poolBalance; // ETH balance in contract pool
-    uint256 public transactionShare; // percentage of each transaction that goes to the creator
+    uint256 public transactionShare; // creator transaction share basis points
 
     // ======== Exchange Events ========
     event Buy(
@@ -73,25 +74,29 @@ contract Exchange is ERC20, ReentrancyGuard{
     function buy(uint256 _price, uint256 _minTokensReturned) external payable {
         require(msg.value == _price && msg.value > 0, "INVALID_PRICE");
         require(_minTokensReturned > 0, "INVALID_SLIPPAGE");
+        // calculate creator transaction share
+        uint256 creatorShare = splitShare(_price);
+        uint256 buyAmount = _price - creatorShare;
         // calculate tokens returned
         uint256 tokensReturned;
         if (totalSupply == 0 || poolBalance == 0) {
             tokensReturned = IBondingCurve(bondingCurve)
-                .calculateInitializationReturn(_price, reserveRatio);
+                .calculateInitializationReturn(buyAmount, reserveRatio);
         } else {
             tokensReturned = IBondingCurve(bondingCurve)
                 .calculatePurchaseReturn(
                     totalSupply,
                     poolBalance,
                     reserveRatio,
-                    _price
+                    buyAmount
                 );
         }
         require(tokensReturned >= _minTokensReturned, "SLIPPAGE");
-        // mint tokens for buyer
+        // mint tokens for buyer & transfer creator share of transaction eth to creator
         _mint(msg.sender, tokensReturned);
-        poolBalance += _price;
-        emit Buy(msg.sender, poolBalance, totalSupply, tokensReturned, _price);
+        poolBalance += buyAmount;
+        SafeTransferLib.safeTransferETH(payable(creator), creatorShare);
+        emit Buy(msg.sender, poolBalance, totalSupply, tokensReturned, buyAmount);
     }
 
     /**
@@ -117,11 +122,15 @@ contract Exchange is ERC20, ReentrancyGuard{
             reserveRatio,
             _tokens
         );
-        require(ethReturned >= _minETHReturned, "SLIPPAGE");
+        // calculate creator share
+        uint256 creatorShare = splitShare(ethReturned);
+        uint256 sellerShare = ethReturned - creatorShare;
+        require(sellerShare >= _minETHReturned, "SLIPPAGE");
         // burn tokens
         _burn(msg.sender, _tokens);
         poolBalance -= ethReturned;
-        SafeTransferLib.safeTransferETH(payable(msg.sender), ethReturned);
+        SafeTransferLib.safeTransferETH(payable(msg.sender), sellerShare);
+        SafeTransferLib.safeTransferETH(payable(creator), creatorShare);
         emit Sell(msg.sender, poolBalance, totalSupply, _tokens, ethReturned);
     }
 
@@ -135,8 +144,10 @@ contract Exchange is ERC20, ReentrancyGuard{
         ICryptomedia(cryptomedia).mint(msg.sender);
     }
 
-    function splitShare(Decimal.D256 memory _sharePercentage, uint256 _amount) public pure returns (uint256) {
-        return Decimal.mul(_amount, _sharePercentage) / 100;
+    function splitShare(uint256 _amount) internal view returns (uint256 _share) {
+        //return Decimal.mul(_amount, _sharePercentage) / 100;
+        _share = (_amount * transactionShare) / 10000;
     }
+
 }
 
