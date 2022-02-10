@@ -16,13 +16,7 @@ contract CryptomediaFactory {
     event CryptomediaCreated(
         address exchangeAddress,
         address cryptomediaAddress,
-        address creator,
-        string exchangeName,
-        string exchangeSymbol,
-        uint256 reserveRatio,
-        uint256 transactionShare,
-        string cryptomediaName,
-        string cryptomediaSymbol
+        address creator
     );
 
     // ======== Constructor ========
@@ -51,6 +45,6 @@ contract CryptomediaFactory {
         cryptomedia = Clones.clone(cryptomediaLogic);
         Exchange(exchange).initialize(_exchangeName, _exchangeSymbol, _reserveRatio, _transactionShare, cryptomedia, msg.sender);
         Cryptomedia(cryptomedia).initialize(_cryptomediaName, _cryptomediaSymbol, _baseURI, exchange);
-        emit CryptomediaCreated(exchange, cryptomedia, msg.sender, _exchangeName, _exchangeSymbol, _reserveRatio, _transactionShare, _cryptomediaName, _cryptomediaSymbol);
+        emit CryptomediaCreated(exchange, cryptomedia, msg.sender);
     }
 }
