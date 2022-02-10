@@ -19,6 +19,7 @@ contract CryptomediaFactory {
         string exchangeName,
         string exchangeSymbol,
         uint256 reserveRatio,
+        uint256 transactionShare,
         string cryptomediaName,
         string cryptomediaSymbol
     );
@@ -49,6 +50,6 @@ contract CryptomediaFactory {
         cryptomedia = Clones.clone(cryptomediaLogic);
         Exchange(exchange).initialize(_exchangeName, _exchangeSymbol, _reserveRatio, _transactionShare, cryptomedia);
         Cryptomedia(cryptomedia).initialize(_cryptomediaName, _cryptomediaSymbol, _baseURI, exchange);
-        emit CryptomediaCreated(exchange, cryptomedia, _exchangeName, _exchangeSymbol, _reserveRatio, _cryptomediaName, _cryptomediaSymbol);
+        emit CryptomediaCreated(exchange, cryptomedia, _exchangeName, _exchangeSymbol, _reserveRatio, _transactionShare, _cryptomediaName, _cryptomediaSymbol);
     }
 }
