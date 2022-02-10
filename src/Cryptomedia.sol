@@ -53,7 +53,7 @@ contract Cryptomedia is ERC721 {
     }
 
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
-        require(ownerOf[tokenId] != address(0), "DOES_NOT_EXIST");
+        require(ownerOf[tokenId] != address(0), "TOKEN_DOES_NOT_EXIST");
         return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, tokenId.toString())) : "";
     }
 }
