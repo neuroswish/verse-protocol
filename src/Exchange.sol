@@ -7,9 +7,8 @@ import "solmate/tokens/ERC20.sol";
 import "solmate/utils/ReentrancyGuard.sol";
 import "solmate/utils/SafeTransferLib.sol";
 
-
 contract Exchange is ERC20, ReentrancyGuard{
-    
+
     // ======== Storage ========
     address public factory; // exchange factory address
     address public bondingCurve; // bonding curve address
@@ -32,10 +31,6 @@ contract Exchange is ERC20, ReentrancyGuard{
         uint256 totalSupply,
         uint256 tokens,
         uint256 eth
-    );
-
-    event Redeem(
-        address indexed redeemer
     );
 
     // ======== Modifiers ========
