@@ -6,8 +6,6 @@ import "solmate/tokens/ERC721.sol";
 import {Counters} from "@openzeppelin/contracts/utils/Counters.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
-error TokenDoesNotExist(uint256 tokenId);
-error Unauthorized();
 
 contract Cryptomedia is ERC721 {
     using Counters for Counters.Counter;
@@ -32,22 +30,30 @@ contract Cryptomedia is ERC721 {
         string calldata _baseURI,
         address _exchange
     ) external {
-        if (msg.sender != factory) revert Unauthorized();
+        require(msg.sender == factory, "UNAUTHORIZED");
         name = _name;
         symbol = _symbol;
         baseURI = _baseURI;
         exchange = _exchange;
     }
 
+    // ======== Modifier ========
+    /**
+     * @notice Authorize exchange contract to call functions
+     */
+    modifier onlyExchange() {
+        require(msg.sender == exchange, "UNAUTHORIZED");
+        _;
+    }
+
     // ======== Functions ========
-    function mint(address _recipient) external {
-        if (msg.sender != address(exchange)) revert Unauthorized();
+    function mint(address _recipient) external onlyExchange {
         _mint(_recipient, currentTokenId.current());
         currentTokenId.increment();
     }
 
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
-        if (ownerOf[tokenId] == address(0)) revert TokenDoesNotExist(tokenId);
+        require(ownerOf[tokenId] != address(0), "DOES_NOT_EXIST");
         return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, tokenId.toString())) : "";
     }
 }
