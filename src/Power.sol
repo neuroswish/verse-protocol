@@ -13,7 +13,6 @@ pragma solidity >=0.8.10;
 
 contract Power {
     uint256 private constant ONE = 1;
-    uint32 private constant MAX_WEIGHT = 1000000;
     uint8 private constant MIN_PRECISION = 32;
     uint8 private constant MAX_PRECISION = 127;
 

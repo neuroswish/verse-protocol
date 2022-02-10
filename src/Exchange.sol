@@ -125,7 +125,7 @@ contract Exchange is ERC20, ReentrancyGuard{
 
     /**
     * @notice Redeem ERC20 token for Cryptomedia NFT
-    * @dev Emits a Sell event upon success; callable by token holders
+    * @dev Mints NFT from Cryptomedia contract for caller upon success; callable by token holders with at least 1 atomic token
     */
     function redeem() public {
         require(balanceOf[msg.sender] >= (10**18), "INSUFFICIENT_BALANCE");
