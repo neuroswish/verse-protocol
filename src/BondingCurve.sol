@@ -14,8 +14,8 @@ pragma solidity >=0.8.10;
 import "./Power.sol";
 
 contract BondingCurve is Power {
-    uint256 public constant maxRatio = 100000;
-    uint256 public constant slopeInit = 2412000;
+    uint256 public constant maxRatio = 1000000;
+    uint256 public constant slopeInit = (9296900 * (10**8));
 
     /**
      * @dev given total supply, pool balance, reserve ratio and a price, calculates the number of tokens returned

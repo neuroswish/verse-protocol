@@ -83,8 +83,10 @@ contract Exchange is ERC20, ReentrancyGuard{
         // calculate tokens returned
         uint256 tokensReturned;
         if (totalSupply == 0 || poolBalance == 0) {
+            buyAmount = buyAmount / (10**15);
             tokensReturned = IBondingCurve(bondingCurve)
                 .calculateInitializationReturn(buyAmount, reserveRatio);
+            tokensReturned = tokensReturned * (10**15);
         } else {
             tokensReturned = IBondingCurve(bondingCurve)
                 .calculatePurchaseReturn(

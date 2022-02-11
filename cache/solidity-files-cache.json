@@ -243,8 +243,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/BondingCurve.sol": {
-      "lastModificationDate": 1644529446223,
-      "contentHash": "05ba8d902466fecb5f68424363dacecc",
+      "lastModificationDate": 1644572109189,
+      "contentHash": "6ba4f76dbbefa22cf00d18ec72fc86ad",
       "sourceName": "src/BondingCurve.sol",
       "solcConfig": {
         "settings": {
@@ -313,7 +313,7 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Cryptomedia.sol": {
-      "lastModificationDate": 1644552441805,
+      "lastModificationDate": 1644566859462,
       "contentHash": "dde24830544e3bc96a67294b18e48538",
       "sourceName": "src/Cryptomedia.sol",
       "solcConfig": {
@@ -391,8 +391,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
-      "lastModificationDate": 1644567954442,
-      "contentHash": "b1fbbb42aa3d4fbe912ec0724f88003f",
+      "lastModificationDate": 1644572062027,
+      "contentHash": "e8a48864ebbf9cfa730bfe9be90157ae",
       "sourceName": "src/Exchange.sol",
       "solcConfig": {
         "settings": {
@@ -431,7 +431,7 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Power.sol": {
-      "lastModificationDate": 1644468471454,
+      "lastModificationDate": 1644568835067,
       "contentHash": "4e286be68462708456b59feeb312594e",
       "sourceName": "src/Power.sol",
       "solcConfig": {
@@ -533,7 +533,7 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/CryptomediaFactory.t.sol": {
-      "lastModificationDate": 1644554291048,
+      "lastModificationDate": 1644559211920,
       "contentHash": "5212dc355e94f3a3de6cdff654e809a1",
       "sourceName": "src/test/CryptomediaFactory.t.sol",
       "solcConfig": {
@@ -573,8 +573,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Exchange.t.sol": {
-      "lastModificationDate": 1644567907579,
-      "contentHash": "3f86f2d55b880cc868b1f44dff4bc1ad",
+      "lastModificationDate": 1644568507267,
+      "contentHash": "51e27867d93cfefa543c2558903da19e",
       "sourceName": "src/test/Exchange.t.sol",
       "solcConfig": {
         "settings": {
