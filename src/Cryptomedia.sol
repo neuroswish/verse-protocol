@@ -13,14 +13,13 @@ contract Cryptomedia is ERC721 {
 
     // ======== Storage ========
     address public exchange; // exchange token pair address
-    address public factory; // cryptomedia factory address
+    address public immutable factory; // cryptomedia factory address
     string public baseURI; // NFT base URI
     Counters.Counter currentTokenId; // Counter keeping track of last minted token id
 
     // ======== Constructor ========
     constructor(address _factory) ERC721("Verse", "VERSE") {
         factory = _factory;
-        currentTokenId.increment();
      }
 
     // ======== Initializer ========
@@ -35,6 +34,7 @@ contract Cryptomedia is ERC721 {
         symbol = _symbol;
         baseURI = _baseURI;
         exchange = _exchange;
+        currentTokenId.increment();
     }
 
     // ======== Modifier ========

@@ -10,16 +10,14 @@ import "../Cryptomedia.sol";
 contract CryptomediaFactoryTest is DSTest {
     BondingCurve bondingCurve;
     CryptomediaFactory cryptomediaFactory;
-    Exchange exchange;
-    Cryptomedia cryptomedia;
+    address exchange;
+    address cryptomedia;
+    //Exchange exchange;
+    //Cryptomedia cryptomedia;
 
     function setUp() public {
         bondingCurve = new BondingCurve();
         cryptomediaFactory = new CryptomediaFactory(address(bondingCurve));
-    }
-
-    function testExample() public {
-        assertTrue(true);
     }
 
     function testCreate(
@@ -30,7 +28,11 @@ contract CryptomediaFactoryTest is DSTest {
         string memory _cryptomediaName,
         string memory _cryptomediaSymbol,
         string memory _baseURI
-        ) public {
-
+    ) public {
+        emit log_address(address(cryptomediaFactory));
+        emit log_address(address(this));
+        (exchange, cryptomedia) = cryptomediaFactory.create(_exchangeName, _exchangeSymbol, _reserveRatio, _transactionShare, _cryptomediaName, _cryptomediaSymbol, _baseURI);
+        require(exchange != address(0));
+        require(cryptomedia != address(0));
     }
 }

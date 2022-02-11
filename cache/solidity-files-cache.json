@@ -103,41 +103,6 @@
         "Strings"
       ]
     },
-    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/solmate/src/tokens/ERC1155.sol": {
-      "lastModificationDate": 1644268672575,
-      "contentHash": "c2eba959a95675f7cd374b6539232153",
-      "sourceName": "lib/solmate/src/tokens/ERC1155.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ]
-            }
-          },
-          "evmVersion": "london"
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        ">=0.8.0"
-      ],
-      "artifacts": [
-        "ERC1155",
-        "ERC1155TokenReceiver"
-      ]
-    },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/solmate/src/tokens/ERC20.sol": {
       "lastModificationDate": 1644268672576,
       "contentHash": "91ea2246e5200b324c1a07489a10f927",
@@ -347,42 +312,6 @@
         "Clones"
       ]
     },
-    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Contract.sol": {
-      "lastModificationDate": 1644268709449,
-      "contentHash": "11b70473518cf85737ea0dd6e3c2a3e7",
-      "sourceName": "src/Contract.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ]
-            }
-          },
-          "evmVersion": "london"
-        }
-      },
-      "imports": [
-        "solmate/tokens/ERC1155.sol"
-      ],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "Contract"
-      ]
-    },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Cryptomedia.sol": {
       "lastModificationDate": 1644531359408,
       "contentHash": "4a4d87ead36fbcadbd7c6cce220e6e61",
@@ -423,8 +352,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/CryptomediaFactory.sol": {
-      "lastModificationDate": 1644531459410,
-      "contentHash": "fbc3ed2427488cadbd71628f0d0896c9",
+      "lastModificationDate": 1644533163105,
+      "contentHash": "f25791499401f2f4dd93dc5f00f94ad3",
       "sourceName": "src/CryptomediaFactory.sol",
       "solcConfig": {
         "settings": {
@@ -461,45 +390,9 @@
         "CryptomediaFactory"
       ]
     },
-    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Decimal.sol": {
-      "lastModificationDate": 1644527830987,
-      "contentHash": "e1cc41df58252f523e20321c48acbe91",
-      "sourceName": "src/Decimal.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ]
-            }
-          },
-          "evmVersion": "london"
-        }
-      },
-      "imports": [
-        "./Math.sol"
-      ],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "Decimal"
-      ]
-    },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
-      "lastModificationDate": 1644531260979,
-      "contentHash": "09e3a59e1757cd3d93a4625f52bad6de",
+      "lastModificationDate": 1644549301777,
+      "contentHash": "5b378cd97a0d0b66d850409c7925b676",
       "sourceName": "src/Exchange.sol",
       "solcConfig": {
         "settings": {
@@ -535,40 +428,6 @@
       ],
       "artifacts": [
         "Exchange"
-      ]
-    },
-    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Math.sol": {
-      "lastModificationDate": 1644527555616,
-      "contentHash": "e2e0b9bfba142d3b7d4348a534572935",
-      "sourceName": "src/Math.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ]
-            }
-          },
-          "evmVersion": "london"
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "Math"
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Power.sol": {
@@ -673,10 +532,10 @@
         "ICryptomedia"
       ]
     },
-    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Contract.t.sol": {
-      "lastModificationDate": 1644268641304,
-      "contentHash": "1a17a43d72fa11871327a4e472574b9a",
-      "sourceName": "src/test/Contract.t.sol",
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/CryptomediaFactory.t.sol": {
+      "lastModificationDate": 1644536906324,
+      "contentHash": "85e89b69f9c46f81cdf301e3bef4ee61",
+      "sourceName": "src/test/CryptomediaFactory.t.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -700,13 +559,17 @@
         }
       },
       "imports": [
-        "ds-test/test.sol"
+        "ds-test/test.sol",
+        "../BondingCurve.sol",
+        "../CryptomediaFactory.sol",
+        "../Exchange.sol",
+        "../Cryptomedia.sol"
       ],
       "versionPragmas": [
         ">=0.8.10"
       ],
       "artifacts": [
-        "ContractTest"
+        "CryptomediaFactoryTest"
       ]
     }
   }

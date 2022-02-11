@@ -7,13 +7,12 @@ import "solmate/tokens/ERC20.sol";
 import "solmate/utils/ReentrancyGuard.sol";
 import "solmate/utils/SafeTransferLib.sol";
 
-
 contract Exchange is ERC20, ReentrancyGuard{
 
     // ======== Storage ========
-    address public factory; // exchange factory address
+    address public immutable factory; // exchange factory address
+    address public immutable bondingCurve; // bonding curve address
     address public creator; // cryptomedia creator
-    address public bondingCurve; // bonding curve address
     address public cryptomedia; // cryptomedia addres
     uint256 public reserveRatio; // reserve ratio of token market cap to ETH pool
     uint256 public poolBalance; // ETH balance in contract pool
@@ -35,6 +34,7 @@ contract Exchange is ERC20, ReentrancyGuard{
         uint256 tokens,
         uint256 eth
     );
+
 
     // ======== Modifiers ========
     /**

@@ -8,9 +8,9 @@ import "./BondingCurve.sol";
 
 contract CryptomediaFactory {
     // ======== Storage ========
-    address public cryptomediaLogic;
-    address public exchangeLogic;
-    address public bondingCurve;
+    address public immutable cryptomediaLogic;
+    address public immutable exchangeLogic;
+    address public immutable bondingCurve;
 
     // ======== Events ========
     event CryptomediaCreated(
