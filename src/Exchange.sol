@@ -13,7 +13,7 @@ contract Exchange is ERC20, ReentrancyGuard{
     address public immutable factory; // exchange factory address
     address public immutable bondingCurve; // bonding curve address
     address public creator; // cryptomedia creator
-    address public cryptomedia; // cryptomedia addres
+    address public cryptomedia; // cryptomedia address
     uint256 public reserveRatio; // reserve ratio of token market cap to ETH pool
     uint256 public poolBalance; // ETH balance in contract pool
     uint256 public transactionShare; // creator transaction share basis points
@@ -74,7 +74,7 @@ contract Exchange is ERC20, ReentrancyGuard{
     // ======== Exchange Functions ========
     /// @notice Buy tokens with ETH
     /// @dev Emits a Buy event upon success: callable by anyone
-    function buy(uint256 _price, uint256 _minTokensReturned) external payable nonReentrant {
+    function buy(uint256 _price, uint256 _minTokensReturned) external payable {
         require(msg.value == _price && msg.value > 0, "INVALID_PRICE");
         require(_minTokensReturned > 0, "INVALID_SLIPPAGE");
         // calculate creator transaction share

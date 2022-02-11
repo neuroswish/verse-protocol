@@ -12,8 +12,6 @@ contract CryptomediaFactoryTest is DSTest {
     CryptomediaFactory cryptomediaFactory;
     address exchange;
     address cryptomedia;
-    //Exchange exchange;
-    //Cryptomedia cryptomedia;
 
     function setUp() public {
         bondingCurve = new BondingCurve();
@@ -29,10 +27,24 @@ contract CryptomediaFactoryTest is DSTest {
         string memory _cryptomediaSymbol,
         string memory _baseURI
     ) public {
-        emit log_address(address(cryptomediaFactory));
-        emit log_address(address(this));
-        (exchange, cryptomedia) = cryptomediaFactory.create(_exchangeName, _exchangeSymbol, _reserveRatio, _transactionShare, _cryptomediaName, _cryptomediaSymbol, _baseURI);
-        require(exchange != address(0));
-        require(cryptomedia != address(0));
+        if (_reserveRatio <= 1000000 && _transactionShare <= 10000 ) {
+            (exchange, cryptomedia) = cryptomediaFactory.create(_exchangeName, _exchangeSymbol, _reserveRatio, _transactionShare, _cryptomediaName, _cryptomediaSymbol, _baseURI);
+            require(exchange != address(0));
+            require(cryptomedia != address(0));
+        }
+    }
+
+    function testFailCreate(
+        string memory _exchangeName,
+        string memory _exchangeSymbol,
+        uint256 _reserveRatio,
+        uint256 _transactionShare,
+        string memory _cryptomediaName,
+        string memory _cryptomediaSymbol,
+        string memory _baseURI
+    ) public {
+        if (_reserveRatio > 1000000 && _transactionShare > 10000 ) {
+            (exchange, cryptomedia) = cryptomediaFactory.create(_exchangeName, _exchangeSymbol, _reserveRatio, _transactionShare, _cryptomediaName, _cryptomediaSymbol, _baseURI);
+        }
     }
 }

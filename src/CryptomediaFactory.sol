@@ -40,8 +40,8 @@ contract CryptomediaFactory {
         string calldata _cryptomediaSymbol,
         string calldata _baseURI
     ) external returns (address exchange, address cryptomedia) {
-        require(_transactionShare < 10000, "INVALID_PERCENTAGE");
-        require(_reserveRatio < 1000000, "INVALID_RESERVE_RATIO");
+        require(_transactionShare <= 10000, "INVALID_PERCENTAGE");
+        require(_reserveRatio <= 1000000, "INVALID_RESERVE_RATIO");
         exchange = Clones.clone(exchangeLogic);
         cryptomedia = Clones.clone(cryptomediaLogic);
         Exchange(exchange).initialize(_exchangeName, _exchangeSymbol, _reserveRatio, _transactionShare, cryptomedia, msg.sender);
