@@ -53,6 +53,17 @@ contract CryptomediaTest is DSTest {
         cryptomedia.mint(_recipient);
     }
 
+    // return tokenURI for token ID that exists
+    function test_TokenURI(uint256 _tokenId) public {
+        assertEq(_tokenId, _tokenId);
+    }
+
+    // revert for token ID that does not exist
+    // function testFail_TokenURI(uint256 _tokenId) public {
+        
+    // }
+
+
     receive() external payable {}
 
 }

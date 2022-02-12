@@ -533,8 +533,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Cryptomedia.t.sol": {
-      "lastModificationDate": 1644679291699,
-      "contentHash": "a4d0d184ff568b8b4b8c5fb15e09b4fc",
+      "lastModificationDate": 1644680341253,
+      "contentHash": "673eda958c1776a098717ba99f6ce977",
       "sourceName": "src/test/Cryptomedia.t.sol",
       "solcConfig": {
         "settings": {

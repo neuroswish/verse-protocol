@@ -35,6 +35,11 @@ contract Exchange is ERC20, ReentrancyGuard{
         uint256 eth
     );
 
+    event Redeemed(
+        address indexed redeemer,
+        uint256 totalSupply
+    );
+
 
     // ======== Modifiers ========
     /**
@@ -146,6 +151,7 @@ contract Exchange is ERC20, ReentrancyGuard{
         require(balanceOf[msg.sender] >= (10**18), "INSUFFICIENT_BALANCE");
         transferFrom(msg.sender, cryptomedia, 10**18);
         ICryptomedia(cryptomedia).mint(msg.sender);
+        emit Redeemed(msg.sender, totalSupply);
     }
 
     /**
