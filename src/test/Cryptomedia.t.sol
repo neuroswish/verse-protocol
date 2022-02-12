@@ -8,7 +8,7 @@ import "../Exchange.sol";
 import "../Cryptomedia.sol";
 import {VM} from "./Utils/VM.sol";
 
-contract ExchangeTest is DSTest {
+contract CryptomediaTest is DSTest {
     VM vm;
     BondingCurve bondingCurve;
     CryptomediaFactory cryptomediaFactory;
@@ -36,19 +36,21 @@ contract ExchangeTest is DSTest {
     }
 
     // make sure non-factory address cannot call initialize function
-    function testFail_Initialize(string memory _name, string memory _symbol, uint256 _reserveRatio, uint256 _transactionShare, address _cryptomedia, address _creator) public {
+    function testFail_Initialize(string memory _name, string memory _symbol, string memory _baseURI, address _exchange) public {
         vm.prank(address(0));
-        exchange.initialize(_name, _symbol, _reserveRatio, _transactionShare, _cryptomedia, _creator);
+        cryptomedia.initialize(_name, _symbol, _baseURI, _exchange);
     }
-    
-    function test_BuyInitial() public {
-        vm.prank(address(1));
-        exchange.buy{value: 1 ether}(1 ether, 32);
-        emit log_uint(exchange.balanceOf(address(1)));
-        vm.prank(address(2));
-        exchange.buy{value: 8 ether}(8 ether, 20);
-        emit log_uint(exchange.balanceOf(address(2)));
-        //assertEq(exchange.balanceOf(address(1)), 34);
+
+    // make sure non-exchange address cannot call mint function
+    function testFail_Mint(address _recipient) public {
+        vm.prank(address(0));
+        cryptomedia.mint(_recipient);
+    }
+
+    // make sure exchange can call mint function
+    function test_Mint(address _recipient) public {
+        vm.prank(address(exchange));
+        cryptomedia.mint(_recipient);
     }
 
     receive() external payable {}

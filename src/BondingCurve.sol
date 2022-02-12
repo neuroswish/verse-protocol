@@ -15,7 +15,7 @@ import "./Power.sol";
 
 contract BondingCurve is Power {
     uint256 public constant maxRatio = 1000000;
-    uint256 public constant slopeInit = (9296900 * (10**8));
+    uint256 public constant slopeInit = (724223089680545);
 
     /**
      * @dev given total supply, pool balance, reserve ratio and a price, calculates the number of tokens returned
