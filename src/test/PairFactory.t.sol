@@ -3,19 +3,19 @@ pragma solidity >=0.8.10;
 
 import "ds-test/test.sol";
 import "../BondingCurve.sol";
-import "../CryptomediaFactory.sol";
+import "../PairFactory.sol";
 import "../Exchange.sol";
 import "../Cryptomedia.sol";
 
-contract CryptomediaFactoryTest is DSTest {
+contract PairFactoryTest is DSTest {
     BondingCurve bondingCurve;
-    CryptomediaFactory cryptomediaFactory;
+    PairFactory pairFactory;
     address exchange;
     address cryptomedia;
 
     function setUp() public {
         bondingCurve = new BondingCurve();
-        cryptomediaFactory = new CryptomediaFactory(address(bondingCurve));
+        pairFactory = new PairFactory(address(bondingCurve));
     }
 
     function testCreate(
@@ -26,7 +26,7 @@ contract CryptomediaFactoryTest is DSTest {
         string memory _baseURI
     ) public {
         if (_reserveRatio <= 1000000 && _transactionShare <= 10000 ) {
-            (exchange, cryptomedia) = cryptomediaFactory.create(_name, _symbol, _reserveRatio, _transactionShare, _baseURI);
+            (exchange, cryptomedia) = pairFactory.create(_name, _symbol, _reserveRatio, _transactionShare, _baseURI);
             require(exchange != address(0));
             require(cryptomedia != address(0));
         }
@@ -40,7 +40,7 @@ contract CryptomediaFactoryTest is DSTest {
         string memory _baseURI
     ) public {
         if (_reserveRatio > 1000000 && _transactionShare > 10000 ) {
-            (exchange, cryptomedia) = cryptomediaFactory.create(_name, _symbol, _reserveRatio, _transactionShare, _baseURI);
+            (exchange, cryptomedia) = pairFactory.create(_name, _symbol, _reserveRatio, _transactionShare, _baseURI);
         }
     }
 }

@@ -3,7 +3,7 @@ pragma solidity >=0.8.10;
 
 import "ds-test/test.sol";
 import "../BondingCurve.sol";
-import "../CryptomediaFactory.sol";
+import "../PairFactory.sol";
 import "../Exchange.sol";
 import "../Cryptomedia.sol";
 import {VM} from "./Utils/VM.sol";
@@ -11,7 +11,7 @@ import {VM} from "./Utils/VM.sol";
 contract ExchangeTest is DSTest {
     VM vm;
     BondingCurve bondingCurve;
-    CryptomediaFactory cryptomediaFactory;
+    PairFactory pairFactory;
     Exchange exchange;
     Cryptomedia cryptomedia;
     address exchangeAddress;
@@ -24,8 +24,8 @@ contract ExchangeTest is DSTest {
 
         // Deploy exchange and cryptomedia
         bondingCurve = new BondingCurve();
-        cryptomediaFactory = new CryptomediaFactory(address(bondingCurve));
-        (exchangeAddress, cryptomediaAddress) = cryptomediaFactory.create("Verse", "VERSE", 242424, 0, "verse.xyz");
+        pairFactory = new PairFactory(address(bondingCurve));
+        (exchangeAddress, cryptomediaAddress) = pairFactory.create("Verse", "VERSE", 242424, 0, "verse.xyz");
         exchange = Exchange(exchangeAddress);
         cryptomedia = Cryptomedia(cryptomediaAddress);
 
@@ -55,7 +55,7 @@ contract ExchangeTest is DSTest {
     }
 
     // User cannot send 0 ether to buy tokens
-    function test_BuyZeroValue() public {
+    function test_BuyInvalidValue() public {
         vm.prank(address(1));
         vm.expectRevert("INVALID_VALUE");
         exchange.buy{value: 0 ether}(1);
@@ -75,20 +75,75 @@ contract ExchangeTest is DSTest {
         exchange.buy{value: 1 ether}(50 * (10**18));
     }
 
+    // Token holder can sell tokens for ETH
+    function test_Sell() public {
+        vm.prank(address(1));
+        exchange.buy{value: 1 ether}(1);
+        //emit log_uint(exchange.balanceOf(address(1)));
+        vm.prank(address(2));
+        exchange.buy{value: 8 ether}(1);
+        //emit log_uint(exchange.balanceOf(address(2)));
+        vm.prank(address(2));
+        exchange.sell(2 * (10**18), 0.1 ether);
+    }
 
-    // initialize DONE
-    // buy initial DONE
-    // buy DONE
-    // invalid price DONE
-    // invalid buy slippage
-    // buy slippage occurs
-    
-    // sell
-    // invalid sell amount
-    // invalid sell slippage
-    // sell slippage occurs
-    // redeem
-    // redeem invalid balance
+    // Non-holder cannot sell
+    function testFail_NonHolderCannotSell() public {
+        vm.prank(address(3));
+        vm.expectRevert("ZERO_BALANCE");
+        exchange.sell(1, 1 ether);
+    }
+
+    function test_SellInvalidAmount() public {
+        vm.prank(address(1));
+        vm.expectRevert("INSUFFICIENT_BALANCE");
+        exchange.sell(500 * (10**18), 1 ether);
+    }
+
+    function test_SellInvalidAmountArgZero() public {
+        vm.prank(address(1));
+        vm.expectRevert("INVALID_SELL_AMOUNT");
+        exchange.sell(0, 1 ether);
+    }
+
+
+    function test_SellInvalidSlippage() public {
+        vm.prank(address(1));
+        exchange.buy{value: 1 ether}(1);
+        //emit log_uint(exchange.balanceOf(address(1)));
+        vm.prank(address(2));
+        exchange.buy{value: 8 ether}(1);
+        //emit log_uint(exchange.balanceOf(address(2)));
+        vm.prank(address(1));
+        vm.expectRevert("INVALID_SLIPPAGE");
+        exchange.sell(10 * (10 ** 18), 0 ether);
+    }
+
+    function test_SellSlippage() public {
+        vm.prank(address(1));
+        exchange.buy{value: 1 ether}(1);
+        //emit log_uint(exchange.balanceOf(address(1)));
+        vm.prank(address(2));
+        exchange.buy{value: 8 ether}(1);
+        //emit log_uint(exchange.balanceOf(address(2)));
+        vm.prank(address(1));
+        vm.expectRevert("SLIPPAGE");
+        exchange.sell(10 * (10 ** 18), 10 ether);
+    }
+
+    function test_Redeem() public {
+        vm.prank(address(1));
+        exchange.buy{value: 1 ether}(1);
+        vm.prank(address(1));
+        exchange.redeem();
+    }
+
+    function test_RedeemInvalidBalance() public {
+        vm.prank(address(1));
+        exchange.buy{value: 0.001 ether}(1);
+        vm.expectRevert("INSUFFICIENT_BALANCE");
+        exchange.redeem();
+    }
 
     receive() external payable {}
 

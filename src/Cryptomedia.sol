@@ -18,7 +18,7 @@ contract Cryptomedia is ERC721 {
 
     // ======== Storage ========
     address public exchange; // exchange token pair address
-    address public immutable factory; // cryptomedia factory address
+    address public immutable factory; // pair factory address
     string public baseURI; // NFT base URI
     Counters.Counter currentTokenId; // Counter keeping track of last minted token id
 

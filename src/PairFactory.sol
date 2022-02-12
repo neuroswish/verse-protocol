@@ -10,18 +10,18 @@ import "./Cryptomedia.sol";
 import "./Exchange.sol";
 import "./BondingCurve.sol";
 
-/// @title Cryptomedia Factory
+/// @title Pair Factory
 /// @author neuroswish
 /// @notice Factory to deploy pairs of cryptomedia and exchange clones
 
-contract CryptomediaFactory {
+contract PairFactory {
     // ======== Storage ========
     address public immutable cryptomediaLogic;
     address public immutable exchangeLogic;
     address public immutable bondingCurve;
 
     // ======== Events ========
-    event CryptomediaCreated(
+    event PairCreated(
         address exchangeAddress,
         address cryptomediaAddress,
         address creator
@@ -52,6 +52,6 @@ contract CryptomediaFactory {
         cryptomedia = Clones.clone(cryptomediaLogic);
         Exchange(exchange).initialize(_name, _symbol, _reserveRatio, _transactionShare, cryptomedia, msg.sender);
         Cryptomedia(cryptomedia).initialize(_name, _symbol, _baseURI, exchange);
-        emit CryptomediaCreated(exchange, cryptomedia, msg.sender);
+        emit PairCreated(exchange, cryptomedia, msg.sender);
     }
 }

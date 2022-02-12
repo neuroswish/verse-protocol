@@ -45,16 +45,6 @@ contract Exchange is ERC20, ReentrancyGuard{
         uint256 totalSupply
     );
 
-
-    // ======== Modifiers ========
-    /**
-    * @notice Check to see if address holds tokens
-    */
-    modifier onlyHolder() {
-        require(balanceOf[msg.sender] > 0, "ZERO_BALANCE");
-        _;
-    }
-
     // ======== Constructor ========
     constructor(address _factory, address _bondingCurve) ERC20("Verse", "VERSE", 18) {
         factory = _factory;
@@ -120,13 +110,9 @@ contract Exchange is ERC20, ReentrancyGuard{
     */
     function sell(uint256 _tokens, uint256 _minETHReturned)
         external
-        onlyHolder
-        nonReentrant
     {
-        require(
-            _tokens > 0 && _tokens <= balanceOf[msg.sender],
-            "INVALID_SELL_AMOUNT"
-        );
+        require(_tokens > 0,"INVALID_SELL_AMOUNT");
+        require(_tokens <= balanceOf[msg.sender], "INSUFFICIENT_BALANCE");
         require(poolBalance > 0, "INSUFFICIENT_POOL_BALANCE");
         require(_minETHReturned > 0, "INVALID_SLIPPAGE");
 
@@ -153,9 +139,9 @@ contract Exchange is ERC20, ReentrancyGuard{
     * @notice Redeem ERC20 token for Cryptomedia NFT
     * @dev Mints NFT from Cryptomedia contract for caller upon success; callable by token holders with at least 1 atomic token
     */
-    function redeem() public nonReentrant {
-        require(balanceOf[msg.sender] >= (10**18), "INSUFFICIENT_BALANCE");
-        transferFrom(msg.sender, cryptomedia, 10**18);
+    function redeem() public {
+        require(balanceOf[msg.sender] >= (1 * (10**18)), "INSUFFICIENT_BALANCE");
+        transfer(cryptomedia, (1 * (10**18)));
         ICryptomedia(cryptomedia).mint(msg.sender);
         emit Redeemed(msg.sender, totalSupply);
     }

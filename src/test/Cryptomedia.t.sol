@@ -3,7 +3,7 @@ pragma solidity >=0.8.10;
 
 import "ds-test/test.sol";
 import "../BondingCurve.sol";
-import "../CryptomediaFactory.sol";
+import "../PairFactory.sol";
 import "../Exchange.sol";
 import "../Cryptomedia.sol";
 import {VM} from "./Utils/VM.sol";
@@ -11,7 +11,7 @@ import {VM} from "./Utils/VM.sol";
 contract CryptomediaTest is DSTest {
     VM vm;
     BondingCurve bondingCurve;
-    CryptomediaFactory cryptomediaFactory;
+    PairFactory pairFactory;
     Exchange exchange;
     Cryptomedia cryptomedia;
     address exchangeAddress;
@@ -24,8 +24,8 @@ contract CryptomediaTest is DSTest {
 
         // Deploy exchange and cryptomedia
         bondingCurve = new BondingCurve();
-        cryptomediaFactory = new CryptomediaFactory(address(bondingCurve));
-        (exchangeAddress, cryptomediaAddress) = cryptomediaFactory.create("Verse", "VERSE", 242424, 0, "verse.xyz");
+        pairFactory = new PairFactory(address(bondingCurve));
+        (exchangeAddress, cryptomediaAddress) = pairFactory.create("Verse", "VERSE", 242424, 0, "verse.xyz");
         exchange = Exchange(exchangeAddress);
         cryptomedia = Cryptomedia(cryptomediaAddress);
         
