@@ -313,8 +313,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Cryptomedia.sol": {
-      "lastModificationDate": 1644683131773,
-      "contentHash": "71686a1179cd4dd10c2b96ab37b86e04",
+      "lastModificationDate": 1644693701601,
+      "contentHash": "6ddc851102ccf30d49fa4c78776993f8",
       "sourceName": "src/Cryptomedia.sol",
       "solcConfig": {
         "settings": {
@@ -349,45 +349,6 @@
       ],
       "artifacts": [
         "Cryptomedia"
-      ]
-    },
-    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/CryptomediaFactory.sol": {
-      "lastModificationDate": 1644683186142,
-      "contentHash": "e1fbe85e6bb9bd0e2bdafe2d1f61771d",
-      "sourceName": "src/CryptomediaFactory.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ]
-            }
-          },
-          "evmVersion": "london"
-        }
-      },
-      "imports": [
-        "./Clones.sol",
-        "./Cryptomedia.sol",
-        "./Exchange.sol",
-        "./BondingCurve.sol"
-      ],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "CryptomediaFactory"
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
@@ -428,6 +389,45 @@
       ],
       "artifacts": [
         "Exchange"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/PairFactory.sol": {
+      "lastModificationDate": 1644693658527,
+      "contentHash": "b6f2865d55006714886fc8724cb4e8b8",
+      "sourceName": "src/PairFactory.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "./Clones.sol",
+        "./Cryptomedia.sol",
+        "./Exchange.sol",
+        "./BondingCurve.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "PairFactory"
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Power.sol": {
@@ -533,8 +533,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Cryptomedia.t.sol": {
-      "lastModificationDate": 1644685797827,
-      "contentHash": "9be86d0d25fcd71ec7a3f09433642506",
+      "lastModificationDate": 1644694254870,
+      "contentHash": "21df5053d21b3e0df0f8d8584a3dcf39",
       "sourceName": "src/test/Cryptomedia.t.sol",
       "solcConfig": {
         "settings": {
@@ -561,7 +561,7 @@
       "imports": [
         "ds-test/test.sol",
         "../BondingCurve.sol",
-        "../CryptomediaFactory.sol",
+        "../PairFactory.sol",
         "../Exchange.sol",
         "../Cryptomedia.sol",
         "./Utils/VM.sol"
@@ -573,49 +573,9 @@
         "CryptomediaTest"
       ]
     },
-    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/CryptomediaFactory.t.sol": {
-      "lastModificationDate": 1644682035677,
-      "contentHash": "175f93a07c2e571762225dde0e89be6e",
-      "sourceName": "src/test/CryptomediaFactory.t.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ]
-            }
-          },
-          "evmVersion": "london"
-        }
-      },
-      "imports": [
-        "ds-test/test.sol",
-        "../BondingCurve.sol",
-        "../CryptomediaFactory.sol",
-        "../Exchange.sol",
-        "../Cryptomedia.sol"
-      ],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "CryptomediaFactoryTest"
-      ]
-    },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Exchange.t.sol": {
-      "lastModificationDate": 1644687969669,
-      "contentHash": "f38274945c648583c9428c5f2bf0a7d5",
+      "lastModificationDate": 1644694482805,
+      "contentHash": "d9d0d8823d3b0665d6a6d48d68fab58f",
       "sourceName": "src/test/Exchange.t.sol",
       "solcConfig": {
         "settings": {
@@ -642,7 +602,7 @@
       "imports": [
         "ds-test/test.sol",
         "../BondingCurve.sol",
-        "../CryptomediaFactory.sol",
+        "../PairFactory.sol",
         "../Exchange.sol",
         "../Cryptomedia.sol",
         "./Utils/VM.sol"
@@ -652,6 +612,46 @@
       ],
       "artifacts": [
         "ExchangeTest"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/PairFactory.t.sol": {
+      "lastModificationDate": 1644693799707,
+      "contentHash": "702feb051c96efa331114420f50f017f",
+      "sourceName": "src/test/PairFactory.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "ds-test/test.sol",
+        "../BondingCurve.sol",
+        "../PairFactory.sol",
+        "../Exchange.sol",
+        "../Cryptomedia.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "PairFactoryTest"
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Utils/VM.sol": {

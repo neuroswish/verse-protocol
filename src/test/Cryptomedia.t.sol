@@ -30,9 +30,8 @@ contract CryptomediaTest is DSTest {
         cryptomedia = Cryptomedia(cryptomediaAddress);
         
         // Set user balances
-        vm.deal(address(1), 10 ether);
-        vm.deal(address(2), 10 ether);
-
+        vm.deal(address(1), 100 ether);
+        vm.deal(address(2), 100 ether);
     }
 
     // make sure non-factory address cannot call initialize function
@@ -54,15 +53,21 @@ contract CryptomediaTest is DSTest {
     }
 
     // return tokenURI for token ID that exists
-    function test_TokenURI(uint256 _tokenId) public {
-        assertEq(_tokenId, _tokenId);
+    function test_TokenURI() public {
+        vm.startPrank(address(1));
+        exchange.buy{value: 1 ether}(1);
+        exchange.redeem();
+        vm.stopPrank();
+        cryptomedia.tokenURI(1);
     }
 
-    // revert for token ID that does not exist
-    // function testFail_TokenURI(uint256 _tokenId) public {
-        
-    // }
-
+    function testFail_TokenURI() public {
+        vm.startPrank(address(1));
+        exchange.buy{value: 1 ether}(1);
+        exchange.redeem();
+        vm.stopPrank();
+        cryptomedia.tokenURI(2);
+    }
 
     receive() external payable {}
 

@@ -49,6 +49,8 @@ contract ExchangeTest is DSTest {
 
     // User can buy tokens after supply has been initialized
     function test_Buy() public {
+        vm.prank(address(1));
+        exchange.buy{value: 1 ether}(1);
         vm.prank(address(2));   
         exchange.buy{value: 8 ether}(1);
         emit log_uint(exchange.balanceOf(address(2)));
@@ -79,11 +81,8 @@ contract ExchangeTest is DSTest {
     function test_Sell() public {
         vm.prank(address(1));
         exchange.buy{value: 1 ether}(1);
-        //emit log_uint(exchange.balanceOf(address(1)));
-        vm.prank(address(2));
+        vm.startPrank(address(2));
         exchange.buy{value: 8 ether}(1);
-        //emit log_uint(exchange.balanceOf(address(2)));
-        vm.prank(address(2));
         exchange.sell(2 * (10**18), 0.1 ether);
     }
 
@@ -110,10 +109,8 @@ contract ExchangeTest is DSTest {
     function test_SellInvalidSlippage() public {
         vm.prank(address(1));
         exchange.buy{value: 1 ether}(1);
-        //emit log_uint(exchange.balanceOf(address(1)));
         vm.prank(address(2));
         exchange.buy{value: 8 ether}(1);
-        //emit log_uint(exchange.balanceOf(address(2)));
         vm.prank(address(1));
         vm.expectRevert("INVALID_SLIPPAGE");
         exchange.sell(10 * (10 ** 18), 0 ether);
@@ -122,19 +119,16 @@ contract ExchangeTest is DSTest {
     function test_SellSlippage() public {
         vm.prank(address(1));
         exchange.buy{value: 1 ether}(1);
-        //emit log_uint(exchange.balanceOf(address(1)));
         vm.prank(address(2));
         exchange.buy{value: 8 ether}(1);
-        //emit log_uint(exchange.balanceOf(address(2)));
         vm.prank(address(1));
         vm.expectRevert("SLIPPAGE");
         exchange.sell(10 * (10 ** 18), 10 ether);
     }
 
     function test_Redeem() public {
-        vm.prank(address(1));
+        vm.startPrank(address(1));
         exchange.buy{value: 1 ether}(1);
-        vm.prank(address(1));
         exchange.redeem();
     }
 
