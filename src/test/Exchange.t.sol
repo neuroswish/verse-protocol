@@ -25,13 +25,13 @@ contract ExchangeTest is DSTest {
         // Deploy exchange and cryptomedia
         bondingCurve = new BondingCurve();
         cryptomediaFactory = new CryptomediaFactory(address(bondingCurve));
-        (exchangeAddress, cryptomediaAddress) = cryptomediaFactory.create("Verse", "VERSE", 242424, 0, "Internet Exchange", "INTERNET", "verse.xyz");
+        (exchangeAddress, cryptomediaAddress) = cryptomediaFactory.create("Verse", "VERSE", 242424, 0, "verse.xyz");
         exchange = Exchange(exchangeAddress);
         cryptomedia = Cryptomedia(cryptomediaAddress);
 
         // Set user balances
-        vm.deal(address(1), 10 ether);
-        vm.deal(address(2), 10 ether);
+        vm.deal(address(1), 100 ether);
+        vm.deal(address(2), 100 ether);
     }
 
     // Non-factory address cannot call initialize function
@@ -55,15 +55,34 @@ contract ExchangeTest is DSTest {
     }
 
     // User cannot send 0 ether to buy tokens
-    function testFail_BuyZeroValue() public {
+    function test_BuyZeroValue() public {
+        vm.prank(address(1));
+        vm.expectRevert("INVALID_VALUE");
+        exchange.buy{value: 0 ether}(1);
+    }
 
+    // User cannot specify an invalid slippage value
+    function test_BuyInvalidSlippage() public {
+        vm.prank(address(1));
+        vm.expectRevert("INVALID_SLIPPAGE");
+        exchange.buy{value: 0.1 ether}(0);
+    }
+
+    // Buy reverts if tokens returned are less than minimum return specified
+    function test_BuySlippage() public {
+        vm.prank(address(1));
+        vm.expectRevert("SLIPPAGE");
+        exchange.buy{value: 1 ether}(50 * (10**18));
     }
 
 
-    // buy
-    // invalid price
+    // initialize DONE
+    // buy initial DONE
+    // buy DONE
+    // invalid price DONE
     // invalid buy slippage
     // buy slippage occurs
+    
     // sell
     // invalid sell amount
     // invalid sell slippage
