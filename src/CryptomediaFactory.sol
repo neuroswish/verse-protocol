@@ -1,3 +1,7 @@
+/// Good mornin'
+/// Look at the valedictorian
+/// Scared of the future while I hop in the DeLorean
+
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.8.10;
 
@@ -5,6 +9,10 @@ import "./Clones.sol";
 import "./Cryptomedia.sol";
 import "./Exchange.sol";
 import "./BondingCurve.sol";
+
+/// @title Cryptomedia Factory
+/// @author neuroswish
+/// @notice Factory to deploy pairs of cryptomedia and exchange clones
 
 contract CryptomediaFactory {
     // ======== Storage ========

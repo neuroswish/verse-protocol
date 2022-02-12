@@ -1,3 +1,8 @@
+/// I just needed time alone with my own thoughts
+/// Got treasures in my mind, but couldn't open up my own vault
+/// My childlike creativity, purity, and honesty
+/// Is honestly being crowded by these grown thoughts
+
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.8.10;
 

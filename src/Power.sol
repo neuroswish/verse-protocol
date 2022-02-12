@@ -1,15 +1,12 @@
+/// No one man should have all that power
+/// The clock's tickin' I just count the hours
+
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.8.10;
 
-/**
- * @title Power
- *
- * Functions to calculate fractional exponents
- *
- * Four in the mornin', and I'm zonin'
- * They say I'm possessed, it's an omen
- * 
- */
+/// @title Power
+/// @author neuroswish
+/// @notice Functions to calculate fractional exponentiation
 
 contract Power {
     uint256 private constant ONE = 1;

@@ -1,15 +1,11 @@
+/// Listen to the kids, bro
+
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.8.10;
 
-/**
- * @title Bonding Curve
- * @author neuroswish
- *
- * Bonding curve functions managing the purchase and sale of continuous tokens
- *
- * Listen to the kids, bro
- *
- */
+/// @title Bonding Curve
+/// @author neuroswish
+/// @notice Bonding curve functions managing the purchase and sale of continuous tokens
 
 import "./Power.sol";
 
