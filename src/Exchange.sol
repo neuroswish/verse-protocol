@@ -79,12 +79,13 @@ contract Exchange is ERC20, ReentrancyGuard{
     // ======== Exchange Functions ========
     /// @notice Buy tokens with ETH
     /// @dev Emits a Buy event upon success: callable by anyone
-    function buy(uint256 _price, uint256 _minTokensReturned) external payable {
-        require(msg.value == _price && msg.value > 0, "INVALID_PRICE");
+    function buy(uint256 _minTokensReturned) external payable {
+        require(msg.value > 0, "INVALID_VALUE");
         require(_minTokensReturned > 0, "INVALID_SLIPPAGE");
         // calculate creator transaction share
-        uint256 creatorShare = splitShare(_price);
-        uint256 buyAmount = _price - creatorShare;
+        uint256 price = msg.value;
+        uint256 creatorShare = splitShare(price);
+        uint256 buyAmount = price - creatorShare;
         // calculate tokens returned
         uint256 tokensReturned;
         if (totalSupply == 0 || poolBalance == 0) {
@@ -159,7 +160,6 @@ contract Exchange is ERC20, ReentrancyGuard{
     * @dev Calculates share based on 10000 basis points; called internally
     */
     function splitShare(uint256 _amount) internal view returns (uint256 _share) {
-        //return Decimal.mul(_amount, _sharePercentage) / 100;
         _share = (_amount * transactionShare) / 10000;
     }
 

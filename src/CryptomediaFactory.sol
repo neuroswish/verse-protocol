@@ -32,20 +32,18 @@ contract CryptomediaFactory {
 
     // ======== Create Cryptomedia Clone ========
     function create(
-        string calldata _exchangeName,
-        string calldata _exchangeSymbol,
+        string calldata _name,
+        string calldata _symbol,
         uint256 _reserveRatio,
         uint256 _transactionShare,
-        string calldata _cryptomediaName,
-        string calldata _cryptomediaSymbol,
         string calldata _baseURI
     ) external returns (address exchange, address cryptomedia) {
         require(_transactionShare <= 10000, "INVALID_PERCENTAGE");
         require(_reserveRatio <= 1000000, "INVALID_RESERVE_RATIO");
         exchange = Clones.clone(exchangeLogic);
         cryptomedia = Clones.clone(cryptomediaLogic);
-        Exchange(exchange).initialize(_exchangeName, _exchangeSymbol, _reserveRatio, _transactionShare, cryptomedia, msg.sender);
-        Cryptomedia(cryptomedia).initialize(_cryptomediaName, _cryptomediaSymbol, _baseURI, exchange);
+        Exchange(exchange).initialize(_name, _symbol, _reserveRatio, _transactionShare, cryptomedia, msg.sender);
+        Cryptomedia(cryptomedia).initialize(_name, _symbol, _baseURI, exchange);
         emit CryptomediaCreated(exchange, cryptomedia, msg.sender);
     }
 }
