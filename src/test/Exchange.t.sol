@@ -25,7 +25,7 @@ contract ExchangeTest is DSTest {
         // Deploy exchange and cryptomedia
         bondingCurve = new BondingCurve();
         pairFactory = new PairFactory(address(bondingCurve));
-        (exchangeAddress, cryptomediaAddress) = pairFactory.create("Verse", "VERSE", 242424, 0, "verse.xyz");
+        (exchangeAddress, cryptomediaAddress) = pairFactory.create("Verse", "VERSE", 242424, 500, "verse.xyz");
         exchange = Exchange(exchangeAddress);
         cryptomedia = Cryptomedia(cryptomediaAddress);
 
@@ -61,6 +61,13 @@ contract ExchangeTest is DSTest {
         vm.prank(address(1));
         vm.expectRevert("INVALID_VALUE");
         exchange.buy{value: 0 ether}(1);
+    }
+
+    // User cannot send 0 ether to buy tokens
+    function test_BuyInsufficientInitialPrice() public {
+        vm.prank(address(1));
+        vm.expectRevert("INSUFFICIENT_INITIAL_PRICE");
+        exchange.buy{value: 0.001 ether}(1);
     }
 
     // User cannot specify an invalid slippage value
@@ -134,7 +141,7 @@ contract ExchangeTest is DSTest {
 
     function test_RedeemInvalidBalance() public {
         vm.prank(address(1));
-        exchange.buy{value: 0.001 ether}(1);
+        exchange.buy{value: 0.01 ether}(1);
         vm.expectRevert("INSUFFICIENT_BALANCE");
         exchange.redeem();
     }

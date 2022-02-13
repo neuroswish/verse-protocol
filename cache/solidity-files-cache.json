@@ -352,8 +352,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
-      "lastModificationDate": 1644688590612,
-      "contentHash": "f3c99dd3d596111a32905de448c667c5",
+      "lastModificationDate": 1644720806920,
+      "contentHash": "910823be812ac0cb549836dda2178703",
       "sourceName": "src/Exchange.sol",
       "solcConfig": {
         "settings": {
@@ -574,8 +574,8 @@
       ]
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Exchange.t.sol": {
-      "lastModificationDate": 1644694482805,
-      "contentHash": "d9d0d8823d3b0665d6a6d48d68fab58f",
+      "lastModificationDate": 1644720887041,
+      "contentHash": "31f5c7e3643cc117bf6984ee58a54899",
       "sourceName": "src/test/Exchange.t.sol",
       "solcConfig": {
         "settings": {
