@@ -61,6 +61,18 @@ contract CryptomediaTest is DSTest {
         cryptomedia.tokenURI(1);
     }
 
+    function test_MultipleTokenURI() public {
+        vm.startPrank(address(1));
+        exchange.buy{value: 1 ether}(1);
+        exchange.redeem();
+        cryptomedia.tokenURI(1);
+        exchange.buy{value: 1 ether}(1);
+        exchange.redeem();
+        cryptomedia.tokenURI(2);
+        vm.expectRevert("TOKEN_DOES_NOT_EXIST");
+        cryptomedia.tokenURI(3);
+    }
+
     function testFail_TokenURI() public {
         vm.startPrank(address(1));
         exchange.buy{value: 1 ether}(1);

@@ -8,19 +8,14 @@ pragma solidity ^0.8.11;
 
 import "./Exchange.sol";
 import "solmate/tokens/ERC721.sol";
-import {Counters} from "@openzeppelin/contracts/utils/Counters.sol";
-import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
-
 
 contract Cryptomedia is ERC721 {
-    using Counters for Counters.Counter;
-    using Strings for uint256;
 
     // ======== Storage ========
     address public exchange; // exchange token pair address
     address public immutable factory; // pair factory address
     string public baseURI; // NFT base URI
-    Counters.Counter currentTokenId; // Counter keeping track of last minted token id
+    uint256 currentTokenId; // Counter keeping track of last minted token id
 
     // ======== Constructor ========
     constructor(address _factory) ERC721("Verse", "VERSE") {
@@ -39,7 +34,7 @@ contract Cryptomedia is ERC721 {
         symbol = _symbol;
         baseURI = _baseURI;
         exchange = _exchange;
-        currentTokenId.increment();
+        currentTokenId++;
     }
 
     // ======== Modifier ========
@@ -56,8 +51,7 @@ contract Cryptomedia is ERC721 {
     * @notice Mint NFT for recipient redeeming 1 exchange token
     */
     function mint(address _recipient) external onlyExchange {
-        _mint(_recipient, currentTokenId.current());
-        currentTokenId.increment();
+        _mint(_recipient, currentTokenId++);
     }
 
     /**

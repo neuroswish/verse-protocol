@@ -35,74 +35,6 @@
         }
       }
     },
-    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/openzeppelin-contracts/contracts/utils/Counters.sol": {
-      "lastModificationDate": 1644442962820,
-      "contentHash": "74654e3ae5d7f39555055dfe244dab7a",
-      "sourceName": "lib/openzeppelin-contracts/contracts/utils/Counters.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ]
-            }
-          },
-          "evmVersion": "london"
-        }
-      },
-      "imports": [],
-      "versionRequirement": "^0.8.0",
-      "artifacts": {
-        "Counters": {
-          "0.8.11+commit.d7f03943.Darwin.appleclang": "Counters.sol/Counters.json"
-        }
-      }
-    },
-    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/openzeppelin-contracts/contracts/utils/Strings.sol": {
-      "lastModificationDate": 1644442962820,
-      "contentHash": "9c54c6c065d9e590fdcdd72c451425b9",
-      "sourceName": "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ]
-            }
-          },
-          "evmVersion": "london"
-        }
-      },
-      "imports": [],
-      "versionRequirement": "^0.8.0",
-      "artifacts": {
-        "Strings": {
-          "0.8.11+commit.d7f03943.Darwin.appleclang": "Strings.sol/Strings.json"
-        }
-      }
-    },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/solmate/src/tokens/ERC20.sol": {
       "lastModificationDate": 1644268672576,
       "contentHash": "91ea2246e5200b324c1a07489a10f927",
@@ -315,8 +247,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Cryptomedia.sol": {
-      "lastModificationDate": 1646594651546,
-      "contentHash": "9d11e2c48723e0ee9c652ace9bc0a691",
+      "lastModificationDate": 1646599499026,
+      "contentHash": "abf0384f967f326229191a4511095370",
       "sourceName": "src/Cryptomedia.sol",
       "solcConfig": {
         "settings": {
@@ -341,8 +273,6 @@
         }
       },
       "imports": [
-        "lib/openzeppelin-contracts/contracts/utils/Counters.sol",
-        "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
         "lib/solmate/src/tokens/ERC20.sol",
         "lib/solmate/src/tokens/ERC721.sol",
         "lib/solmate/src/utils/ReentrancyGuard.sol",
@@ -425,8 +355,6 @@
         }
       },
       "imports": [
-        "lib/openzeppelin-contracts/contracts/utils/Counters.sol",
-        "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
         "lib/solmate/src/tokens/ERC20.sol",
         "lib/solmate/src/tokens/ERC721.sol",
         "lib/solmate/src/utils/ReentrancyGuard.sol",
@@ -549,8 +477,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Cryptomedia.t.sol": {
-      "lastModificationDate": 1644694254870,
-      "contentHash": "21df5053d21b3e0df0f8d8584a3dcf39",
+      "lastModificationDate": 1646599745175,
+      "contentHash": "795074a1910e8d5a00dab0f29a708ae6",
       "sourceName": "src/test/Cryptomedia.t.sol",
       "solcConfig": {
         "settings": {
@@ -576,8 +504,6 @@
       },
       "imports": [
         "lib/ds-test/src/test.sol",
-        "lib/openzeppelin-contracts/contracts/utils/Counters.sol",
-        "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
         "lib/solmate/src/tokens/ERC20.sol",
         "lib/solmate/src/tokens/ERC721.sol",
         "lib/solmate/src/utils/ReentrancyGuard.sol",
@@ -627,8 +553,6 @@
       },
       "imports": [
         "lib/ds-test/src/test.sol",
-        "lib/openzeppelin-contracts/contracts/utils/Counters.sol",
-        "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
         "lib/solmate/src/tokens/ERC20.sol",
         "lib/solmate/src/tokens/ERC721.sol",
         "lib/solmate/src/utils/ReentrancyGuard.sol",
@@ -678,8 +602,6 @@
       },
       "imports": [
         "lib/ds-test/src/test.sol",
-        "lib/openzeppelin-contracts/contracts/utils/Counters.sol",
-        "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
         "lib/solmate/src/tokens/ERC20.sol",
         "lib/solmate/src/tokens/ERC721.sol",
         "lib/solmate/src/utils/ReentrancyGuard.sol",
