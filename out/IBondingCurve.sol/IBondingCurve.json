@@ -1,8 +1,6 @@
 {
   "abi": [
     {
-      "type": "function",
-      "name": "calculateInitializationReturn",
       "inputs": [
         {
           "internalType": "uint256",
@@ -15,6 +13,7 @@
           "type": "uint256"
         }
       ],
+      "name": "calculateInitializationReturn",
       "outputs": [
         {
           "internalType": "uint256",
@@ -22,12 +21,10 @@
           "type": "uint256"
         }
       ],
-      "constant": null,
-      "stateMutability": "view"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "type": "function",
-      "name": "calculatePurchaseReturn",
       "inputs": [
         {
           "internalType": "uint256",
@@ -50,6 +47,7 @@
           "type": "uint256"
         }
       ],
+      "name": "calculatePurchaseReturn",
       "outputs": [
         {
           "internalType": "uint256",
@@ -57,12 +55,10 @@
           "type": "uint256"
         }
       ],
-      "constant": null,
-      "stateMutability": "nonpayable"
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "type": "function",
-      "name": "calculateSaleReturn",
       "inputs": [
         {
           "internalType": "uint256",
@@ -85,6 +81,7 @@
           "type": "uint256"
         }
       ],
+      "name": "calculateSaleReturn",
       "outputs": [
         {
           "internalType": "uint256",
@@ -92,10 +89,18 @@
           "type": "uint256"
         }
       ],
-      "constant": null,
-      "stateMutability": "nonpayable"
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
-  "bin": "0x",
-  "bin-runtime": "0x"
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  }
 }

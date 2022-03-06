@@ -32,15 +32,4 @@ contract PairFactoryTest is DSTest {
         }
     }
 
-    function testFailCreate(
-        string memory _name,
-        string memory _symbol,
-        uint256 _reserveRatio,
-        uint256 _transactionShare,
-        string memory _baseURI
-    ) public {
-        if (_reserveRatio > 1000000 && _transactionShare > 10000 ) {
-            (exchange, cryptomedia) = pairFactory.create(_name, _symbol, _reserveRatio, _transactionShare, _baseURI);
-        }
-    }
 }

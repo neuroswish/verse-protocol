@@ -1,5 +1,5 @@
 {
-  "_format": "ethers-rs-sol-cache-1",
+  "_format": "ethers-rs-sol-cache-2",
   "files": {
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/ds-test/src/test.sol": {
       "lastModificationDate": 1644268597708,
@@ -28,12 +28,12 @@
         }
       },
       "imports": [],
-      "versionPragmas": [
-        ">=0.4.23"
-      ],
-      "artifacts": [
-        "DSTest"
-      ]
+      "versionRequirement": ">=0.4.23",
+      "artifacts": {
+        "DSTest": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "test.sol/DSTest.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/openzeppelin-contracts/contracts/utils/Counters.sol": {
       "lastModificationDate": 1644442962820,
@@ -62,12 +62,12 @@
         }
       },
       "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Counters"
-      ]
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "Counters": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "Counters.sol/Counters.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/openzeppelin-contracts/contracts/utils/Strings.sol": {
       "lastModificationDate": 1644442962820,
@@ -96,12 +96,12 @@
         }
       },
       "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Strings"
-      ]
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "Strings": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "Strings.sol/Strings.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/solmate/src/tokens/ERC20.sol": {
       "lastModificationDate": 1644268672576,
@@ -130,12 +130,12 @@
         }
       },
       "imports": [],
-      "versionPragmas": [
-        ">=0.8.0"
-      ],
-      "artifacts": [
-        "ERC20"
-      ]
+      "versionRequirement": ">=0.8.0",
+      "artifacts": {
+        "ERC20": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "ERC20.sol/ERC20.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/solmate/src/tokens/ERC721.sol": {
       "lastModificationDate": 1644268672576,
@@ -164,13 +164,15 @@
         }
       },
       "imports": [],
-      "versionPragmas": [
-        ">=0.8.0"
-      ],
-      "artifacts": [
-        "ERC721",
-        "ERC721TokenReceiver"
-      ]
+      "versionRequirement": ">=0.8.0",
+      "artifacts": {
+        "ERC721": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "ERC721.sol/ERC721.json"
+        },
+        "ERC721TokenReceiver": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "ERC721.sol/ERC721TokenReceiver.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/solmate/src/utils/ReentrancyGuard.sol": {
       "lastModificationDate": 1644268672576,
@@ -199,12 +201,12 @@
         }
       },
       "imports": [],
-      "versionPragmas": [
-        ">=0.8.0"
-      ],
-      "artifacts": [
-        "ReentrancyGuard"
-      ]
+      "versionRequirement": ">=0.8.0",
+      "artifacts": {
+        "ReentrancyGuard": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "ReentrancyGuard.sol/ReentrancyGuard.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/solmate/src/utils/SafeTransferLib.sol": {
       "lastModificationDate": 1644268672576,
@@ -233,14 +235,14 @@
         }
       },
       "imports": [
-        "../tokens/ERC20.sol"
+        "lib/solmate/src/tokens/ERC20.sol"
       ],
-      "versionPragmas": [
-        ">=0.8.0"
-      ],
-      "artifacts": [
-        "SafeTransferLib"
-      ]
+      "versionRequirement": ">=0.8.0",
+      "artifacts": {
+        "SafeTransferLib": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "SafeTransferLib.sol/SafeTransferLib.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/BondingCurve.sol": {
       "lastModificationDate": 1644682573398,
@@ -269,14 +271,14 @@
         }
       },
       "imports": [
-        "./Power.sol"
+        "src/Power.sol"
       ],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "BondingCurve"
-      ]
+      "versionRequirement": ">=0.8.10",
+      "artifacts": {
+        "BondingCurve": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "BondingCurve.sol/BondingCurve.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Clones.sol": {
       "lastModificationDate": 1644683259709,
@@ -305,12 +307,12 @@
         }
       },
       "imports": [],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "Clones"
-      ]
+      "versionRequirement": ">=0.8.10",
+      "artifacts": {
+        "Clones": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "Clones.sol/Clones.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Cryptomedia.sol": {
       "lastModificationDate": 1644693701601,
@@ -339,17 +341,22 @@
         }
       },
       "imports": [
-        "./Exchange.sol",
-        "solmate/tokens/ERC721.sol",
-        "@openzeppelin/contracts/utils/Counters.sol",
-        "@openzeppelin/contracts/utils/Strings.sol"
+        "lib/openzeppelin-contracts/contracts/utils/Counters.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
+        "lib/solmate/src/tokens/ERC20.sol",
+        "lib/solmate/src/tokens/ERC721.sol",
+        "lib/solmate/src/utils/ReentrancyGuard.sol",
+        "lib/solmate/src/utils/SafeTransferLib.sol",
+        "src/Exchange.sol",
+        "src/interfaces/IBondingCurve.sol",
+        "src/interfaces/ICryptomedia.sol"
       ],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "Cryptomedia"
-      ]
+      "versionRequirement": ">=0.8.10",
+      "artifacts": {
+        "Cryptomedia": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "Cryptomedia.sol/Cryptomedia.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
       "lastModificationDate": 1644720806920,
@@ -378,18 +385,18 @@
         }
       },
       "imports": [
-        "./interfaces/IBondingCurve.sol",
-        "./interfaces/ICryptomedia.sol",
-        "solmate/tokens/ERC20.sol",
-        "solmate/utils/ReentrancyGuard.sol",
-        "solmate/utils/SafeTransferLib.sol"
+        "lib/solmate/src/tokens/ERC20.sol",
+        "lib/solmate/src/utils/ReentrancyGuard.sol",
+        "lib/solmate/src/utils/SafeTransferLib.sol",
+        "src/interfaces/IBondingCurve.sol",
+        "src/interfaces/ICryptomedia.sol"
       ],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "Exchange"
-      ]
+      "versionRequirement": ">=0.8.10",
+      "artifacts": {
+        "Exchange": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "Exchange.sol/Exchange.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/PairFactory.sol": {
       "lastModificationDate": 1646121888915,
@@ -418,17 +425,26 @@
         }
       },
       "imports": [
-        "./Clones.sol",
-        "./Cryptomedia.sol",
-        "./Exchange.sol",
-        "./BondingCurve.sol"
+        "lib/openzeppelin-contracts/contracts/utils/Counters.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
+        "lib/solmate/src/tokens/ERC20.sol",
+        "lib/solmate/src/tokens/ERC721.sol",
+        "lib/solmate/src/utils/ReentrancyGuard.sol",
+        "lib/solmate/src/utils/SafeTransferLib.sol",
+        "src/BondingCurve.sol",
+        "src/Clones.sol",
+        "src/Cryptomedia.sol",
+        "src/Exchange.sol",
+        "src/Power.sol",
+        "src/interfaces/IBondingCurve.sol",
+        "src/interfaces/ICryptomedia.sol"
       ],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "PairFactory"
-      ]
+      "versionRequirement": ">=0.8.10",
+      "artifacts": {
+        "PairFactory": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "PairFactory.sol/PairFactory.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Power.sol": {
       "lastModificationDate": 1644683159450,
@@ -457,12 +473,12 @@
         }
       },
       "imports": [],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "Power"
-      ]
+      "versionRequirement": ">=0.8.10",
+      "artifacts": {
+        "Power": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "Power.sol/Power.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/interfaces/IBondingCurve.sol": {
       "lastModificationDate": 1644441887808,
@@ -491,12 +507,12 @@
         }
       },
       "imports": [],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "IBondingCurve"
-      ]
+      "versionRequirement": ">=0.8.10",
+      "artifacts": {
+        "IBondingCurve": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "IBondingCurve.sol/IBondingCurve.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/interfaces/ICryptomedia.sol": {
       "lastModificationDate": 1644445304438,
@@ -525,12 +541,12 @@
         }
       },
       "imports": [],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "ICryptomedia"
-      ]
+      "versionRequirement": ">=0.8.10",
+      "artifacts": {
+        "ICryptomedia": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "ICryptomedia.sol/ICryptomedia.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Cryptomedia.t.sol": {
       "lastModificationDate": 1644694254870,
@@ -559,23 +575,33 @@
         }
       },
       "imports": [
-        "ds-test/test.sol",
-        "../BondingCurve.sol",
-        "../PairFactory.sol",
-        "../Exchange.sol",
-        "../Cryptomedia.sol",
-        "./Utils/VM.sol"
+        "lib/ds-test/src/test.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Counters.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
+        "lib/solmate/src/tokens/ERC20.sol",
+        "lib/solmate/src/tokens/ERC721.sol",
+        "lib/solmate/src/utils/ReentrancyGuard.sol",
+        "lib/solmate/src/utils/SafeTransferLib.sol",
+        "src/BondingCurve.sol",
+        "src/Clones.sol",
+        "src/Cryptomedia.sol",
+        "src/Exchange.sol",
+        "src/PairFactory.sol",
+        "src/Power.sol",
+        "src/interfaces/IBondingCurve.sol",
+        "src/interfaces/ICryptomedia.sol",
+        "src/test/Utils/VM.sol"
       ],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "CryptomediaTest"
-      ]
+      "versionRequirement": ">=0.8.10",
+      "artifacts": {
+        "CryptomediaTest": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "Cryptomedia.t.sol/CryptomediaTest.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Exchange.t.sol": {
-      "lastModificationDate": 1644720887041,
-      "contentHash": "31f5c7e3643cc117bf6984ee58a54899",
+      "lastModificationDate": 1646590142726,
+      "contentHash": "3e3131b0cff8122db6d5f69f28e6ad8b",
       "sourceName": "src/test/Exchange.t.sol",
       "solcConfig": {
         "settings": {
@@ -600,23 +626,33 @@
         }
       },
       "imports": [
-        "ds-test/test.sol",
-        "../BondingCurve.sol",
-        "../PairFactory.sol",
-        "../Exchange.sol",
-        "../Cryptomedia.sol",
-        "./Utils/VM.sol"
+        "lib/ds-test/src/test.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Counters.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
+        "lib/solmate/src/tokens/ERC20.sol",
+        "lib/solmate/src/tokens/ERC721.sol",
+        "lib/solmate/src/utils/ReentrancyGuard.sol",
+        "lib/solmate/src/utils/SafeTransferLib.sol",
+        "src/BondingCurve.sol",
+        "src/Clones.sol",
+        "src/Cryptomedia.sol",
+        "src/Exchange.sol",
+        "src/PairFactory.sol",
+        "src/Power.sol",
+        "src/interfaces/IBondingCurve.sol",
+        "src/interfaces/ICryptomedia.sol",
+        "src/test/Utils/VM.sol"
       ],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "ExchangeTest"
-      ]
+      "versionRequirement": ">=0.8.10",
+      "artifacts": {
+        "ExchangeTest": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "Exchange.t.sol/ExchangeTest.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/PairFactory.t.sol": {
-      "lastModificationDate": 1644693799707,
-      "contentHash": "702feb051c96efa331114420f50f017f",
+      "lastModificationDate": 1646590365170,
+      "contentHash": "b5f408bb21a7c3570da85a15b44908d4",
       "sourceName": "src/test/PairFactory.t.sol",
       "solcConfig": {
         "settings": {
@@ -641,18 +677,28 @@
         }
       },
       "imports": [
-        "ds-test/test.sol",
-        "../BondingCurve.sol",
-        "../PairFactory.sol",
-        "../Exchange.sol",
-        "../Cryptomedia.sol"
+        "lib/ds-test/src/test.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Counters.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
+        "lib/solmate/src/tokens/ERC20.sol",
+        "lib/solmate/src/tokens/ERC721.sol",
+        "lib/solmate/src/utils/ReentrancyGuard.sol",
+        "lib/solmate/src/utils/SafeTransferLib.sol",
+        "src/BondingCurve.sol",
+        "src/Clones.sol",
+        "src/Cryptomedia.sol",
+        "src/Exchange.sol",
+        "src/PairFactory.sol",
+        "src/Power.sol",
+        "src/interfaces/IBondingCurve.sol",
+        "src/interfaces/ICryptomedia.sol"
       ],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "PairFactoryTest"
-      ]
+      "versionRequirement": ">=0.8.10",
+      "artifacts": {
+        "PairFactoryTest": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "PairFactory.t.sol/PairFactoryTest.json"
+        }
+      }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Utils/VM.sol": {
       "lastModificationDate": 1644557423763,
@@ -681,12 +727,12 @@
         }
       },
       "imports": [],
-      "versionPragmas": [
-        ">=0.8.10"
-      ],
-      "artifacts": [
-        "VM"
-      ]
+      "versionRequirement": ">=0.8.10",
+      "artifacts": {
+        "VM": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "VM.sol/VM.json"
+        }
+      }
     }
   }
 }

@@ -94,9 +94,9 @@ contract ExchangeTest is DSTest {
     }
 
     // Non-holder cannot sell
-    function testFail_NonHolderCannotSell() public {
+    function test_NonHolderCannotSell() public {
         vm.prank(address(3));
-        vm.expectRevert("ZERO_BALANCE");
+        vm.expectRevert("INSUFFICIENT_BALANCE");
         exchange.sell(1, 1 ether);
     }
 

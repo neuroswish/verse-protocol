@@ -1,9 +1,58 @@
 {
   "abi": [
     {
-      "type": "function",
-      "name": "DOMAIN_SEPARATOR",
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
       "inputs": [],
+      "name": "DOMAIN_SEPARATOR",
       "outputs": [
         {
           "internalType": "bytes32",
@@ -11,12 +60,10 @@
           "type": "bytes32"
         }
       ],
-      "constant": null,
-      "stateMutability": "view"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "type": "function",
-      "name": "allowance",
       "inputs": [
         {
           "internalType": "address",
@@ -29,6 +76,7 @@
           "type": "address"
         }
       ],
+      "name": "allowance",
       "outputs": [
         {
           "internalType": "uint256",
@@ -36,12 +84,10 @@
           "type": "uint256"
         }
       ],
-      "constant": null,
-      "stateMutability": "view"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "type": "function",
-      "name": "approve",
       "inputs": [
         {
           "internalType": "address",
@@ -54,6 +100,7 @@
           "type": "uint256"
         }
       ],
+      "name": "approve",
       "outputs": [
         {
           "internalType": "bool",
@@ -61,12 +108,10 @@
           "type": "bool"
         }
       ],
-      "constant": null,
-      "stateMutability": "nonpayable"
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "type": "function",
-      "name": "balanceOf",
       "inputs": [
         {
           "internalType": "address",
@@ -74,6 +119,7 @@
           "type": "address"
         }
       ],
+      "name": "balanceOf",
       "outputs": [
         {
           "internalType": "uint256",
@@ -81,13 +127,12 @@
           "type": "uint256"
         }
       ],
-      "constant": null,
-      "stateMutability": "view"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "type": "function",
-      "name": "decimals",
       "inputs": [],
+      "name": "decimals",
       "outputs": [
         {
           "internalType": "uint8",
@@ -95,13 +140,12 @@
           "type": "uint8"
         }
       ],
-      "constant": null,
-      "stateMutability": "view"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "type": "function",
-      "name": "name",
       "inputs": [],
+      "name": "name",
       "outputs": [
         {
           "internalType": "string",
@@ -109,12 +153,10 @@
           "type": "string"
         }
       ],
-      "constant": null,
-      "stateMutability": "view"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "type": "function",
-      "name": "nonces",
       "inputs": [
         {
           "internalType": "address",
@@ -122,6 +164,7 @@
           "type": "address"
         }
       ],
+      "name": "nonces",
       "outputs": [
         {
           "internalType": "uint256",
@@ -129,12 +172,10 @@
           "type": "uint256"
         }
       ],
-      "constant": null,
-      "stateMutability": "view"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "type": "function",
-      "name": "permit",
       "inputs": [
         {
           "internalType": "address",
@@ -172,14 +213,14 @@
           "type": "bytes32"
         }
       ],
+      "name": "permit",
       "outputs": [],
-      "constant": null,
-      "stateMutability": "nonpayable"
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-      "type": "function",
-      "name": "symbol",
       "inputs": [],
+      "name": "symbol",
       "outputs": [
         {
           "internalType": "string",
@@ -187,13 +228,12 @@
           "type": "string"
         }
       ],
-      "constant": null,
-      "stateMutability": "view"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "type": "function",
-      "name": "totalSupply",
       "inputs": [],
+      "name": "totalSupply",
       "outputs": [
         {
           "internalType": "uint256",
@@ -201,13 +241,40 @@
           "type": "uint256"
         }
       ],
-      "constant": null,
-      "stateMutability": "view"
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "type": "function",
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
       "name": "transfer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
         {
           "internalType": "address",
           "name": "to",
@@ -219,36 +286,7 @@
           "type": "uint256"
         }
       ],
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "constant": null,
-      "stateMutability": "nonpayable"
-    },
-    {
-      "type": "function",
       "name": "transferFrom",
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "from",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "to",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
       "outputs": [
         {
           "internalType": "bool",
@@ -256,54 +294,18 @@
           "type": "bool"
         }
       ],
-      "constant": null,
-      "stateMutability": "nonpayable"
-    },
-    {
-      "type": "event",
-      "name": "Approval",
-      "inputs": [
-        {
-          "name": "owner",
-          "type": "address",
-          "indexed": true
-        },
-        {
-          "name": "spender",
-          "type": "address",
-          "indexed": true
-        },
-        {
-          "name": "amount",
-          "type": "uint256",
-          "indexed": false
-        }
-      ],
-      "anonymous": false
-    },
-    {
-      "type": "event",
-      "name": "Transfer",
-      "inputs": [
-        {
-          "name": "from",
-          "type": "address",
-          "indexed": true
-        },
-        {
-          "name": "to",
-          "type": "address",
-          "indexed": true
-        },
-        {
-          "name": "amount",
-          "type": "uint256",
-          "indexed": false
-        }
-      ],
-      "anonymous": false
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
-  "bin": "0x",
-  "bin-runtime": "0x"
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  }
 }
