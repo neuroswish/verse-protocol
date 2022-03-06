@@ -3,7 +3,7 @@
 /// Scared of the future while I hop in the DeLorean
 
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity >=0.8.10;
+pragma solidity ^0.8.11;
 
 import "./Clones.sol";
 import "./Cryptomedia.sol";

@@ -4,7 +4,7 @@
 /// You ain't accustomed to going through customs, you ain't been nowhere, huh?
 
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity >=0.8.10;
+pragma solidity ^0.8.11;
 
 import "./Exchange.sol";
 import "solmate/tokens/ERC721.sol";

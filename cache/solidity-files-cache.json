@@ -245,8 +245,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/BondingCurve.sol": {
-      "lastModificationDate": 1644682573398,
-      "contentHash": "b7c37e2df5b0a2c334498f0b092d2ed4",
+      "lastModificationDate": 1646594625760,
+      "contentHash": "e92c5b63c4645c42990631c0b3be6ccc",
       "sourceName": "src/BondingCurve.sol",
       "solcConfig": {
         "settings": {
@@ -273,7 +273,7 @@
       "imports": [
         "src/Power.sol"
       ],
-      "versionRequirement": ">=0.8.10",
+      "versionRequirement": "^0.8.11",
       "artifacts": {
         "BondingCurve": {
           "0.8.11+commit.d7f03943.Darwin.appleclang": "BondingCurve.sol/BondingCurve.json"
@@ -281,8 +281,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Clones.sol": {
-      "lastModificationDate": 1644683259709,
-      "contentHash": "0306d7ef8d542635d90ef2cdf70a59f6",
+      "lastModificationDate": 1646594646169,
+      "contentHash": "9385ff8ea23d0dcb4b5eb0ca3b96ab2e",
       "sourceName": "src/Clones.sol",
       "solcConfig": {
         "settings": {
@@ -307,7 +307,7 @@
         }
       },
       "imports": [],
-      "versionRequirement": ">=0.8.10",
+      "versionRequirement": "^0.8.11",
       "artifacts": {
         "Clones": {
           "0.8.11+commit.d7f03943.Darwin.appleclang": "Clones.sol/Clones.json"
@@ -315,8 +315,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Cryptomedia.sol": {
-      "lastModificationDate": 1644693701601,
-      "contentHash": "6ddc851102ccf30d49fa4c78776993f8",
+      "lastModificationDate": 1646594651546,
+      "contentHash": "9d11e2c48723e0ee9c652ace9bc0a691",
       "sourceName": "src/Cryptomedia.sol",
       "solcConfig": {
         "settings": {
@@ -351,7 +351,7 @@
         "src/interfaces/IBondingCurve.sol",
         "src/interfaces/ICryptomedia.sol"
       ],
-      "versionRequirement": ">=0.8.10",
+      "versionRequirement": "^0.8.11",
       "artifacts": {
         "Cryptomedia": {
           "0.8.11+commit.d7f03943.Darwin.appleclang": "Cryptomedia.sol/Cryptomedia.json"
@@ -359,8 +359,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
-      "lastModificationDate": 1644720806920,
-      "contentHash": "910823be812ac0cb549836dda2178703",
+      "lastModificationDate": 1646594655767,
+      "contentHash": "b16d9f0e58b729abb380c223fcfba785",
       "sourceName": "src/Exchange.sol",
       "solcConfig": {
         "settings": {
@@ -391,7 +391,7 @@
         "src/interfaces/IBondingCurve.sol",
         "src/interfaces/ICryptomedia.sol"
       ],
-      "versionRequirement": ">=0.8.10",
+      "versionRequirement": "^0.8.11",
       "artifacts": {
         "Exchange": {
           "0.8.11+commit.d7f03943.Darwin.appleclang": "Exchange.sol/Exchange.json"
@@ -399,8 +399,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/PairFactory.sol": {
-      "lastModificationDate": 1646121888915,
-      "contentHash": "b6f2865d55006714886fc8724cb4e8b8",
+      "lastModificationDate": 1646594661896,
+      "contentHash": "8db60990559b4c8f92c58459d901fa16",
       "sourceName": "src/PairFactory.sol",
       "solcConfig": {
         "settings": {
@@ -439,7 +439,7 @@
         "src/interfaces/IBondingCurve.sol",
         "src/interfaces/ICryptomedia.sol"
       ],
-      "versionRequirement": ">=0.8.10",
+      "versionRequirement": "^0.8.11",
       "artifacts": {
         "PairFactory": {
           "0.8.11+commit.d7f03943.Darwin.appleclang": "PairFactory.sol/PairFactory.json"
@@ -447,8 +447,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Power.sol": {
-      "lastModificationDate": 1644683159450,
-      "contentHash": "ea649cee24d5d2d839af41066b8fcb86",
+      "lastModificationDate": 1646594666450,
+      "contentHash": "506f96c4bd1663623dca5bec55ebe1e1",
       "sourceName": "src/Power.sol",
       "solcConfig": {
         "settings": {
@@ -473,7 +473,7 @@
         }
       },
       "imports": [],
-      "versionRequirement": ">=0.8.10",
+      "versionRequirement": "^0.8.11",
       "artifacts": {
         "Power": {
           "0.8.11+commit.d7f03943.Darwin.appleclang": "Power.sol/Power.json"
