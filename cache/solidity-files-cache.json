@@ -1,76 +1,691 @@
 {
-  "_format": "hh-sol-cache-2",
+  "_format": "ethers-rs-sol-cache-1",
   "files": {
-    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/contracts/Greeter.sol": {
-      "lastModificationDate": 1646239840561,
-      "contentHash": "54c28c84e5277b35b8c8329ce9755dae",
-      "sourceName": "contracts/Greeter.sol",
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/ds-test/src/test.sol": {
+      "lastModificationDate": 1644268597708,
+      "contentHash": "5d45a46528eaf8a26f0a8d93669f3148",
+      "sourceName": "lib/ds-test/src/test.sol",
       "solcConfig": {
-        "version": "0.8.4",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
             "*": {
+              "": [
+                "ast"
+              ],
               "*": [
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
+                "evm.methodIdentifiers"
               ]
             }
-          }
-        }
-      },
-      "imports": [
-        "hardhat/console.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Greeter"
-      ]
-    },
-    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/node_modules/hardhat/console.sol": {
-      "lastModificationDate": 1646239625915,
-      "contentHash": "cc4777addd464ea56fa35b1c45df0591",
-      "sourceName": "hardhat/console.sol",
-      "solcConfig": {
-        "version": "0.8.4",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
           },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
+          "evmVersion": "london"
         }
       },
       "imports": [],
       "versionPragmas": [
-        ">=0.4.22 <0.9.0"
+        ">=0.4.23"
       ],
       "artifacts": [
-        "console"
+        "DSTest"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/openzeppelin-contracts/contracts/utils/Counters.sol": {
+      "lastModificationDate": 1644442962820,
+      "contentHash": "74654e3ae5d7f39555055dfe244dab7a",
+      "sourceName": "lib/openzeppelin-contracts/contracts/utils/Counters.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Counters"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/openzeppelin-contracts/contracts/utils/Strings.sol": {
+      "lastModificationDate": 1644442962820,
+      "contentHash": "9c54c6c065d9e590fdcdd72c451425b9",
+      "sourceName": "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Strings"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/solmate/src/tokens/ERC20.sol": {
+      "lastModificationDate": 1644268672576,
+      "contentHash": "91ea2246e5200b324c1a07489a10f927",
+      "sourceName": "lib/solmate/src/tokens/ERC20.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.8.0"
+      ],
+      "artifacts": [
+        "ERC20"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/solmate/src/tokens/ERC721.sol": {
+      "lastModificationDate": 1644268672576,
+      "contentHash": "570fd56c160b36eedded340d7f877495",
+      "sourceName": "lib/solmate/src/tokens/ERC721.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.8.0"
+      ],
+      "artifacts": [
+        "ERC721",
+        "ERC721TokenReceiver"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/solmate/src/utils/ReentrancyGuard.sol": {
+      "lastModificationDate": 1644268672576,
+      "contentHash": "7c96522a6b8a885ee3c3f6df549ac9b8",
+      "sourceName": "lib/solmate/src/utils/ReentrancyGuard.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.8.0"
+      ],
+      "artifacts": [
+        "ReentrancyGuard"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/lib/solmate/src/utils/SafeTransferLib.sol": {
+      "lastModificationDate": 1644268672576,
+      "contentHash": "8ac1fce06c19b5865d5719986029f961",
+      "sourceName": "lib/solmate/src/utils/SafeTransferLib.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "../tokens/ERC20.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.0"
+      ],
+      "artifacts": [
+        "SafeTransferLib"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/BondingCurve.sol": {
+      "lastModificationDate": 1644682573398,
+      "contentHash": "b7c37e2df5b0a2c334498f0b092d2ed4",
+      "sourceName": "src/BondingCurve.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "./Power.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "BondingCurve"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Clones.sol": {
+      "lastModificationDate": 1644683259709,
+      "contentHash": "0306d7ef8d542635d90ef2cdf70a59f6",
+      "sourceName": "src/Clones.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "Clones"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Cryptomedia.sol": {
+      "lastModificationDate": 1644693701601,
+      "contentHash": "6ddc851102ccf30d49fa4c78776993f8",
+      "sourceName": "src/Cryptomedia.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "./Exchange.sol",
+        "solmate/tokens/ERC721.sol",
+        "@openzeppelin/contracts/utils/Counters.sol",
+        "@openzeppelin/contracts/utils/Strings.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "Cryptomedia"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
+      "lastModificationDate": 1644720806920,
+      "contentHash": "910823be812ac0cb549836dda2178703",
+      "sourceName": "src/Exchange.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "./interfaces/IBondingCurve.sol",
+        "./interfaces/ICryptomedia.sol",
+        "solmate/tokens/ERC20.sol",
+        "solmate/utils/ReentrancyGuard.sol",
+        "solmate/utils/SafeTransferLib.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "Exchange"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/PairFactory.sol": {
+      "lastModificationDate": 1646121888915,
+      "contentHash": "b6f2865d55006714886fc8724cb4e8b8",
+      "sourceName": "src/PairFactory.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "./Clones.sol",
+        "./Cryptomedia.sol",
+        "./Exchange.sol",
+        "./BondingCurve.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "PairFactory"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Power.sol": {
+      "lastModificationDate": 1644683159450,
+      "contentHash": "ea649cee24d5d2d839af41066b8fcb86",
+      "sourceName": "src/Power.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "Power"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/interfaces/IBondingCurve.sol": {
+      "lastModificationDate": 1644441887808,
+      "contentHash": "94956f7419ea6638663629d792f3adab",
+      "sourceName": "src/interfaces/IBondingCurve.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "IBondingCurve"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/interfaces/ICryptomedia.sol": {
+      "lastModificationDate": 1644445304438,
+      "contentHash": "5f4670ec464f08f04874ddfcf403c9b8",
+      "sourceName": "src/interfaces/ICryptomedia.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "ICryptomedia"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Cryptomedia.t.sol": {
+      "lastModificationDate": 1644694254870,
+      "contentHash": "21df5053d21b3e0df0f8d8584a3dcf39",
+      "sourceName": "src/test/Cryptomedia.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "ds-test/test.sol",
+        "../BondingCurve.sol",
+        "../PairFactory.sol",
+        "../Exchange.sol",
+        "../Cryptomedia.sol",
+        "./Utils/VM.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "CryptomediaTest"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Exchange.t.sol": {
+      "lastModificationDate": 1644720887041,
+      "contentHash": "31f5c7e3643cc117bf6984ee58a54899",
+      "sourceName": "src/test/Exchange.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "ds-test/test.sol",
+        "../BondingCurve.sol",
+        "../PairFactory.sol",
+        "../Exchange.sol",
+        "../Cryptomedia.sol",
+        "./Utils/VM.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "ExchangeTest"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/PairFactory.t.sol": {
+      "lastModificationDate": 1644693799707,
+      "contentHash": "702feb051c96efa331114420f50f017f",
+      "sourceName": "src/test/PairFactory.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "ds-test/test.sol",
+        "../BondingCurve.sol",
+        "../PairFactory.sol",
+        "../Exchange.sol",
+        "../Cryptomedia.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "PairFactoryTest"
+      ]
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Utils/VM.sol": {
+      "lastModificationDate": 1644557423763,
+      "contentHash": "c058ac72f464c2675025a2e7844f69c0",
+      "sourceName": "src/test/Utils/VM.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.8.10"
+      ],
+      "artifacts": [
+        "VM"
       ]
     }
   }
