@@ -9,6 +9,10 @@ pragma solidity ^0.8.11;
 import "./Exchange.sol";
 import "solmate/tokens/ERC721.sol";
 
+/// @title Cryptomedia
+/// @author neuroswish
+/// @notice NFT with an autonomous exchange
+
 contract Cryptomedia is ERC721 {
 
     // ======== Storage ========

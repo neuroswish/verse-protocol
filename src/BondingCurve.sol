@@ -5,7 +5,7 @@ pragma solidity ^0.8.11;
 
 /// @title Bonding Curve
 /// @author neuroswish
-/// @notice Bonding curve functions managing the purchase and sale of continuous tokens
+/// @notice Bonding curve functions governing the exchange of continuous tokens
 
 import "./Power.sol";
 

@@ -12,7 +12,11 @@ import "solmate/tokens/ERC20.sol";
 import "solmate/utils/ReentrancyGuard.sol";
 import "solmate/utils/SafeTransferLib.sol";
 
-contract Exchange is ERC20, ReentrancyGuard{
+/// @title Exchange
+/// @author neuroswish
+/// @notice Autonomous exchange for cryptomedia
+
+contract Exchange is ERC20, ReentrancyGuard {
 
     // ======== Storage ========
     address public immutable factory; // exchange factory address
