@@ -24,6 +24,8 @@ contract PairFactory {
     event PairCreated(
         address exchangeAddress,
         address cryptomediaAddress,
+        string name,
+        string symbol,
         address creator
     );
 
@@ -52,6 +54,6 @@ contract PairFactory {
         cryptomedia = Clones.clone(cryptomediaLogic);
         Exchange(exchange).initialize(_name, _symbol, _reserveRatio, _transactionShare, cryptomedia, msg.sender);
         Cryptomedia(cryptomedia).initialize(_name, _symbol, _baseURI, exchange);
-        emit PairCreated(exchange, cryptomedia, msg.sender);
+        emit PairCreated(exchange, cryptomedia, _name, _symbol, msg.sender);
     }
 }
