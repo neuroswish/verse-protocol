@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity >=0.8.10;
+pragma solidity ^0.8.11;
 
 interface IBondingCurve {
     function calculateInitializationReturn(uint256 _price, uint256 _reserveRatio, uint256 _slopeInit)
