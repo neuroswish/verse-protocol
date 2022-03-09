@@ -11,6 +11,11 @@
           "internalType": "uint256",
           "name": "_reserveRatio",
           "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_slopeInit",
+          "type": "uint256"
         }
       ],
       "name": "calculateInitializationReturn",

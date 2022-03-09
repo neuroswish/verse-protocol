@@ -36,7 +36,7 @@ contract PairFactory {
         Cryptomedia cryptomediaLogic_ = new Cryptomedia(address(this));
         exchangeLogic = address(exchangeLogic_);
         cryptomediaLogic = address(cryptomediaLogic_);
-        exchangeLogic_.initialize("Verse", "VERSE", 242424, 0, cryptomediaLogic, address(this));
+        exchangeLogic_.initialize("Verse", "VERSE", 242424, 724223089680545, 0, cryptomediaLogic, address(this));
         cryptomediaLogic_.initialize("Verse", "VERSE", "verse.xyz", exchangeLogic);
     }
 
@@ -45,6 +45,7 @@ contract PairFactory {
         string calldata _name,
         string calldata _symbol,
         uint256 _reserveRatio,
+        uint256 _slopeInit,
         uint256 _transactionShare,
         string calldata _baseURI
     ) external returns (address exchange, address cryptomedia) {
@@ -52,7 +53,7 @@ contract PairFactory {
         require(_reserveRatio <= 1000000, "INVALID_RESERVE_RATIO");
         exchange = Clones.clone(exchangeLogic);
         cryptomedia = Clones.clone(cryptomediaLogic);
-        Exchange(exchange).initialize(_name, _symbol, _reserveRatio, _transactionShare, cryptomedia, msg.sender);
+        Exchange(exchange).initialize(_name, _symbol, _reserveRatio, _slopeInit, _transactionShare, cryptomedia, msg.sender);
         Cryptomedia(cryptomedia).initialize(_name, _symbol, _baseURI, exchange);
         emit PairCreated(exchange, cryptomedia, _name, _symbol, msg.sender);
     }

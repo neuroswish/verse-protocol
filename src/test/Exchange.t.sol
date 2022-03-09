@@ -25,7 +25,7 @@ contract ExchangeTest is DSTest {
         // Deploy exchange and cryptomedia
         bondingCurve = new BondingCurve();
         pairFactory = new PairFactory(address(bondingCurve));
-        (exchangeAddress, cryptomediaAddress) = pairFactory.create("Verse", "VERSE", 242424, 500, "verse.xyz");
+        (exchangeAddress, cryptomediaAddress) = pairFactory.create("Verse", "VERSE", 242424, 724223089680545, 500, "verse.xyz");
         exchange = Exchange(exchangeAddress);
         cryptomedia = Cryptomedia(cryptomediaAddress);
 
@@ -35,9 +35,9 @@ contract ExchangeTest is DSTest {
     }
 
     // Non-factory address cannot call initialize function
-    function testFail_Initialize(string memory _name, string memory _symbol, uint256 _reserveRatio, uint256 _transactionShare, address _cryptomedia, address _creator) public {
+    function testFail_Initialize(string memory _name, string memory _symbol, uint256 _reserveRatio, uint256 _slopeInit, uint256 _transactionShare, address _cryptomedia, address _creator) public {
         vm.prank(address(0));
-        exchange.initialize(_name, _symbol, _reserveRatio, _transactionShare, _cryptomedia, _creator);
+        exchange.initialize(_name, _symbol, _reserveRatio, _slopeInit, _transactionShare, _cryptomedia, _creator);
     }
     
     // User can buy tokens and initialize token supply

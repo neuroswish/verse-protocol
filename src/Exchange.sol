@@ -24,6 +24,7 @@ contract Exchange is ERC20, ReentrancyGuard {
     address public creator; // cryptomedia creator
     address public cryptomedia; // cryptomedia address
     uint256 public reserveRatio; // reserve ratio of token market cap to ETH pool
+    uint256 public slopeInit; // slope value to initialize supply
     uint256 public poolBalance; // ETH balance in contract pool
     uint256 public transactionShare; // creator transaction share basis points
 
@@ -61,6 +62,7 @@ contract Exchange is ERC20, ReentrancyGuard {
         string calldata _name,
         string calldata _symbol,
         uint256 _reserveRatio,
+        uint256 _slopeInit,
         uint256 _transactionShare,
         address _cryptomedia,
         address _creator
@@ -69,6 +71,7 @@ contract Exchange is ERC20, ReentrancyGuard {
         name = _name;
         symbol = _symbol;
         reserveRatio = _reserveRatio;
+        slopeInit = _slopeInit;
         transactionShare = _transactionShare;
         cryptomedia = _cryptomedia;
         creator = _creator;
@@ -89,7 +92,7 @@ contract Exchange is ERC20, ReentrancyGuard {
         if (totalSupply == 0 || poolBalance == 0) {
             require(buyAmount >= 1 * (10**15), "INSUFFICIENT_INITIAL_PRICE");
             tokensReturned = IBondingCurve(bondingCurve)
-                .calculateInitializationReturn(buyAmount / (10**15), reserveRatio);
+                .calculateInitializationReturn(buyAmount / (10**15), reserveRatio, slopeInit);
             tokensReturned = tokensReturned * (10**15);
         } else {
             tokensReturned = IBondingCurve(bondingCurve)

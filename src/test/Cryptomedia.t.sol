@@ -25,7 +25,7 @@ contract CryptomediaTest is DSTest {
         // Deploy exchange and cryptomedia
         bondingCurve = new BondingCurve();
         pairFactory = new PairFactory(address(bondingCurve));
-        (exchangeAddress, cryptomediaAddress) = pairFactory.create("Verse", "VERSE", 242424, 0, "verse.xyz");
+        (exchangeAddress, cryptomediaAddress) = pairFactory.create("Verse", "VERSE", 242424, 724223089680545, 0, "verse.xyz");
         exchange = Exchange(exchangeAddress);
         cryptomedia = Cryptomedia(cryptomediaAddress);
         

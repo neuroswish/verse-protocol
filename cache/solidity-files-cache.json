@@ -177,8 +177,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/BondingCurve.sol": {
-      "lastModificationDate": 1646629659268,
-      "contentHash": "e228209b9749c0b374e495729292ac85",
+      "lastModificationDate": 1646869692589,
+      "contentHash": "9f695df11e9a9a6d696c9631c4cc58b0",
       "sourceName": "src/BondingCurve.sol",
       "solcConfig": {
         "settings": {
@@ -289,8 +289,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
-      "lastModificationDate": 1646624280344,
-      "contentHash": "578e28307672e2224b2c22a9834b6ef8",
+      "lastModificationDate": 1646866251666,
+      "contentHash": "2a27c677f98746ccb610411a82cb78db",
       "sourceName": "src/Exchange.sol",
       "solcConfig": {
         "settings": {
@@ -329,8 +329,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/PairFactory.sol": {
-      "lastModificationDate": 1646623872462,
-      "contentHash": "5c16cb9babfd2280ea2e6b4cec6e5088",
+      "lastModificationDate": 1646866269965,
+      "contentHash": "897a3626e09769004eb5a9de8a7a51b4",
       "sourceName": "src/PairFactory.sol",
       "solcConfig": {
         "settings": {
@@ -409,8 +409,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/interfaces/IBondingCurve.sol": {
-      "lastModificationDate": 1644441887808,
-      "contentHash": "94956f7419ea6638663629d792f3adab",
+      "lastModificationDate": 1646866214728,
+      "contentHash": "feca9743db369d3a305fb77e7c976b7f",
       "sourceName": "src/interfaces/IBondingCurve.sol",
       "solcConfig": {
         "settings": {
@@ -477,8 +477,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Cryptomedia.t.sol": {
-      "lastModificationDate": 1646599745175,
-      "contentHash": "795074a1910e8d5a00dab0f29a708ae6",
+      "lastModificationDate": 1646866385389,
+      "contentHash": "751a130270230465c241f5414479d5ed",
       "sourceName": "src/test/Cryptomedia.t.sol",
       "solcConfig": {
         "settings": {
@@ -526,8 +526,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Exchange.t.sol": {
-      "lastModificationDate": 1646590142726,
-      "contentHash": "3e3131b0cff8122db6d5f69f28e6ad8b",
+      "lastModificationDate": 1646866349471,
+      "contentHash": "e7e13c3c17d37e5575023bc1538d4715",
       "sourceName": "src/test/Exchange.t.sol",
       "solcConfig": {
         "settings": {
@@ -575,8 +575,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/PairFactory.t.sol": {
-      "lastModificationDate": 1646590365170,
-      "contentHash": "b5f408bb21a7c3570da85a15b44908d4",
+      "lastModificationDate": 1646866286424,
+      "contentHash": "6a9bfeb1eb2836f72f11de2dfdc4c842",
       "sourceName": "src/test/PairFactory.t.sol",
       "solcConfig": {
         "settings": {

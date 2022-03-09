@@ -26,7 +26,7 @@ contract PairFactoryTest is DSTest {
         string memory _baseURI
     ) public {
         if (_reserveRatio <= 1000000 && _transactionShare <= 10000 ) {
-            (exchange, cryptomedia) = pairFactory.create(_name, _symbol, _reserveRatio, _transactionShare, _baseURI);
+            (exchange, cryptomedia) = pairFactory.create(_name, _symbol, _reserveRatio, 724223089680545, _transactionShare, _baseURI);
             require(exchange != address(0));
             require(cryptomedia != address(0));
         }

@@ -2,7 +2,7 @@
 pragma solidity >=0.8.10;
 
 interface IBondingCurve {
-    function calculateInitializationReturn(uint256 _price, uint256 _reserveRatio)
+    function calculateInitializationReturn(uint256 _price, uint256 _reserveRatio, uint256 _slopeInit)
         external
         view
         returns (uint256);
