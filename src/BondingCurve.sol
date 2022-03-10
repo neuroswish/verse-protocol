@@ -149,14 +149,21 @@ contract BondingCurve is Power {
         return (temp >> precision);
     }
 
-    function calculateInitializationPrice(uint256 _reserveRatio, uint256 _slopeInit)
+    function calculateInitializationPrice(uint256 _tokens, uint256 _reserveRatio, uint256 _slopeInit)
         public
-        pure
+        view
         returns (uint256)
     {
         if (_reserveRatio == maxRatio) {
-            return (_slopeInit);
+            return (_tokens / _slopeInit);
         }
-        return ((_reserveRatio * _slopeInit) / maxRatio);
+        (uint256 result, uint8 precision) = power(
+            _tokens,
+            (1 ether),
+            maxRatio,
+            _reserveRatio
+        );
+        uint256 temp = result >> precision;
+        return ((_reserveRatio * temp) / (maxRatio * _slopeInit));
     }
 }

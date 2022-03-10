@@ -177,8 +177,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/BondingCurve.sol": {
-      "lastModificationDate": 1646869692589,
-      "contentHash": "9f695df11e9a9a6d696c9631c4cc58b0",
+      "lastModificationDate": 1646920219646,
+      "contentHash": "db7aada243b1d7fc41672bc9a015c46c",
       "sourceName": "src/BondingCurve.sol",
       "solcConfig": {
         "settings": {
@@ -409,8 +409,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/interfaces/IBondingCurve.sol": {
-      "lastModificationDate": 1646866214728,
-      "contentHash": "feca9743db369d3a305fb77e7c976b7f",
+      "lastModificationDate": 1646869788820,
+      "contentHash": "e48459a486c081b2400653afa1d4d2ca",
       "sourceName": "src/interfaces/IBondingCurve.sol",
       "solcConfig": {
         "settings": {
@@ -435,7 +435,7 @@
         }
       },
       "imports": [],
-      "versionRequirement": ">=0.8.10",
+      "versionRequirement": "^0.8.11",
       "artifacts": {
         "IBondingCurve": {
           "0.8.11+commit.d7f03943.Darwin.appleclang": "IBondingCurve.sol/IBondingCurve.json"
@@ -443,8 +443,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/interfaces/ICryptomedia.sol": {
-      "lastModificationDate": 1644445304438,
-      "contentHash": "5f4670ec464f08f04874ddfcf403c9b8",
+      "lastModificationDate": 1646869795512,
+      "contentHash": "6a870b6b89b9b5f8ed7692122ff88810",
       "sourceName": "src/interfaces/ICryptomedia.sol",
       "solcConfig": {
         "settings": {
@@ -469,7 +469,7 @@
         }
       },
       "imports": [],
-      "versionRequirement": ">=0.8.10",
+      "versionRequirement": "^0.8.11",
       "artifacts": {
         "ICryptomedia": {
           "0.8.11+commit.d7f03943.Darwin.appleclang": "ICryptomedia.sol/ICryptomedia.json"
