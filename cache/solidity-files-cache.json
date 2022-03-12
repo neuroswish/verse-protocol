@@ -177,8 +177,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/BondingCurve.sol": {
-      "lastModificationDate": 1646920219646,
-      "contentHash": "db7aada243b1d7fc41672bc9a015c46c",
+      "lastModificationDate": 1646942617673,
+      "contentHash": "594939b30ed4288756f774bcb7acfc08",
       "sourceName": "src/BondingCurve.sol",
       "solcConfig": {
         "settings": {
@@ -473,6 +473,55 @@
       "artifacts": {
         "ICryptomedia": {
           "0.8.11+commit.d7f03943.Darwin.appleclang": "ICryptomedia.sol/ICryptomedia.json"
+        }
+      }
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/BondingCurve.t.sol": {
+      "lastModificationDate": 1646942244281,
+      "contentHash": "9d197fe3d521358923bc8c7dd6f887f2",
+      "sourceName": "src/test/BondingCurve.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "lib/ds-test/src/test.sol",
+        "lib/solmate/src/tokens/ERC20.sol",
+        "lib/solmate/src/tokens/ERC721.sol",
+        "lib/solmate/src/utils/ReentrancyGuard.sol",
+        "lib/solmate/src/utils/SafeTransferLib.sol",
+        "src/BondingCurve.sol",
+        "src/Clones.sol",
+        "src/Cryptomedia.sol",
+        "src/Exchange.sol",
+        "src/PairFactory.sol",
+        "src/Power.sol",
+        "src/interfaces/IBondingCurve.sol",
+        "src/interfaces/ICryptomedia.sol",
+        "src/test/Utils/VM.sol"
+      ],
+      "versionRequirement": ">=0.8.10",
+      "artifacts": {
+        "BondingCurveTest": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "BondingCurve.t.sol/BondingCurveTest.json"
         }
       }
     },

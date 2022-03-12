@@ -159,11 +159,13 @@ contract BondingCurve is Power {
         }
         (uint256 result, uint8 precision) = power(
             _tokens,
-            (1 ether),
+            (10**3),
             maxRatio,
             _reserveRatio
         );
         uint256 temp = result >> precision;
-        return ((_reserveRatio * temp) / (maxRatio * _slopeInit));
+        //uint256 slopeFactor = 221;
+        return (temp * _reserveRatio) / maxRatio;
+        //return ((_reserveRatio * temp) / (maxRatio * _slopeInit));
     }
 }
