@@ -65,5 +65,8 @@ contract Cryptomedia is ERC721 {
         require(ownerOf[tokenId] != address(0), "TOKEN_DOES_NOT_EXIST"); 
         return bytes(baseURI).length > 0 ? baseURI : "";
     }
+
+    mapping(address => bool) connection;
+    // owner would have to call an "addConnection" function to add an external contract as a connection 
 }
 
