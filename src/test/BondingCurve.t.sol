@@ -24,12 +24,24 @@ contract BondingCurveTest is DSTest {
 
         // Deploy exchange and cryptomedia
         bondingCurve = new BondingCurve();
+        // Set user balances
+        vm.deal(address(1), 100 ether);
+        vm.deal(address(2), 100 ether);
     }
     // make sure exchange can call mint function
-    function test_getInitialPrice() public {
-        uint256 price = bondingCurve.calculateInitializationPrice(30120, 242424, 724223089680545);
-        emit log_uint(price);
+    // function test_getInitialPrice() public {
+    //     uint256 price = bondingCurve.calculateInitializationPrice(30120, 242424, 724223089680545);
+    //     emit log_uint(price);
+    // }
 
+    function test_getTokensForEth() public {
+        uint256 tokens = bondingCurve.calculatePurchaseReturn(19360000000000000000, 161522353159983588, 242424, 17000000000000000000);
+        emit log_uint(tokens);
+    }
+
+    function test_getEthForTokens() public {
+        uint256 eth = bondingCurve.calculatePurchasePrice(19360000000000000000, 161522353159983588, 242424, 40637716687212255142);
+        emit log_uint(eth);
     }
 
     receive() external payable {}
