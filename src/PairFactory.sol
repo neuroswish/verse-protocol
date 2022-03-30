@@ -16,11 +16,19 @@ import "./BondingCurve.sol";
 
 contract PairFactory {
     // ======== Storage ========
-    address public immutable hyperobjectLogic;
-    address public immutable exchangeLogic;
-    address public immutable bondingCurve;
+    address public immutable hyperobjectLogic; // hyperobject logic contract
+    address public immutable exchangeLogic; // exchange logic contract
+    address public immutable bondingCurve; // bonding curve logic contract
 
     // ======== Events ========
+
+    /// @notice Emitted when a pair is created
+	/// @param exchangeAddress Exchange logic address
+    /// @param hyperobjectAddress Hyperobject logic address
+    /// @param name pair name
+    /// @param symbol pair symbol
+    /// @param creator pair creator
+
     event PairCreated(
         address exchangeAddress,
         address hyperobjectAddress,
@@ -30,6 +38,9 @@ contract PairFactory {
     );
 
     // ======== Constructor ========
+    /// @notice Set bonding curve address
+    /// @param _bondingCurve Bonding curve address
+
     constructor(address _bondingCurve) {
         bondingCurve = _bondingCurve;
         Exchange exchangeLogic_ = new Exchange(address(this), _bondingCurve);
@@ -41,6 +52,16 @@ contract PairFactory {
     }
 
     // ======== Create Hyperobject Clone ========
+
+    /// @notice Deploy a new Pair
+    /// @param _name Pair name
+    /// @param _symbol Pair symbol
+    /// @param _reserveRatio Reserve ratio
+    /// @param _slopeInit Initial slope value to determine price curve
+    /// @param _transactionShare Transaction share
+    /// @param _baseURI Hyperobject base URI
+    /// @dev emits a PairCreated event upon success; callable by anyone
+
     function create(
         string calldata _name,
         string calldata _symbol,

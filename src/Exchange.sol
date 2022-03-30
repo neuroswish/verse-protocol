@@ -19,7 +19,6 @@ import "solmate/utils/SafeTransferLib.sol";
 contract Exchange is ERC20, ReentrancyGuard {
 
     // ======== Storage ========
-    
     address public immutable factory; // exchange factory address
     address public immutable bondingCurve; // bonding curve address
     address public creator; // hyperobject creator
@@ -69,7 +68,6 @@ contract Exchange is ERC20, ReentrancyGuard {
     );
 
     // ======== Constructor ========
-
     /// @notice Set factory and bonding curve addresses
     /// @param _factory Factory address
     /// @param _bondingCurve Bonding curve address
@@ -80,7 +78,6 @@ contract Exchange is ERC20, ReentrancyGuard {
     }
 
     // ======== Initializer ========
-
     /// @notice Initialize a new exchange
     /// @param _name Hyperobject name
     /// @param _symbol Hyperobject symbol

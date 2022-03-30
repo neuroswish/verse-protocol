@@ -22,11 +22,21 @@ contract Hyperobject is ERC721 {
     uint256 currentTokenId; // Counter keeping track of last minted token id
 
     // ======== Constructor ========
+    /// @notice Set factory address
+    /// @param _factory Factory address
+
     constructor(address _factory) ERC721("Verse", "VERSE") {
         factory = _factory;
      }
 
     // ======== Initializer ========
+    /// @notice Initialize a new exchange
+    /// @param _name Hyperobject name
+    /// @param _symbol Hyperobject symbol
+    /// @param _baseURI Token base URI
+    /// @param _exchange Exchange address
+    /// @dev Called by factory at time of deployment
+
     function initialize(
         string calldata _name,
         string calldata _symbol,
@@ -41,29 +51,31 @@ contract Hyperobject is ERC721 {
         currentTokenId++;
     }
 
-    // ======== Modifier ========
-    /**
-    * @notice Authorize exchange contract to call functions
-    */
+    // ======== Modifiers ========
+    
+    /// @notice Authorize exchange contract to call functions
+
     modifier onlyExchange() {
         require(msg.sender == exchange, "UNAUTHORIZED");
         _;
     }
 
     // ======== Functions ========
-    /**
-    * @notice Mint NFT for recipient redeeming 1 exchange token
-    */
+
+    /// @notice Mint NFT
+    /// @param _recipient NFT recipient
+    /// @dev Increments currentTokenId
+
     function mint(address _recipient) external onlyExchange {
         require(_recipient != address(0), "INVALID_RECIPIENT");
         _mint(_recipient, currentTokenId++);
     }
 
-    /**
-    * @notice Return tokenURI for NFT
-    */
-    function tokenURI(uint256 tokenId) public view override returns (string memory) {
-        require(ownerOf[tokenId] != address(0), "TOKEN_DOES_NOT_EXIST"); 
+    /// @notice Retrieve token URI for specified NFT
+    /// @param _tokenId token id
+
+    function tokenURI(uint256 _tokenId) public view override returns (string memory) {
+        require(ownerOf[_tokenId] != address(0), "TOKEN_DOES_NOT_EXIST"); 
         return bytes(baseURI).length > 0 ? baseURI : "";
     }
 
