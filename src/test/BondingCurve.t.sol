@@ -5,7 +5,7 @@ import "ds-test/test.sol";
 import "../BondingCurve.sol";
 import "../PairFactory.sol";
 import "../Exchange.sol";
-import "../Cryptomedia.sol";
+import "../Hyperobject.sol";
 import {VM} from "./Utils/VM.sol";
 
 contract BondingCurveTest is DSTest {
@@ -13,7 +13,7 @@ contract BondingCurveTest is DSTest {
     BondingCurve bondingCurve;
     PairFactory pairFactory;
     Exchange exchange;
-    Cryptomedia cryptomedia;
+    Hyperobject hyperobject;
     address exchangeAddress;
     address cryptomediaAddress;
 

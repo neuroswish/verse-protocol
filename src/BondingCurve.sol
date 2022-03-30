@@ -12,9 +12,11 @@ import "./Power.sol";
 contract BondingCurve is Power {
 
     // ======== Storage ========
+
     uint256 public constant maxRatio = 1000000; // Maximum reserve ratio
 
     // ======== Errors ========
+
 	/// @notice Thrown when supply input is invalid
 	error InvalidSupply();
 
@@ -29,7 +31,6 @@ contract BondingCurve is Power {
 	/// @param _reserveRatio Reserve ratio
     /// @param _price ETH sent to contract in exchange for tokens
 	/// @return Tokens
-
     function calculatePurchaseReturn(
         uint256 _supply,
         uint256 _poolBalance,
@@ -54,7 +55,6 @@ contract BondingCurve is Power {
 	/// @param _reserveRatio Reserve ratio
     /// @param _tokens Specified amount of tokens to purchase
 	/// @return ETH
-
     function calculatePurchasePrice(
         uint256 _supply,
         uint256 _poolBalance,
@@ -79,7 +79,6 @@ contract BondingCurve is Power {
 	/// @param _reserveRatio Reserve ratio
     /// @param _tokens Tokens sent to contract in exchange for ETH
 	/// @return ETH
-
     function calculateSaleReturn(
         uint256 _supply,
         uint256 _poolBalance,
@@ -106,7 +105,6 @@ contract BondingCurve is Power {
 	/// @param _reserveRatio Reserve ratio
     /// @param _price Specified amount of ETH to receive
 	/// @return Tokens
-
     function calculateSalePrice(
         uint256 _supply,
         uint256 _poolBalance,
@@ -134,7 +132,6 @@ contract BondingCurve is Power {
 	/// @param _reserveRatio Reserve ratio
     /// @param _slopeInit Initial slope value to determine price curve
 	/// @return Tokens
-
     function calculateInitializationReturn(uint256 _price, uint256 _reserveRatio, uint256 _slopeInit)
         public
         view

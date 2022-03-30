@@ -72,7 +72,8 @@ contract HyperobjectTest is DSTest {
         exchange.buy{value: 1 ether}(1);
         exchange.redeem();
         hyperobject.tokenURI(2);
-        vm.expectRevert("TOKEN_DOES_NOT_EXIST");
+        //vm.expectRevert("TOKEN_DOES_NOT_EXIST");
+        vm.expectRevert(abi.encodeWithSignature('InvalidTokenId()'));
         hyperobject.tokenURI(3);
     }
 

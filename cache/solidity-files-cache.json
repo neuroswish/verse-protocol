@@ -177,8 +177,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/BondingCurve.sol": {
-      "lastModificationDate": 1647988440548,
-      "contentHash": "e291fe3a4420a25e866d56312ef5bf0b",
+      "lastModificationDate": 1648661164235,
+      "contentHash": "1c519fa5205902ed40d233e64aa3c0ed",
       "sourceName": "src/BondingCurve.sol",
       "solcConfig": {
         "settings": {
@@ -246,10 +246,50 @@
         }
       }
     },
-    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Cryptomedia.sol": {
-      "lastModificationDate": 1648646743211,
-      "contentHash": "dd0d9bef6307c77e624515048fd5b963",
-      "sourceName": "src/Cryptomedia.sol",
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
+      "lastModificationDate": 1648662287975,
+      "contentHash": "13414f904c8db02d9a119675e938f223",
+      "sourceName": "src/Exchange.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "lib/solmate/src/tokens/ERC20.sol",
+        "lib/solmate/src/utils/ReentrancyGuard.sol",
+        "lib/solmate/src/utils/SafeTransferLib.sol",
+        "src/interfaces/IBondingCurve.sol",
+        "src/interfaces/IHyperobject.sol"
+      ],
+      "versionRequirement": "^0.8.11",
+      "artifacts": {
+        "Exchange": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "Exchange.sol/Exchange.json"
+        }
+      }
+    },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Hyperobject.sol": {
+      "lastModificationDate": 1648661474063,
+      "contentHash": "663e00fe210966b90a44840893ee3a43",
+      "sourceName": "src/Hyperobject.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -279,58 +319,18 @@
         "lib/solmate/src/utils/SafeTransferLib.sol",
         "src/Exchange.sol",
         "src/interfaces/IBondingCurve.sol",
-        "src/interfaces/ICryptomedia.sol"
+        "src/interfaces/IHyperobject.sol"
       ],
       "versionRequirement": "^0.8.11",
       "artifacts": {
-        "Cryptomedia": {
-          "0.8.11+commit.d7f03943.Darwin.appleclang": "Cryptomedia.sol/Cryptomedia.json"
-        }
-      }
-    },
-    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
-      "lastModificationDate": 1646866251666,
-      "contentHash": "2a27c677f98746ccb610411a82cb78db",
-      "sourceName": "src/Exchange.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ]
-            }
-          },
-          "evmVersion": "london"
-        }
-      },
-      "imports": [
-        "lib/solmate/src/tokens/ERC20.sol",
-        "lib/solmate/src/utils/ReentrancyGuard.sol",
-        "lib/solmate/src/utils/SafeTransferLib.sol",
-        "src/interfaces/IBondingCurve.sol",
-        "src/interfaces/ICryptomedia.sol"
-      ],
-      "versionRequirement": "^0.8.11",
-      "artifacts": {
-        "Exchange": {
-          "0.8.11+commit.d7f03943.Darwin.appleclang": "Exchange.sol/Exchange.json"
+        "Hyperobject": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "Hyperobject.sol/Hyperobject.json"
         }
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/PairFactory.sol": {
-      "lastModificationDate": 1646866269965,
-      "contentHash": "897a3626e09769004eb5a9de8a7a51b4",
+      "lastModificationDate": 1648661689439,
+      "contentHash": "6e27e5aae2f0cd768e211acb99a3be41",
       "sourceName": "src/PairFactory.sol",
       "solcConfig": {
         "settings": {
@@ -361,11 +361,11 @@
         "lib/solmate/src/utils/SafeTransferLib.sol",
         "src/BondingCurve.sol",
         "src/Clones.sol",
-        "src/Cryptomedia.sol",
         "src/Exchange.sol",
+        "src/Hyperobject.sol",
         "src/Power.sol",
         "src/interfaces/IBondingCurve.sol",
-        "src/interfaces/ICryptomedia.sol"
+        "src/interfaces/IHyperobject.sol"
       ],
       "versionRequirement": "^0.8.11",
       "artifacts": {
@@ -442,10 +442,10 @@
         }
       }
     },
-    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/interfaces/ICryptomedia.sol": {
-      "lastModificationDate": 1646869795512,
-      "contentHash": "6a870b6b89b9b5f8ed7692122ff88810",
-      "sourceName": "src/interfaces/ICryptomedia.sol",
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/interfaces/IHyperobject.sol": {
+      "lastModificationDate": 1648650520298,
+      "contentHash": "f6216e91d35b8061b0e694d39102f32b",
+      "sourceName": "src/interfaces/IHyperobject.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -471,14 +471,14 @@
       "imports": [],
       "versionRequirement": "^0.8.11",
       "artifacts": {
-        "ICryptomedia": {
-          "0.8.11+commit.d7f03943.Darwin.appleclang": "ICryptomedia.sol/ICryptomedia.json"
+        "IHyperobject": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "IHyperobject.sol/IHyperobject.json"
         }
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/BondingCurve.t.sol": {
-      "lastModificationDate": 1648648128302,
-      "contentHash": "7c778dd1d18cea2e3a6b3e801da59ddd",
+      "lastModificationDate": 1648662076099,
+      "contentHash": "371a70790871710ceda28d289b5e0139",
       "sourceName": "src/test/BondingCurve.t.sol",
       "solcConfig": {
         "settings": {
@@ -510,12 +510,12 @@
         "lib/solmate/src/utils/SafeTransferLib.sol",
         "src/BondingCurve.sol",
         "src/Clones.sol",
-        "src/Cryptomedia.sol",
         "src/Exchange.sol",
+        "src/Hyperobject.sol",
         "src/PairFactory.sol",
         "src/Power.sol",
         "src/interfaces/IBondingCurve.sol",
-        "src/interfaces/ICryptomedia.sol",
+        "src/interfaces/IHyperobject.sol",
         "src/test/Utils/VM.sol"
       ],
       "versionRequirement": ">=0.8.10",
@@ -525,58 +525,9 @@
         }
       }
     },
-    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Cryptomedia.t.sol": {
-      "lastModificationDate": 1648646896880,
-      "contentHash": "56c8ed2312fb0dbfc724bf240a1fdbac",
-      "sourceName": "src/test/Cryptomedia.t.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ]
-            }
-          },
-          "evmVersion": "london"
-        }
-      },
-      "imports": [
-        "lib/ds-test/src/test.sol",
-        "lib/solmate/src/tokens/ERC20.sol",
-        "lib/solmate/src/tokens/ERC721.sol",
-        "lib/solmate/src/utils/ReentrancyGuard.sol",
-        "lib/solmate/src/utils/SafeTransferLib.sol",
-        "src/BondingCurve.sol",
-        "src/Clones.sol",
-        "src/Cryptomedia.sol",
-        "src/Exchange.sol",
-        "src/PairFactory.sol",
-        "src/Power.sol",
-        "src/interfaces/IBondingCurve.sol",
-        "src/interfaces/ICryptomedia.sol",
-        "src/test/Utils/VM.sol"
-      ],
-      "versionRequirement": ">=0.8.10",
-      "artifacts": {
-        "CryptomediaTest": {
-          "0.8.11+commit.d7f03943.Darwin.appleclang": "Cryptomedia.t.sol/CryptomediaTest.json"
-        }
-      }
-    },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Exchange.t.sol": {
-      "lastModificationDate": 1646866349471,
-      "contentHash": "e7e13c3c17d37e5575023bc1538d4715",
+      "lastModificationDate": 1648662344887,
+      "contentHash": "acfc20a07be07b24c54b44eb6d71ee4e",
       "sourceName": "src/test/Exchange.t.sol",
       "solcConfig": {
         "settings": {
@@ -608,12 +559,12 @@
         "lib/solmate/src/utils/SafeTransferLib.sol",
         "src/BondingCurve.sol",
         "src/Clones.sol",
-        "src/Cryptomedia.sol",
         "src/Exchange.sol",
+        "src/Hyperobject.sol",
         "src/PairFactory.sol",
         "src/Power.sol",
         "src/interfaces/IBondingCurve.sol",
-        "src/interfaces/ICryptomedia.sol",
+        "src/interfaces/IHyperobject.sol",
         "src/test/Utils/VM.sol"
       ],
       "versionRequirement": ">=0.8.10",
@@ -623,9 +574,58 @@
         }
       }
     },
+    "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/Hyperobject.t.sol": {
+      "lastModificationDate": 1648662041059,
+      "contentHash": "912ed88c9d0b93867f6938f31e385682",
+      "sourceName": "src/test/Hyperobject.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "lib/ds-test/src/test.sol",
+        "lib/solmate/src/tokens/ERC20.sol",
+        "lib/solmate/src/tokens/ERC721.sol",
+        "lib/solmate/src/utils/ReentrancyGuard.sol",
+        "lib/solmate/src/utils/SafeTransferLib.sol",
+        "src/BondingCurve.sol",
+        "src/Clones.sol",
+        "src/Exchange.sol",
+        "src/Hyperobject.sol",
+        "src/PairFactory.sol",
+        "src/Power.sol",
+        "src/interfaces/IBondingCurve.sol",
+        "src/interfaces/IHyperobject.sol",
+        "src/test/Utils/VM.sol"
+      ],
+      "versionRequirement": ">=0.8.10",
+      "artifacts": {
+        "HyperobjectTest": {
+          "0.8.11+commit.d7f03943.Darwin.appleclang": "Hyperobject.t.sol/HyperobjectTest.json"
+        }
+      }
+    },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/test/PairFactory.t.sol": {
-      "lastModificationDate": 1646866286424,
-      "contentHash": "6a9bfeb1eb2836f72f11de2dfdc4c842",
+      "lastModificationDate": 1648650855005,
+      "contentHash": "e49b2b8f801bec600129a141c3fae836",
       "sourceName": "src/test/PairFactory.t.sol",
       "solcConfig": {
         "settings": {
@@ -657,12 +657,12 @@
         "lib/solmate/src/utils/SafeTransferLib.sol",
         "src/BondingCurve.sol",
         "src/Clones.sol",
-        "src/Cryptomedia.sol",
         "src/Exchange.sol",
+        "src/Hyperobject.sol",
         "src/PairFactory.sol",
         "src/Power.sol",
         "src/interfaces/IBondingCurve.sol",
-        "src/interfaces/ICryptomedia.sol"
+        "src/interfaces/IHyperobject.sol"
       ],
       "versionRequirement": ">=0.8.10",
       "artifacts": {

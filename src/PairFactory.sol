@@ -15,10 +15,20 @@ import "./BondingCurve.sol";
 /// @notice Factory to deploy pairs of hyperobject and exchange clones
 
 contract PairFactory {
+
     // ======== Storage ========
+
     address public immutable hyperobjectLogic; // hyperobject logic contract
     address public immutable exchangeLogic; // exchange logic contract
     address public immutable bondingCurve; // bonding curve logic contract
+
+    // ======== Errors ========
+
+	/// @notice Thrown when transaction share percentage is invalid
+	error InvalidPercentage();
+
+	/// @notice Thrown when reserve ratio is invalid
+	error InvalidReserveRatio();
 
     // ======== Events ========
 
@@ -28,7 +38,6 @@ contract PairFactory {
     /// @param name pair name
     /// @param symbol pair symbol
     /// @param creator pair creator
-
     event PairCreated(
         address exchangeAddress,
         address hyperobjectAddress,
@@ -38,9 +47,9 @@ contract PairFactory {
     );
 
     // ======== Constructor ========
+
     /// @notice Set bonding curve address
     /// @param _bondingCurve Bonding curve address
-
     constructor(address _bondingCurve) {
         bondingCurve = _bondingCurve;
         Exchange exchangeLogic_ = new Exchange(address(this), _bondingCurve);
@@ -61,7 +70,6 @@ contract PairFactory {
     /// @param _transactionShare Transaction share
     /// @param _baseURI Hyperobject base URI
     /// @dev emits a PairCreated event upon success; callable by anyone
-
     function create(
         string calldata _name,
         string calldata _symbol,
@@ -70,8 +78,10 @@ contract PairFactory {
         uint256 _transactionShare,
         string calldata _baseURI
     ) external returns (address exchange, address hyperobject) {
-        require(_transactionShare <= 10000, "INVALID_PERCENTAGE");
-        require(_reserveRatio <= 1000000, "INVALID_RESERVE_RATIO");
+        //require(_transactionShare <= 10000, "INVALID_PERCENTAGE");
+        if (_transactionShare > 10000) revert InvalidPercentage();
+        //require(_reserveRatio <= 1000000, "INVALID_RESERVE_RATIO");
+        if (_reserveRatio > 1000000) revert InvalidReserveRatio();
         exchange = Clones.clone(exchangeLogic);
         hyperobject = Clones.clone(hyperobjectLogic);
         Exchange(exchange).initialize(_name, _symbol, _reserveRatio, _slopeInit, _transactionShare, hyperobject, msg.sender);

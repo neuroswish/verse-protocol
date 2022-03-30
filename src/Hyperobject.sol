@@ -16,34 +16,47 @@ import "solmate/tokens/ERC721.sol";
 contract Hyperobject is ERC721 {
 
     // ======== Storage ========
+
     address public exchange; // exchange token pair address
     address public immutable factory; // pair factory address
     string public baseURI; // NFT base URI
     uint256 currentTokenId; // Counter keeping track of last minted token id
 
+    // ======== Errors ========
+
+	/// @notice Thrown when function caller is unauthorized
+	error Unauthorized();
+
+	/// @notice Thrown when transfer recipient is invalid
+	error InvalidRecipient();
+
+    /// @notice Thrown when token id is invalid
+	error InvalidTokenId();
+
     // ======== Constructor ========
+
     /// @notice Set factory address
     /// @param _factory Factory address
-
     constructor(address _factory) ERC721("Verse", "VERSE") {
         factory = _factory;
      }
 
     // ======== Initializer ========
+
     /// @notice Initialize a new exchange
     /// @param _name Hyperobject name
     /// @param _symbol Hyperobject symbol
     /// @param _baseURI Token base URI
     /// @param _exchange Exchange address
     /// @dev Called by factory at time of deployment
-
     function initialize(
         string calldata _name,
         string calldata _symbol,
         string calldata _baseURI,
         address _exchange
     ) external {
-        require(msg.sender == factory, "UNAUTHORIZED");
+        //require(msg.sender == factory, "UNAUTHORIZED");
+        if (msg.sender != factory) revert Unauthorized();
         name = _name;
         symbol = _symbol;
         baseURI = _baseURI;
@@ -51,31 +64,23 @@ contract Hyperobject is ERC721 {
         currentTokenId++;
     }
 
-    // ======== Modifiers ========
-    
-    /// @notice Authorize exchange contract to call functions
-
-    modifier onlyExchange() {
-        require(msg.sender == exchange, "UNAUTHORIZED");
-        _;
-    }
-
     // ======== Functions ========
 
     /// @notice Mint NFT
     /// @param _recipient NFT recipient
     /// @dev Increments currentTokenId
-
-    function mint(address _recipient) external onlyExchange {
-        require(_recipient != address(0), "INVALID_RECIPIENT");
+    function mint(address _recipient) external {
+        if (msg.sender != exchange) revert Unauthorized();
+        //require(_recipient != address(0), "INVALID_RECIPIENT");
+        if (_recipient == address(0)) revert InvalidRecipient();
         _mint(_recipient, currentTokenId++);
     }
 
     /// @notice Retrieve token URI for specified NFT
     /// @param _tokenId token id
-
     function tokenURI(uint256 _tokenId) public view override returns (string memory) {
-        require(ownerOf[_tokenId] != address(0), "TOKEN_DOES_NOT_EXIST"); 
+        //require(ownerOf[_tokenId] != address(0), "TOKEN_DOES_NOT_EXIST"); 
+        if (ownerOf[_tokenId] == address(0)) revert InvalidTokenId();
         return bytes(baseURI).length > 0 ? baseURI : "";
     }
 
