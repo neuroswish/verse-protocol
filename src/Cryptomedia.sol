@@ -55,6 +55,7 @@ contract Cryptomedia is ERC721 {
     * @notice Mint NFT for recipient redeeming 1 exchange token
     */
     function mint(address _recipient) external onlyExchange {
+        require(_recipient != address(0), "INVALID_RECIPIENT");
         _mint(_recipient, currentTokenId++);
     }
 

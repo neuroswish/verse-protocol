@@ -49,7 +49,10 @@ contract CryptomediaTest is DSTest {
     // make sure exchange can call mint function
     function test_Mint(address _recipient) public {
         vm.prank(address(exchange));
-        cryptomedia.mint(_recipient);
+        if (_recipient != address(0x0000000000000000000000000000000000000000)) {
+            cryptomedia.mint(_recipient);
+        }
+        
     }
 
     // return tokenURI for token ID that exists

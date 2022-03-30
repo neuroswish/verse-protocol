@@ -44,6 +44,16 @@ contract BondingCurveTest is DSTest {
         emit log_uint(eth);
     }
 
+    function test_sellEthForTokens() public {
+        uint256 eth = bondingCurve.calculateSaleReturn(19360000000000000000, 161522353159983588, 242424, 13825644997184428275);
+        emit log_uint(eth);
+    }
+
+    function test_sellTokensForEth() public {
+        uint256 tokens = bondingCurve.calculateSalePrice(19360000000000000000, 161522353159983588, 242424, 160599999999999999);
+        emit log_uint(tokens);
+    }
+
     receive() external payable {}
 
 }
