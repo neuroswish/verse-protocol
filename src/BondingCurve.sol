@@ -10,8 +10,18 @@ pragma solidity ^0.8.11;
 import "./Power.sol";
 
 contract BondingCurve is Power {
-    /// @dev Maximum reserve ratio
-    uint256 public constant maxRatio = 1000000;
+
+    // ======== Storage ========
+    uint256 public constant maxRatio = 1000000; // Maximum reserve ratio
+
+    // ======== Errors ========
+	/// @notice Thrown when supply input is invalid
+	error InvalidSupply();
+
+	/// @notice Thrown when pool balance input is invalid
+	error InvalidPoolBalance();
+
+    // ======== Functions ========
 
     /// @notice Calculate tokens received given ETH input
 	/// @param _supply Token supply in circulation
@@ -26,8 +36,8 @@ contract BondingCurve is Power {
         uint256 _reserveRatio,
         uint256 _price
     ) public view returns (uint256) {
-        require(_supply > 0, "INVALID_SUPPLY");
-        require(_poolBalance > 0, "INVALID_POOL_BALANCE");
+        if (_supply < 0) revert InvalidSupply();
+        if (_poolBalance < 0) revert InvalidPoolBalance();
         (uint256 result, uint8 precision) = power(
             (_price + _poolBalance),
             _poolBalance,
@@ -51,8 +61,8 @@ contract BondingCurve is Power {
         uint256 _reserveRatio,
         uint256 _tokens
     ) public view returns (uint256) {
-        require(_supply > 0, "INVALID_SUPPLY");
-        require(_poolBalance > 0, "INVALID_POOL_BALANCE");
+        if (_supply < 0) revert InvalidSupply();
+        if (_poolBalance < 0) revert InvalidPoolBalance();
         (uint256 result, uint8 precision) = power(
             (_tokens + _supply),
             _supply,
@@ -76,8 +86,8 @@ contract BondingCurve is Power {
         uint256 _reserveRatio,
         uint256 _tokens
     ) public view returns (uint256) {
-        require(_supply > 0, "INVALID_SUPPLY");
-        require(_poolBalance > 0, "INVALID_POOL_BALANCE");
+        if (_supply < 0) revert InvalidSupply();
+        if (_poolBalance < 0) revert InvalidPoolBalance();
         if (_tokens == _supply) {
             return _poolBalance;
         }
@@ -103,8 +113,8 @@ contract BondingCurve is Power {
         uint256 _reserveRatio,
         uint256 _price
     ) public view returns (uint256) {
-        require(_supply > 0, "INVALID_SUPPLY");
-        require(_poolBalance > 0, "INVALID_POOL_BALANCE");
+        if (_supply < 0) revert InvalidSupply();
+        if (_poolBalance < 0) revert InvalidPoolBalance();
         if (_price == _poolBalance) {
             return _supply;
         }
