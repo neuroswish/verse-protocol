@@ -10,20 +10,15 @@ pragma solidity ^0.8.11;
 import "./Power.sol";
 
 contract BondingCurve is Power {
+    /// @dev Maximum reserve ratio
     uint256 public constant maxRatio = 1000000;
-    /**
-     * @dev given total supply, pool balance, reserve ratio and a price, calculates the number of tokens returned
-     *
-     * Formula:
-     * return = _supply * ((1 + _price / _poolBalance) ^ (_reserveRatio / maxRatio) - 1)
-     *
-     * @param _supply          liquid token supply
-     * @param _poolBalance     pool balance
-     * @param _reserveRatio    reserve weight, represented in ppm (1-1000000)
-     * @param _price           ETH
-     *
-     * @return tokens
-     */
+
+    /// @notice Calculate tokens received given ETH input
+	/// @param _supply Token supply in circulation
+	/// @param _poolBalance ETH pool balance
+	/// @param _reserveRatio Reserve ratio
+    /// @param _price ETH sent to contract in exchange for tokens
+	/// @return Tokens
 
     function calculatePurchaseReturn(
         uint256 _supply,
@@ -43,6 +38,13 @@ contract BondingCurve is Power {
         return (temp - _supply);
     }
 
+    /// @notice Calculate ETH amount needed to purchase specified amount of tokens
+	/// @param _supply Token supply in circulation
+	/// @param _poolBalance ETH pool balance
+	/// @param _reserveRatio Reserve ratio
+    /// @param _tokens Specified amount of tokens to purchase
+	/// @return ETH
+
     function calculatePurchasePrice(
         uint256 _supply,
         uint256 _poolBalance,
@@ -61,19 +63,12 @@ contract BondingCurve is Power {
         return (temp - _poolBalance);
     }
 
-    /**
-     * @dev given total supply, pool balance, reserve ratio and a token amount, calculates the amount of ETH returned
-     *
-     * Formula:
-     * return = _poolBalance * (1 - (1 - _tokens / _supply) ^ (maxRatio / _reserveRatio))
-     *
-     * @param _supply          liquid token supply
-     * @param _poolBalance     reserve balance
-     * @param _reserveRatio    reserve weight, represented in ppm (1-1000000)
-     * @param _tokens          amount of liquid tokens to get the target amount for
-     *
-     * @return ETH
-     */
+    /// @notice Calculate ETH received given token input
+	/// @param _supply Token supply in circulation
+	/// @param _poolBalance ETH pool balance
+	/// @param _reserveRatio Reserve ratio
+    /// @param _tokens Tokens sent to contract in exchange for ETH
+	/// @return ETH
 
     function calculateSaleReturn(
         uint256 _supply,
@@ -93,8 +88,14 @@ contract BondingCurve is Power {
             _reserveRatio
         );
         return ((_poolBalance * result) - (_poolBalance << precision)) / result;
-        
     }
+
+    /// @notice Calculate token amount needed to sell to receive specified amount of ETH
+	/// @param _supply Token supply in circulation
+	/// @param _poolBalance ETH pool balance
+	/// @param _reserveRatio Reserve ratio
+    /// @param _price Specified amount of ETH to receive
+	/// @return Tokens
 
     function calculateSalePrice(
         uint256 _supply,
@@ -118,18 +119,11 @@ contract BondingCurve is Power {
 
     }
 
-    /**
-     * @dev given a price, reserve ratio, and initialization slope factor, calculates the number of tokens returned when initializing the bonding curve supply
-     *
-     * Formula:
-     * return = (_price / (_reserveRatio * _slopeInit)) ** _reserveRatio
-     *
-     * @param _price          liquid token supply
-     * @param _reserveRatio   reserve weight, represented in ppm (1-1000000)
-     * @param _slopeInit      slope value to initialize supply
-     *
-     * @return initial token amount
-     */
+    /// @notice Calculate tokens received given ETH input when initializing supply
+	/// @param _price ETH sent to contract
+	/// @param _reserveRatio Reserve ratio
+    /// @param _slopeInit Initial slope value to determine price curve
+	/// @return Tokens
 
     function calculateInitializationReturn(uint256 _price, uint256 _reserveRatio, uint256 _slopeInit)
         public
@@ -149,6 +143,11 @@ contract BondingCurve is Power {
         return (temp >> precision);
     }
 
+    /// @notice Calculate ETH needed to purchase specified tokens when initializing supply
+	/// @param _tokens Specified amount of tokens to purchase
+	/// @param _reserveRatio Reserve ratio
+    /// @param _slopeInit Initial slope value to determine price curve
+	/// @return ETH
     function calculateInitializationPrice(uint256 _tokens, uint256 _reserveRatio, uint256 _slopeInit)
         public
         view
@@ -164,8 +163,6 @@ contract BondingCurve is Power {
             _reserveRatio
         );
         uint256 temp = result >> precision;
-        //uint256 slopeFactor = 221;
         return (temp * _reserveRatio) / maxRatio;
-        //return ((_reserveRatio * temp) / (maxRatio * _slopeInit));
     }
 }

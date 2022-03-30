@@ -5,13 +5,13 @@ import "ds-test/test.sol";
 import "../BondingCurve.sol";
 import "../PairFactory.sol";
 import "../Exchange.sol";
-import "../Cryptomedia.sol";
+import "../Hyperobject.sol";
 
 contract PairFactoryTest is DSTest {
     BondingCurve bondingCurve;
     PairFactory pairFactory;
     address exchange;
-    address cryptomedia;
+    address hyperobject;
 
     function setUp() public {
         bondingCurve = new BondingCurve();
@@ -26,9 +26,9 @@ contract PairFactoryTest is DSTest {
         string memory _baseURI
     ) public {
         if (_reserveRatio <= 1000000 && _transactionShare <= 10000 ) {
-            (exchange, cryptomedia) = pairFactory.create(_name, _symbol, _reserveRatio, 724223089680545, _transactionShare, _baseURI);
+            (exchange, hyperobject) = pairFactory.create(_name, _symbol, _reserveRatio, 724223089680545, _transactionShare, _baseURI);
             require(exchange != address(0));
-            require(cryptomedia != address(0));
+            require(hyperobject != address(0));
         }
     }
 

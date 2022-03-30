@@ -9,11 +9,11 @@ pragma solidity ^0.8.11;
 import "./Exchange.sol";
 import "solmate/tokens/ERC721.sol";
 
-/// @title Cryptomedia
+/// @title Hyperobject
 /// @author neuroswish
 /// @notice NFT with an autonomous exchange
 
-contract Cryptomedia is ERC721 {
+contract Hyperobject is ERC721 {
 
     // ======== Storage ========
     address public exchange; // exchange token pair address
@@ -67,7 +67,5 @@ contract Cryptomedia is ERC721 {
         return bytes(baseURI).length > 0 ? baseURI : "";
     }
 
-    mapping(address => bool) connection;
-    // owner would have to call an "addConnection" function to add an external contract as a connection 
 }
 

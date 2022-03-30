@@ -5,7 +5,7 @@ import "ds-test/test.sol";
 import "../BondingCurve.sol";
 import "../PairFactory.sol";
 import "../Exchange.sol";
-import "../Cryptomedia.sol";
+import "../Hyperobject.sol";
 import {VM} from "./Utils/VM.sol";
 
 contract ExchangeTest is DSTest {
@@ -13,21 +13,21 @@ contract ExchangeTest is DSTest {
     BondingCurve bondingCurve;
     PairFactory pairFactory;
     Exchange exchange;
-    Cryptomedia cryptomedia;
+    Hyperobject hyperobject;
     address exchangeAddress;
-    address cryptomediaAddress;
+    address hyperobjectAddress;
 
 
     function setUp() public {
         // Cheat codes
         vm = VM(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
-        // Deploy exchange and cryptomedia
+        // Deploy exchange and hyperobject
         bondingCurve = new BondingCurve();
         pairFactory = new PairFactory(address(bondingCurve));
-        (exchangeAddress, cryptomediaAddress) = pairFactory.create("Verse", "VERSE", 242424, 724223089680545, 500, "verse.xyz");
+        (exchangeAddress, hyperobjectAddress) = pairFactory.create("Verse", "VERSE", 242424, 724223089680545, 500, "verse.xyz");
         exchange = Exchange(exchangeAddress);
-        cryptomedia = Cryptomedia(cryptomediaAddress);
+        hyperobject = Hyperobject(hyperobjectAddress);
 
         // Set user balances
         vm.deal(address(1), 100 ether);
@@ -35,9 +35,9 @@ contract ExchangeTest is DSTest {
     }
 
     // Non-factory address cannot call initialize function
-    function testFail_Initialize(string memory _name, string memory _symbol, uint256 _reserveRatio, uint256 _slopeInit, uint256 _transactionShare, address _cryptomedia, address _creator) public {
+    function testFail_Initialize(string memory _name, string memory _symbol, uint256 _reserveRatio, uint256 _slopeInit, uint256 _transactionShare, address _hyperobject, address _creator) public {
         vm.prank(address(0));
-        exchange.initialize(_name, _symbol, _reserveRatio, _slopeInit, _transactionShare, _cryptomedia, _creator);
+        exchange.initialize(_name, _symbol, _reserveRatio, _slopeInit, _transactionShare, _hyperobject, _creator);
     }
     
     // User can buy tokens and initialize token supply
