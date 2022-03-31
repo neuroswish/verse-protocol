@@ -247,8 +247,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
-      "lastModificationDate": 1648691666548,
-      "contentHash": "4a831458a079439be0b594ec6a66b2f6",
+      "lastModificationDate": 1648696594698,
+      "contentHash": "16e205620ec385c39b1abed098439b61",
       "sourceName": "src/Exchange.sol",
       "solcConfig": {
         "settings": {
@@ -287,8 +287,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Hyperobject.sol": {
-      "lastModificationDate": 1648661474063,
-      "contentHash": "663e00fe210966b90a44840893ee3a43",
+      "lastModificationDate": 1648696617185,
+      "contentHash": "d0d4ce49420e443826b220620732bb00",
       "sourceName": "src/Hyperobject.sol",
       "solcConfig": {
         "settings": {
@@ -329,8 +329,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/PairFactory.sol": {
-      "lastModificationDate": 1648661689439,
-      "contentHash": "6e27e5aae2f0cd768e211acb99a3be41",
+      "lastModificationDate": 1648696652544,
+      "contentHash": "a7eb17592975a79e226fc674ed93a41b",
       "sourceName": "src/PairFactory.sol",
       "solcConfig": {
         "settings": {

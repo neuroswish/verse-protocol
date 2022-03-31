@@ -17,8 +17,8 @@ contract Hyperobject is ERC721 {
 
     // ======== Storage ========
 
-    address public exchange; // exchange token pair address
-    address public immutable factory; // pair factory address
+    address public exchange; // Exchange token pair address
+    address public immutable factory; // Pair factory address
     string public baseURI; // NFT base URI
     uint256 currentTokenId; // Counter keeping track of last minted token id
 
@@ -55,7 +55,6 @@ contract Hyperobject is ERC721 {
         string calldata _baseURI,
         address _exchange
     ) external {
-        //require(msg.sender == factory, "UNAUTHORIZED");
         if (msg.sender != factory) revert Unauthorized();
         name = _name;
         symbol = _symbol;
@@ -71,15 +70,13 @@ contract Hyperobject is ERC721 {
     /// @dev Increments currentTokenId
     function mint(address _recipient) external {
         if (msg.sender != exchange) revert Unauthorized();
-        //require(_recipient != address(0), "INVALID_RECIPIENT");
         if (_recipient == address(0)) revert InvalidRecipient();
         _mint(_recipient, currentTokenId++);
     }
 
     /// @notice Retrieve token URI for specified NFT
-    /// @param _tokenId token id
+    /// @param _tokenId Token id
     function tokenURI(uint256 _tokenId) public view override returns (string memory) {
-        //require(ownerOf[_tokenId] != address(0), "TOKEN_DOES_NOT_EXIST"); 
         if (ownerOf[_tokenId] == address(0)) revert InvalidTokenId();
         return bytes(baseURI).length > 0 ? baseURI : "";
     }

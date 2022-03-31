@@ -20,14 +20,14 @@ contract Exchange is ERC20, ReentrancyGuard {
 
     // ======== Storage ========
 
-    address public immutable factory; // exchange factory address
-    address public immutable bondingCurve; // bonding curve address
-    address public creator; // hyperobject creator
-    address public hyperobject; // hyperobject address
-    uint256 public reserveRatio; // reserve ratio of token market cap to ETH pool
-    uint256 public slopeInit; // slope value to initialize supply
+    address public immutable factory; // Exchange factory address
+    address public immutable bondingCurve; // Bonding curve address
+    address public creator; // Hyperobject creator
+    address public hyperobject; // Hyperobject address
+    uint256 public reserveRatio; // Reserve ratio of token market cap to ETH pool
+    uint256 public slopeInit; // Slope value to initialize supply
     uint256 public poolBalance; // ETH balance in contract pool
-    uint256 public transactionShare; // transaction share
+    uint256 public transactionShare; // Transaction share
 
     // ======== Errors ========
 
@@ -121,7 +121,6 @@ contract Exchange is ERC20, ReentrancyGuard {
         address _hyperobject,
         address _creator
     ) external {
-        //require(msg.sender == factory, "UNAUTHORIZED");
         if (msg.sender != factory) revert Unauthorized();
         name = _name;
         symbol = _symbol;
@@ -137,17 +136,14 @@ contract Exchange is ERC20, ReentrancyGuard {
     /// @notice Buy tokens with ETH
     /// @param _minTokensReturned Minimum tokens returned in case of slippage
     /// @dev Emits a Buy event upon success; callable by anyone
-    function buy(uint256 _minTokensReturned) external payable nonReentrant {
-        //require(msg.value > 0, "INVALID_VALUE");
+    function buy(uint256 _minTokensReturned) external payable {
         if (msg.value == 0) revert InvalidValue();
-        //require(_minTokensReturned > 0, "INVALID_SLIPPAGE");
         if (_minTokensReturned == 0) revert InvalidSlippage();
         uint256 price = msg.value;
         uint256 creatorShare = splitShare(price);
         uint256 buyAmount = price - creatorShare;
         uint256 tokensReturned;
         if (totalSupply == 0 || poolBalance == 0) {
-            //require(buyAmount >= 1 * (10**15), "INSUFFICIENT_INITIAL_PRICE");
             if (buyAmount < 1 * (10**15)) revert InsufficientInitialPrice();
             tokensReturned = IBondingCurve(bondingCurve)
                 .calculateInitializationReturn(buyAmount / (10**15), reserveRatio, slopeInit);
@@ -161,7 +157,6 @@ contract Exchange is ERC20, ReentrancyGuard {
                     buyAmount
                 );
         }
-        //require(tokensReturned >= _minTokensReturned, "SLIPPAGE");
         if (tokensReturned < _minTokensReturned) revert Slippage();
         _mint(msg.sender, tokensReturned);
         poolBalance += buyAmount;
@@ -175,15 +170,10 @@ contract Exchange is ERC20, ReentrancyGuard {
     /// @dev Emits a Sell event upon success; callable by token holders
     function sell(uint256 _tokens, uint256 _minETHReturned)
         external
-        nonReentrant
     {
-        //require(_tokens > 0,"INVALID_SELL_AMOUNT");
         if (_tokens == 0) revert InvalidSellAmount();
-        //require(_tokens <= balanceOf[msg.sender], "INSUFFICIENT_BALANCE");
         if (_tokens > balanceOf[msg.sender]) revert InsufficientBalance();
-        //require(poolBalance > 0, "INSUFFICIENT_POOL_BALANCE");
         if (poolBalance == 0) revert InsufficientPoolBalance();
-        //require(_minETHReturned > 0, "INVALID_SLIPPAGE");
         if (_minETHReturned == 0) revert InvalidSlippage();
         uint256 ethReturned = IBondingCurve(bondingCurve).calculateSaleReturn(
             totalSupply,
@@ -193,7 +183,6 @@ contract Exchange is ERC20, ReentrancyGuard {
         );
         uint256 creatorShare = splitShare(ethReturned);
         uint256 sellerShare = ethReturned - creatorShare;
-        //require(sellerShare >= _minETHReturned, "SLIPPAGE");
         if (sellerShare < _minETHReturned) revert Slippage();
         _burn(msg.sender, _tokens);
         poolBalance -= ethReturned;
@@ -205,8 +194,7 @@ contract Exchange is ERC20, ReentrancyGuard {
     
     /// @notice Redeem ERC20 token for Hyperobject NFT
     /// @dev Mints NFT from Hyperobject contract for caller upon success; callable by token holders with at least 1 token
-    function redeem() public nonReentrant {
-        //require(balanceOf[msg.sender] >= (1 * (10**18)), "INSUFFICIENT_BALANCE");
+    function redeem() public {
         if (balanceOf[msg.sender] < (1 * (10**18))) revert InsufficientBalance();
         transfer(hyperobject, (1 * (10**18)));
         IHyperobject(hyperobject).mint(msg.sender);
