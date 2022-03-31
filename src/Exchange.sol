@@ -209,6 +209,5 @@ contract Exchange is ERC20, ReentrancyGuard {
     function splitShare(uint256 _amount) internal view returns (uint256 _share) {
         _share = (_amount * transactionShare) / 10000;
     }
-
 }
 
