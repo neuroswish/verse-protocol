@@ -28,7 +28,7 @@ contract Power {
 
     uint256[128] private maxExpArray;
 
-    function initMaxExpArray() public {
+    function initMaxExpArray() private {
         maxExpArray[32] = 0x1c35fedd14ffffffffffffffffffffffff;
         maxExpArray[33] = 0x1b0ce43b323fffffffffffffffffffffff;
         maxExpArray[34] = 0x19f0028ec1ffffffffffffffffffffffff;

@@ -137,7 +137,7 @@ contract Exchange is ERC20, ReentrancyGuard {
     /// @notice Buy tokens with ETH
     /// @param _minTokensReturned Minimum tokens returned in case of slippage
     /// @dev Emits a Buy event upon success; callable by anyone
-    function buy(uint256 _minTokensReturned) external payable {
+    function buy(uint256 _minTokensReturned) external payable nonReentrant {
         //require(msg.value > 0, "INVALID_VALUE");
         if (msg.value == 0) revert InvalidValue();
         //require(_minTokensReturned > 0, "INVALID_SLIPPAGE");
@@ -175,6 +175,7 @@ contract Exchange is ERC20, ReentrancyGuard {
     /// @dev Emits a Sell event upon success; callable by token holders
     function sell(uint256 _tokens, uint256 _minETHReturned)
         external
+        nonReentrant
     {
         //require(_tokens > 0,"INVALID_SELL_AMOUNT");
         if (_tokens == 0) revert InvalidSellAmount();
@@ -204,7 +205,7 @@ contract Exchange is ERC20, ReentrancyGuard {
     
     /// @notice Redeem ERC20 token for Hyperobject NFT
     /// @dev Mints NFT from Hyperobject contract for caller upon success; callable by token holders with at least 1 token
-    function redeem() public {
+    function redeem() public nonReentrant {
         //require(balanceOf[msg.sender] >= (1 * (10**18)), "INSUFFICIENT_BALANCE");
         if (balanceOf[msg.sender] < (1 * (10**18))) revert InsufficientBalance();
         transfer(hyperobject, (1 * (10**18)));
