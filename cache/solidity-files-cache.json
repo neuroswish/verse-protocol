@@ -247,8 +247,8 @@
       }
     },
     "/Users/kirancherukuri/Documents/verse/protocol/verse-contracts/src/Exchange.sol": {
-      "lastModificationDate": 1648696594698,
-      "contentHash": "16e205620ec385c39b1abed098439b61",
+      "lastModificationDate": 1648696796403,
+      "contentHash": "2cd3749df60d488c225ef0e2b17b4aa3",
       "sourceName": "src/Exchange.sol",
       "solcConfig": {
         "settings": {
