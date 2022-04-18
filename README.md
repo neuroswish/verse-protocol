@@ -2,34 +2,35 @@
 
 # Overview
 
-Verse is an autonomous exchange protocol for NFTs. On Verse, anyone can permissionlessly deploy a cryptomedia pair. Each pair consists of an NFT (ERC-721) contract and an ERC-20 contract. The price and supply of the ERC-20 token is governed by a continuous bonding curve, allowing anyone to buy and sell the token with instant liquidity. At any time, holders of the ERC-20 token who own at least 1 token can redeem the underlying NFT in the ERC-721 contract. When an owner redeems an ERC-20 token, that token is transferred and locked in the ERC-721 contract and the redeemer is minted an NFT. 
+The Verse protocol enables every digital object to have an embedded, autonomous exchange. Structurally, this means that every ERC-721 NFT created through Verse is natively backed by an underlying ERC-20 market. Let’s break down how it works.
 
-Thus, Verse enables a new mechanism for NFT exchanges which better mimic social behaviors than the traditional auction model. As more people demand the NFT, the price programmatically increases, and as demand falls, the price decreases. Enabling autonomous exchanges around NFTs can better mirror social behaviors around buying and selling and enable more people to participate in ownership of digital assets.
+Through the protocol, a creator deploys a contract `Pair` consisting of an ERC-20 `Exchange` contract and an ERC-721 `Hyperobject` contract. The dynamic price and supply of the ERC-20 token is managed by a bonding curve acting as an AMM. Simply, this means that anyone can `buy` and `sell` the token at any time with instant liquidity, and the contract will programmatically adjust the price based on the circulating supply. Holders of at least 1 atomic unit of the ERC-20 token can then `redeem` their token. Redeeming a token transfers the holder’s ERC-20 to the paired `Hyperobject` contract, which mints a new NFT and transfers it to the redeemer in exchange.
 
 
-# Cryptomedia Pair
+# Hyperobject Pair
 
-The cornerstone of the protocol is the `PairFactory` contract. The `PairFactory` is a factory contract which handles deployment of cryptomedia pairs as minimal clone proxies delegating functionality to corresponding logic contracts. Each pair consists of a `Cryptomedia` contract (an ERC-721 NFT contract) and an `Exchange` contract (an ERC-20 contract). The `create` function deploys the pair.
+The cornerstone of the protocol is the `PairFactory` contract. The `PairFactory` is a factory contract which handles deployment of hyperobject pairs as minimal clone proxies delegating functionality to corresponding logic contracts. Each pair consists of a `Hyperobject` contract (an ERC-721 NFT contract) and an `Exchange` contract (an ERC-20 contract). The `create` function deploys a new pair.
 
-# Cryptomedia Contract
+# Hyperobject Contract
 
-Each `Cryptomedia` contract deployed is an ERC-721 contract. The tokenURI for each NFT minted through this contract is identical. Minting functionality of NFTs is managed exclusively by the paired `Exchange` contract.
+Each `Hyperobject` contract deployed is an ERC-721 contract. The `tokenURI`s for each NFT minted through this contract are identical and are set to the `baseURI` passed at construction. Minting functionality of NFTs is managed exclusively by the paired `Exchange` contract.
 
 # Exchange Contract
 Each `Exchange` contract deployed is an ERC-20 contract. This contract has a built-in autonomous exchange governing the price and supply of the underlying token through the use of a bonding curve. Anyone can buy and sell tokens from this contract with instant liquidity, meaning that the contract will mint and burn tokens on-demand, respectively. The bonding curve is based on a power function, and so the price of the token increases as supply increases, and the price decreases as supply decreases.
 
 Anyone who owns >= 1 atomic token for this contract can call the `redeem` function. This function makes a call to the paired ERC-721 contract. Upon the token owner calling this function, the contract transfers 1 token from the caller to the paired ERC-721 contract. In exchange, the ERC-721 contract mints and transfers an NFT to the caller. In effect, the redeemed ERC-20 token is now locked in the ERC-721 contract. This has the effect of maintaining some base price level for the NFT, as the redeemed token can never be burned and subsequently decrease the token's price. 
 
-Additionally, upon deployment, the pair creator can specify a "creator share". The creator share represents a royalty fee on each transaction that occurs through the contract. By specifying a share percentage, the creator can be perpetually compensated for trades that happen with the token. 
+Additionally, upon deployment, the pair creator can specify a `CreatorShare`. The `CreatorShare` represents a royalty fee on each transaction that occurs through the contract. By specifying a share percentage, the creator can be perpetually compensated for trades that happen with the token. 
 
 # Summary + Vision
-The ability to embed an autonomous exchange within an NFT has massive implications. Notably, one can now effectively program supply and demand for any digital asset. We saw nascent experiments with this behavior in projects like Unisocks and Saint Fame. Now, what if anyone could enable this mechanism and create an "internet-native stock"? 
+This new exchange structure produces numerous benefits for both creators and consumers.
 
-Imagine the Yeezys of the future being exchanged on the Verse protocol. This would enable people to participate in the financial upside of the asset by buying any fractional quantity of the underlying token. And those who want the asset can redeem their tokens at any time. The protocol mirrors social drivers of price and demand, and enables every digital asset to also be its own market. You can also imagine the protocol used for new social media primitives. What if only holders of a specific NFT could post to a certain website? As the demand to be included on this website increased and decreasd, the price for the NFT would automatically increase and decrease. With future auxillary protocol additions like staking-to-vote, one could envision Verse being used to create new forms of curation and content markets.
+**Consumers** now have instant liquidity to buy and sell continuous quantities of the NFT. Those individuals who may have been priced out of participating in a fixed-price NFT can now buy fractions of the underlying ERC-20, while whales can still scoop up larger quantities. Thus, the mechanism enables exchanging all along the price curve and maximizes efficiency in the market.
 
-Verse is called the "hyperexchange" because it is a hyperstructure that enables every digital "thing" to have an autonomous exchange. The implications for this new mechanism are far-reaching, and I hope to work with creative people in this space to experiment with the possibiliies. 
+Additionally, **creators** have complete control in determining how their NFT is priced throughout its lifecycle. The creator can specify the underlying reserve ratio and initial slope of the ERC-20 price curve, fine-tuning how they want their object to be priced as demand rises and falls. In this way, creators can set a practical limit on the NFT’s supply and enforce a level of scarcity.
 
-# Stuff to do
+Perhaps most importantly, Verse enables digital objects to live autonomously, anywhere on the internet, without ever needing to link out to a marketplace. Imagine scrolling on a website, seeing a Verse-created NFT, and being able to exchange it right then and there. It’s like if you were walking down the street, saw a pair of Nike Dunks, and could snap your fingers to put a pair on your feet - rather than having to track down the lowest price, go to the store, and then buy them. Thus, the protocol catalyzes new forms of discovery with the ability for objects to be exchanged where they are consumed.
 
-These contracts are tested using Foundry. Thus far I've created a few test cases but the next step is to create a more robust fuzzing test suite to check against different scenarios.
+The scope of digital objects is impossible to comprehend, but one thing is certain. They will fundamentally transform the construction of the internet, affecting our relationships with media, culture, digital infrastructure, identity, and more. **Verse is a hyperexchange: a hyperstructure enabling the autonomous exchange of digital objects and creating a composable, infinite internet.**
+
 
