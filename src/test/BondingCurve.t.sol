@@ -34,13 +34,14 @@ contract BondingCurveTest is DSTest {
     //     emit log_uint(price);
     // }
 
+
     function test_getTokensForEth() public {
-        uint256 tokens = bondingCurve.calculatePurchaseReturn(19360000000000000000, 161522353159983588, 242424, 17000000000000000000);
+        uint256 tokens = bondingCurve.calculatePurchaseReturn(16462927719160831274, 82766703237582282, 242424, 25197336348344240);
         emit log_uint(tokens);
     }
 
     function test_getEthForTokens() public {
-        uint256 eth = bondingCurve.calculatePurchasePrice(19360000000000000000, 161522353159983588, 242424, 40637716687212255142);
+        uint256 eth = bondingCurve.calculatePurchasePrice(16462927719160831274, 82766703237582282, 242424, 1000000000000000000);
         emit log_uint(eth);
     }
 

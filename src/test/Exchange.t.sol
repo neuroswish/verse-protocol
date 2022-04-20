@@ -59,7 +59,6 @@ contract ExchangeTest is DSTest {
     // User cannot send 0 ether to buy tokens
     function test_BuyInvalidValue() public {
         vm.prank(address(1));
-        //vm.expectRevert("INVALID_VALUE");
         vm.expectRevert(abi.encodeWithSignature('InvalidValue()'));
         exchange.buy{value: 0 ether}(1);
     }
@@ -67,7 +66,6 @@ contract ExchangeTest is DSTest {
     // User cannot send 0 ether to buy tokens
     function test_BuyInsufficientInitialPrice() public {
         vm.prank(address(1));
-        //vm.expectRevert("INSUFFICIENT_INITIAL_PRICE");
         vm.expectRevert(abi.encodeWithSignature('InsufficientInitialPrice()'));
         exchange.buy{value: 0.001 ether}(1);
     }
@@ -75,7 +73,6 @@ contract ExchangeTest is DSTest {
     // User cannot specify an invalid slippage value
     function test_BuyInvalidSlippage() public {
         vm.prank(address(1));
-        //vm.expectRevert("INVALID_SLIPPAGE");
         vm.expectRevert(abi.encodeWithSignature('InvalidSlippage()'));
         exchange.buy{value: 0.1 ether}(0);
     }
@@ -83,7 +80,6 @@ contract ExchangeTest is DSTest {
     // Buy reverts if tokens returned are less than minimum return specified
     function test_BuySlippage() public {
         vm.prank(address(1));
-        //vm.expectRevert("SLIPPAGE");
         vm.expectRevert(abi.encodeWithSignature('Slippage()'));
         exchange.buy{value: 1 ether}(50 * (10**18));
     }
@@ -100,21 +96,18 @@ contract ExchangeTest is DSTest {
     // Non-holder cannot sell
     function test_NonHolderCannotSell() public {
         vm.prank(address(3));
-        //vm.expectRevert("INSUFFICIENT_BALANCE");
         vm.expectRevert(abi.encodeWithSignature('InsufficientBalance()'));
         exchange.sell(1, 1 ether);
     }
 
     function test_SellInvalidAmount() public {
         vm.prank(address(1));
-        //vm.expectRevert("INSUFFICIENT_BALANCE");
         vm.expectRevert(abi.encodeWithSignature('InsufficientBalance()'));
         exchange.sell(500 * (10**18), 1 ether);
     }
 
     function test_SellInvalidAmountArgZero() public {
         vm.prank(address(1));
-        //vm.expectRevert("INVALID_SELL_AMOUNT");
         vm.expectRevert(abi.encodeWithSignature('InvalidSellAmount()'));
         exchange.sell(0, 1 ether);
     }
@@ -126,7 +119,6 @@ contract ExchangeTest is DSTest {
         vm.prank(address(2));
         exchange.buy{value: 8 ether}(1);
         vm.prank(address(1));
-        //vm.expectRevert("INVALID_SLIPPAGE");
         vm.expectRevert(abi.encodeWithSignature('InvalidSlippage()'));
         exchange.sell(10 * (10 ** 18), 0 ether);
     }
@@ -137,7 +129,6 @@ contract ExchangeTest is DSTest {
         vm.prank(address(2));
         exchange.buy{value: 8 ether}(1);
         vm.prank(address(1));
-        //vm.expectRevert("SLIPPAGE");
         vm.expectRevert(abi.encodeWithSignature('Slippage()'));
         exchange.sell(10 * (10 ** 18), 10 ether);
     }
@@ -151,7 +142,6 @@ contract ExchangeTest is DSTest {
     function test_RedeemInvalidBalance() public {
         vm.prank(address(1));
         exchange.buy{value: 0.01 ether}(1);
-        //vm.expectRevert("INSUFFICIENT_BALANCE");
         vm.expectRevert(abi.encodeWithSignature('InsufficientBalance()'));
         exchange.redeem();
     }
